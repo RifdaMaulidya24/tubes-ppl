@@ -17,9 +17,9 @@
     <div class="absolute inset-0 bg-white/10"></div>
 
  
-    <div class="relative bg-[#f5e2c9]/60 backdrop-blur-md shadow-2xl rounded-2xl p-10 w-[450px]">
+    <div class="relative bg-[#f5e2c9]/55 backdrop-blur-md shadow-2xl rounded-2xl p-10 w-[450px]">
 
-        <h2 class="text-3xl font-bold mb-4 text-center text-[#20474a]">
+        <h2 class="text-4xl font-bold mb-4 text-center text-[#20474a]">
             Daftar Akun Mathify
         </h2>
 
