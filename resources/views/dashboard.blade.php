@@ -227,49 +227,50 @@
         </div>
         <div class="dashboard-title">Selamat Datang di Mathify</div>
     </div>
-    <div class="dashboard-subtitle">Pilih jenis operasi untuk mulai belajar dan berlatih dengan seru!</div>
-
     <div class="card-container">
-        <div class="menu-card">
-            <div class="menu-icon">+</div>
-            <div class="menu-title">Penambahan</div>
-            <div class="menu-level">Level 1–5 | Poin: 100</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="card-footer">Lanjutkan dari Level 3!</div>
-        </div>
 
-        <div class="menu-card">
-            <div class="menu-icon">−</div>
-            <div class="menu-title">Pengurangan</div>
-            <div class="menu-level">Level 1–5 | Poin: 100</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="card-footer">Lanjutkan dari Level 2!</div>
+    <a href="/materi/penambahan" class="menu-card">
+        <div class="menu-icon">+</div>
+        <div class="menu-title">Penambahan</div>
+        <div class="menu-level">Level 1–5 | Poin: 100</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
+        <div class="card-footer">Lanjutkan dari Level 3!</div>
+    </a>
 
-        <div class="menu-card">
-            <div class="menu-icon">×</div>
-            <div class="menu-title">Perkalian</div>
-            <div class="menu-level">Level 1–5 | Poin: 100</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="card-footer">Lanjutkan dari Level 4!</div>
+    <a href="/materi/pengurangan" class="menu-card">
+        <div class="menu-icon">−</div>
+        <div class="menu-title">Pengurangan</div>
+        <div class="menu-level">Level 1–5 | Poin: 100</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
+        <div class="card-footer">Lanjutkan dari Level 2!</div>
+    </a>
 
-        <div class="menu-card">
-            <div class="menu-icon">÷</div>
-            <div class="menu-title">Pembagian</div>
-            <div class="menu-level">Level 1–5 | Poin: 100</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="card-footer">Lanjutkan dari Level 1!</div>
+    <a href="/materi/perkalian" class="menu-card">
+        <div class="menu-icon">×</div>
+        <div class="menu-title">Perkalian</div>
+        <div class="menu-level">Level 1–5 | Poin: 100</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
-    </div>
+        <div class="card-footer">Lanjutkan dari Level 4!</div>
+    </a>
+
+    <a href="/materi/pembagian" class="menu-card">
+        <div class="menu-icon">÷</div>
+        <div class="menu-title">Pembagian</div>
+        <div class="menu-level">Level 1–5 | Poin: 100</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="card-footer">Lanjutkan dari Level 1!</div>
+    </a>
+
+</div>
+
 
     <div class="cta-section">
         <p class="cta-text">Siap eksplorasi dunia matematika yang seru? Klik kartu untuk mulai!</p>
