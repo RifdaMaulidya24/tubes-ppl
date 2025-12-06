@@ -15,14 +15,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased bg-gray-900 text-gray-100">
-    <div class="min-h-screen">
+<body class="font-sans antialiased !bg-transparent text-white">
+    <div class="min-h-screen !bg-transparent">
 
-        {{-- Navbar --}}
+        {{-- NAVBAR --}}
         @include('layouts.navigation')
 
         {{-- CONTENT --}}
-        <main class="pt-4">
+        <main class="pt-0 !bg-transparent">
             {{ $slot }}
         </main>
 
