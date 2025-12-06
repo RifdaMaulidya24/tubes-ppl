@@ -17,4 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+#route setiap quiz
+Route::get('/quiz/penambahan', [QuizController::class, 'penambahan']);
+Route::get('/quiz/pengurangan', [QuizController::class, 'pengurangan']);
+Route::get('/quiz/perkalian', [QuizController::class, 'perkalian']);
+Route::get('/quiz/pembagian', [QuizController::class, 'pembagian']);
+
+
 require __DIR__.'/auth.php';
