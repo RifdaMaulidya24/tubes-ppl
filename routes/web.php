@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,11 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-#route setiap quiz
-Route::get('/quiz/penambahan', [QuizController::class, 'penambahan']);
-Route::get('/quiz/pengurangan', [QuizController::class, 'pengurangan']);
-Route::get('/quiz/perkalian', [QuizController::class, 'perkalian']);
-Route::get('/quiz/pembagian', [QuizController::class, 'pembagian']);
+#route dynamic quiz
+Route::get('/quiz/{operation}', [QuizController::class, 'show']);
 
 
 require __DIR__.'/auth.php';

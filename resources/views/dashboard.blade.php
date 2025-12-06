@@ -229,7 +229,7 @@
     </div>
     <div class="card-container">
 
-    <a href="/materi/penambahan" class="menu-card">
+    <a href="/quiz/penambahan" class="menu-card">
         <div class="menu-icon">+</div>
         <div class="menu-title">Penambahan</div>
         <div class="menu-level">Level 1–5 | Poin: 100</div>
@@ -239,7 +239,7 @@
         <div class="card-footer">Lanjutkan dari Level 3!</div>
     </a>
 
-    <a href="/materi/pengurangan" class="menu-card">
+    <a href="/quiz/pengurangan" class="menu-card">
         <div class="menu-icon">−</div>
         <div class="menu-title">Pengurangan</div>
         <div class="menu-level">Level 1–5 | Poin: 100</div>
@@ -249,7 +249,7 @@
         <div class="card-footer">Lanjutkan dari Level 2!</div>
     </a>
 
-    <a href="/materi/perkalian" class="menu-card">
+    <a href="/quiz/perkalian" class="menu-card">
         <div class="menu-icon">×</div>
         <div class="menu-title">Perkalian</div>
         <div class="menu-level">Level 1–5 | Poin: 100</div>
@@ -259,7 +259,7 @@
         <div class="card-footer">Lanjutkan dari Level 4!</div>
     </a>
 
-    <a href="/materi/pembagian" class="menu-card">
+    <a href="/quiz/pembagian" class="menu-card">
         <div class="menu-icon">÷</div>
         <div class="menu-title">Pembagian</div>
         <div class="menu-level">Level 1–5 | Poin: 100</div>
