@@ -73,14 +73,14 @@
         ============================= --}}
         <div id="section-tutor">
 
-            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Belajar Penambahan</h1>
+            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Belajar pembagian</h1>
             <p class="mb-4">Pahami cara cepat menambah angka sebelum mulai latihan!</p>
 
-            <img src="/images/penambahan.png" class="mx-auto w-64 mb-4">
+            <img src="/images/pembagian.png" class="mx-auto w-64 mb-4">
 
             <div class="bg-white text-black p-4 rounded-2xl shadow-xl mb-6">
                 <h2 class="font-bold mb-2">Cara Cepat:</h2>
-                <p>Penambahan adalah menjumlahkan 2 angka untuk mendapatkan totalnya.</p>
+                <p>pembagian adalah menjumlahkan 2 angka untuk mendapatkan totalnya.</p>
                 <p>Contoh: 3 + 5 = 8</p>
             </div>
 
