@@ -818,7 +818,7 @@
 
             <!-- CTA Section -->
             <div class="cta-section">
-                <a href="#" class="cta-button">📊 Lihat Progress Lengkap</a>
+                <a href="#" class="cta-button">Lihat Progress Lengkap</a>
             </div>
         </div>
     </section>
