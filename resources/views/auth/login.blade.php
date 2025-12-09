@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <title>Login | MathNest</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <style>
+    @keyframes fadeZoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .animate-fade-zoom {
+        animation: fadeZoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    .animate-content {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    button {
+    transition-delay: 0s !important;
+    }
+</style>
 </head>
 <body class="min-h-screen flex items-center justify-center relative">
 
@@ -12,24 +41,25 @@
     
     <!-- Base Background Color -->
     <div class="absolute inset-0 bg-[#1a3a2e] -z-10"></div>
-<div class="relative z-10 w-[900px] grid grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
+<!-- Crad-->
+<div class="relative z-10 w-[900px] grid grid-cols-2 rounded-2xl overflow-hidden shadow-2xl animate-content animate-fade-zoom">
 
     <!-- LEFT -->
     <div class="bg-[#123A2D]/95 backdrop-blur-md text-white p-10 flex flex-col justify-center">
-        <h1 class="text-5xl font-bold mb-4">🐣 Mathify</h1>
-        <p>Belajar matematika jadi lebih seru dan interaktif!</p>
+        <h1 class="text-5xl font-bold mb-4 animate-content animate-fade-zoom delay-100">🐣 Mathify</h1>
+        <p class="animate-content animate-fade-zoom delay-200">Belajar matematika jadi lebih seru dan interaktif!</p>
     </div>
 
     <!-- RIGHT -->
     <div class="relative bg-[#f5e2c9]/30 backdrop-blur-md p-10">
-        <h2 class="text-white 4xl font-bold mb-5">Login Akun</h2>
+        <h2 class="text-white 4xl font-bold mb-5 nimate-content animate-fade-zoom delay-100">Login Akun</h2>
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
             
             <!-- Error Messages -->
             @if ($errors->any())
-                <div class="mb-4 bg-red-500 text-white px-3 py-2 rounded-lg shadow-md">
+                <div class="mb-4 bg-red-500 text-white px-3 py-2 rounded-lg shadow-md animate-content animate-fade-zoom delay-200">
                     <div class="flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -38,7 +68,7 @@
                     </div>
                 </div>
             @endif
-            <div class="mb-3">
+            <div class="mb-3 animate-content animate-fade-zoom delay-200">
                 <label class="text-sm font-semibold text-white">Email</label>
                 <input type="email" name="email" value="{{ old('email') }}"
                     class="w-full mt-1 px-3 py-2 rounded-lg border 
@@ -50,7 +80,7 @@
                     <p class="text-red-300 text-xs mt-1 font-semibold">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="mb-3">
+            <div class="mb-3 animate-fade-zoom delay-200">
                 <label class="text-sm font-semibold text-white">Password</label>
                 <input type="password" name="password"
                     class="w-full mt-1 px-3 py-2 rounded-lg border 
@@ -63,11 +93,11 @@
                 @enderror
             </div>
 
-            <button type="submit" class="w-full bg-[#1e4233] hover:bg-[#123A2D] text-white py-2 rounded-lg font-bold transition">
+            <button type="submit" class="w-full bg-[#1e4233] hover:bg-[#0F2922] text-white py-2 rounded-lg font-bold transition animate-content animate-fade-zoom delay-300">
                 Login
             </button>
 
-            <p class="text-sm mt-4 text-white">
+            <p class="text-sm mt-4 text-white animate-content animate-fade-zoom delay-300">
                 Belum punya akun?
                 <a href="/register" class="text-[#f0da9f] hover:text-white font-bold transition">Register</a>
             </p>
