@@ -52,7 +52,6 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- General Error Messages -->
             <!-- Error Messages -->
             @if ($errors->any())
                 <div class="mb-4 bg-red-500 text-white px-3 py-2 rounded-lg shadow-md animate-content animate-fade-zoom delay-200">
