@@ -67,10 +67,10 @@
         button {
             transition-delay: 0s !important;
         }
-        
-    section[style*="background-image"] {
-        animation: none !important;
-    }
+                /* Background langsung muncul tanpa delay */
+        section[style*="background-image"] {
+            animation: none !important;
+        }
 
     </style>
 </head>
@@ -106,20 +106,16 @@
             </p>
 
             <!-- BUTTON LOGIN & REGISTER -->
-            <div class="mt-8 flex justify-center gap-4 animate-content animate-fade-zoom delay-100">
+            <div class="mt-8 flex justify-center gap-4">
                 <a href="/login"
-                   class="w-32 px-6 py-2 bg-[#f0da9f]
-                   rounded-full 
-                         text-black hover:!bg-white
-                         transition no-underlinet">
+                   class="w-32 px-6 py-2 bg-white rounded-full 
+                         text-black hover:!bg-[#f0da9f] transition no-underline animate-content animate-fade-zoom delay-200">
                     Login
                 </a>
 
                 <a href="/register"
-                    class="w-32 px-6 py-2 bg-[#f0da9f]
-                    rounded-full 
-                         text-black hover:!bg-white
-                         transition no-underline">
+                    class="w-32 px-6 py-2 bg-white rounded-full 
+                         text-black hover:!bg-[#f0da9f] transition no-underline animate-content animate-fade-zoom delay-200">
                     Register
                 </a>
             </div>
@@ -127,7 +123,7 @@
     </section>
 
     <!-- ABOUT US -->
-    <section id="about" class="py-40 bg-[#2F5A47] text-[#f0da9f] text-center px-6">
+    <section id="about" class="py-24 bg-[#2F5A47] text-[#f0da9f] text-center px-6">
         <div class="scroll-fade">
             <img src="/logo.png" alt="Logo" class="w-24 mx-auto mb-4">
             <h2 class="text-4xl font-bold mb-4">About Us</h2>
@@ -164,7 +160,7 @@
     </section>
 
     <script>
-       
+        // Intersection Observer untuk scroll animations
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -100px 0px'
@@ -174,12 +170,12 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); 
+                    observer.unobserve(entry.target); // Stop observing setelah animasi
                 }
             });
         }, observerOptions);
 
-        
+        // Observe semua elemen dengan class scroll-fade
         document.querySelectorAll('.scroll-fade').forEach(el => {
             observer.observe(el);
         });
