@@ -1,23 +1,164 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Matematika</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-white leading-tight">
+            Dashboard Matematika
+        </h2>
+    </x-slot>
 
+    <!-- Section 1: Welcome -->
+    <section id="welcome" class="section welcome-section">
+        <div class="section-container">
+            <div class="welcome-hero">
+                <div class="welcome-logo">📐</div>
+                <h1 class="welcome-title">Mathify</h1>
+                <p class="welcome-subtitle">Platform pembelajaran matematika yang menyenangkan dan interaktif</p>
+            </div>
+
+            <div class="welcome-content">
+                <p class="welcome-description">
+                    Belajar matematika dengan cara yang lebih mudah dan menyenangkan. 
+                    Tingkatkan kemampuan Anda melalui latihan interaktif, sistem level bertahap, 
+                    dan raih pencapaian di setiap langkah perjalanan belajar Anda.
+                </p>
+
+                <a href="#quiz" class="cta-primary" onclick="event.preventDefault(); document.getElementById('quiz').scrollIntoView({behavior: 'smooth'})">
+                    <span>Mulai Belajar</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">Materi Lengkap</div>
+                    <div class="feature-desc">Topik dari dasar hingga lanjutan</div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Level Bertahap</div>
+                    <div class="feature-desc">Belajar sistematis dengan 5 level</div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-title">Sistem Poin</div>
+                    <div class="feature-desc">Kumpulkan poin setiap quiz</div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">Pencapaian</div>
+                    <div class="feature-desc">Raih badge dan milestone</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Quiz Dashboard -->
+    <section id="quiz" class="section quiz-section">
+        <div class="section-container">
+            <div class="hero">
+                <h1 class="hero-title">Pilih Topik Belajar</h1>
+                <p class="hero-subtitle">Eksplorasi dunia matematika dengan cara yang menyenangkan!</p>
+            </div>
+
+            <div class="stats-container">
+                <div class="points-card">
+                    <div class="points-glow"></div>
+                    <div class="points-content">
+                        <div class="points-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
+                                    fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="points-info">
+                            <div class="points-label">Total Poin</div>
+                            <div class="points-value">
+                                <span class="points-number">1,250</span>
+                                <span class="points-badge">+150</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="points-sparkles">
+                        <span class="sparkle" style="left: 10%; top: 20%; animation-delay: 0s;">✨</span>
+                        <span class="sparkle" style="left: 80%; top: 30%; animation-delay: 0.5s;">✨</span>
+                        <span class="sparkle" style="left: 60%; top: 70%; animation-delay: 1s;">✨</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <a href="/quiz/penambahan" class="topic-card">
+                    <div class="topic-icon">+</div>
+                    <div class="topic-title">Penambahan</div>
+                    <div class="topic-level">Level 1–5 | Poin: 100</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="progress-text">60% Selesai</div>
+                    </div>
+                    <div class="topic-footer">Lanjutkan dari Level 3!</div>
+                </a>
+
+                <a href="/quiz/pengurangan" class="topic-card">
+                    <div class="topic-icon">−</div>
+                    <div class="topic-title">Pengurangan</div>
+                    <div class="topic-level">Level 1–5 | Poin: 100</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <div class="progress-text">40% Selesai</div>
+                    </div>
+                    <div class="topic-footer">Lanjutkan dari Level 2!</div>
+                </a>
+
+                <a href="/quiz/perkalian" class="topic-card">
+                    <div class="topic-icon">×</div>
+                    <div class="topic-title">Perkalian</div>
+                    <div class="topic-level">Level 1–5 | Poin: 100</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                        <div class="progress-text">80% Selesai</div>
+                    </div>
+                    <div class="topic-footer">Lanjutkan dari Level 4!</div>
+                </a>
+
+                <a href="/quiz/pembagian" class="topic-card">
+                    <div class="topic-icon">÷</div>
+                    <div class="topic-title">Pembagian</div>
+                    <div class="topic-level">Level 1–5 | Poin: 100</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <div class="progress-text">20% Selesai</div>
+                    </div>
+                    <div class="topic-footer">Lanjutkan dari Level 1!</div>
+                </a>
+            </div>
+
+            <div class="cta-section">
+                <a href="#" class="cta-button">Lihat Progress Lengkap</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="floating-quote">
+        💡 "Belajar matematika itu seperti petualangan! Tetap semangat!"
+    </div>
+
+    <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #fff;
+            position: relative;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            min-height: 100vh;
-            position: relative;
         }
 
         /* Enhanced Background with Radial Gradients */
@@ -54,20 +195,6 @@
             50% {
                 transform: translateY(-30px) scale(1.05);
             }
-        }
-
-        /* Header */
-        header {
-            padding: 24px 32px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .header-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.95);
-            letter-spacing: 0.5px;
         }
 
         /* Section Styles */
@@ -658,159 +785,4 @@
             }
         }
     </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <h2 class="header-title">Dashboard Matematika</h2>
-    </header>
-
-    <!-- Section 1: Welcome -->
-    <section id="welcome" class="section welcome-section">
-        <div class="section-container">
-            <div class="welcome-hero">
-                <div class="welcome-logo">📐</div>
-                <h1 class="welcome-title">Mathify</h1>
-                <p class="welcome-subtitle">Platform pembelajaran matematika yang menyenangkan dan interaktif</p>
-            </div>
-
-            <div class="welcome-content">
-                <p class="welcome-description">
-                    Belajar matematika dengan cara yang lebih mudah dan menyenangkan. 
-                    Tingkatkan kemampuan Anda melalui latihan interaktif, sistem level bertahap, 
-                    dan raih pencapaian di setiap langkah perjalanan belajar Anda.
-                </p>
-
-                <a href="#quiz" class="cta-primary" onclick="event.preventDefault(); document.getElementById('quiz').scrollIntoView({behavior: 'smooth'})">
-                    <span>Mulai Belajar</span>
-                    <span>→</span>
-                </a>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">📚</div>
-                    <div class="feature-title">Materi Lengkap</div>
-                    <div class="feature-desc">Topik dari dasar hingga lanjutan</div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-title">Level Bertahap</div>
-                    <div class="feature-desc">Belajar sistematis dengan 5 level</div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">✨</div>
-                    <div class="feature-title">Sistem Poin</div>
-                    <div class="feature-desc">Kumpulkan poin setiap quiz</div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🏆</div>
-                    <div class="feature-title">Pencapaian</div>
-                    <div class="feature-desc">Raih badge dan milestone</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 2: Quiz Dashboard -->
-    <section id="quiz" class="section quiz-section">
-        <div class="section-container">
-            <div class="hero">
-                <h1 class="hero-title">Pilih Topik Belajar</h1>
-                <p class="hero-subtitle">Eksplorasi dunia matematika dengan cara yang menyenangkan!</p>
-            </div>
-
-            <div class="stats-container">
-                <div class="points-card">
-                    <div class="points-glow"></div>
-                    <div class="points-content">
-                        <div class="points-icon">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" 
-                                    fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="points-info">
-                            <div class="points-label">Total Poin</div>
-                            <div class="points-value">
-                                <span class="points-number">1,250</span>
-                                <span class="points-badge">+150</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="points-sparkles">
-                        <span class="sparkle" style="left: 10%; top: 20%; animation-delay: 0s;">✨</span>
-                        <span class="sparkle" style="left: 80%; top: 30%; animation-delay: 0.5s;">✨</span>
-                        <span class="sparkle" style="left: 60%; top: 70%; animation-delay: 1s;">✨</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards-grid">
-                <a href="#" class="topic-card">
-                    <div class="topic-icon">+</div>
-                    <div class="topic-title">Penambahan</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
-                        </div>
-                        <div class="progress-text">60% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 3!</div>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <div class="topic-icon">−</div>
-                    <div class="topic-title">Pengurangan</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
-                        </div>
-                        <div class="progress-text">40% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 2!</div>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <div class="topic-icon">×</div>
-                    <div class="topic-title">Perkalian</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 80%"></div>
-                        </div>
-                        <div class="progress-text">80% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 4!</div>
-                </a>
-
-                <a href="#" class="topic-card">
-                    <div class="topic-icon">÷</div>
-                    <div class="topic-title">Pembagian</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
-                        </div>
-                        <div class="progress-text">20% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 1!</div>
-                </a>
-            </div>
-
-            <div class="cta-section">
-                <a href="#" class="cta-button">Lihat Progress Lengkap</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="floating-quote">
-        💡 "Belajar matematika itu seperti petualangan! Tetap semangat!"
-    </div>
-</body>
-</html>
+</x-app-layout>
