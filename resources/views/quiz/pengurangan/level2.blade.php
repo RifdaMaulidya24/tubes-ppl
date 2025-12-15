@@ -82,7 +82,7 @@
         <div id="section-result" class="hidden transition-all duration-500 ease-out text-black">
             <div class="bg-white p-6 rounded-2xl shadow-xl">
                 <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-2xl font-bold mb-4">Selamat! Semua Jawaban Benar!</h2>
+                <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
                 <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-red-600"></span></p>
                 <h3 class="font-bold mb-2">Review:</h3>
                 <div id="review-list" class="max-h-96 overflow-y-auto"></div>
