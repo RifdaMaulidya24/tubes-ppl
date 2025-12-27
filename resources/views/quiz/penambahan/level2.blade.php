@@ -82,7 +82,7 @@
         <div id="section-result" class="hidden transition-all duration-500 ease-out text-black">
             <div class="bg-white p-6 rounded-2xl shadow-xl">
                 <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-2xl font-bold mb-4">Selamat! Semua Jawaban Benar!</h2>
+                <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
                 <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-green-600"></span></p>
                 <h3 class="font-bold mb-2">Review:</h3>
                 <div id="review-list" class="max-h-96 overflow-y-auto"></div>
@@ -104,17 +104,18 @@
 
 <script>
 const questions = [
-    { text: "12 + 3 = ?", answer: 15, image: "12+3" },
-    { text: "14 + 5 = ?", answer: 19, image: "14+5" },
-    { text: "16 + 2 = ?", answer: 18, image: "16+2" },
-    { text: "11 + 7 = ?", answer: 18, image: "11+7" },
-    { text: "13 + 6 = ?", answer: 19, image: "13+6" },
-    { text: "15 + 4 = ?", answer: 19, image: "15+4" },
-    { text: "18 + 1 = ?", answer: 19, image: "18+1" },
-    { text: "10 + 9 = ?", answer: 19, image: "10+9" },
-    { text: "17 + 2 = ?", answer: 19, image: "17+2" },
-    { text: "14 + 4 = ?", answer: 18, image: "14+4" }
-    ];
+    { text: "12 + 3 = ?", answer: 15, image: "12+3" }
+    // ,
+    // { text: "14 + 5 = ?", answer: 19, image: "14+5" },
+    // { text: "16 + 2 = ?", answer: 18, image: "16+2" },
+    // { text: "11 + 7 = ?", answer: 18, image: "11+7" },
+    // { text: "13 + 6 = ?", answer: 19, image: "13+6" },
+    // { text: "15 + 4 = ?", answer: 19, image: "15+4" },
+    // { text: "18 + 1 = ?", answer: 19, image: "18+1" },
+    // { text: "10 + 9 = ?", answer: 19, image: "10+9" },
+    // { text: "17 + 2 = ?", answer: 19, image: "17+2" },
+    // { text: "14 + 4 = ?", answer: 18, image: "14+4" }
+];
 
 let index = 0;
 let userAnswers = [];
@@ -159,7 +160,7 @@ function startQuiz() {
 function generateChoices(correctAnswer) {
     const choices = [correctAnswer];
     while (choices.length < 4) {
-        const random = Math.floor(Math.random() * 15) + 1;
+        const random = Math.floor(Math.random() * 15) + 10;
         if (!choices.includes(random)) {
             choices.push(random);
         }
@@ -340,7 +341,6 @@ function showResult() {
         document.getElementById('result-score').innerText = finalScore;
         document.getElementById('review-list').innerHTML = reviewHTML;
         
-        // Simpan score saja, tidak unlock
         saveProgress(finalScore);
     }, 500);
 }
@@ -406,7 +406,6 @@ function calculateTotalPoints() {
 }
 
 function saveProgress(finalScore) {
-    // Simpan score saja tanpa unlock
     fetch('/quiz/penambahan/complete-level/2', {
         method: 'POST',
         headers: {
@@ -435,7 +434,6 @@ function unlockAndGoToNextLevel() {
     button.disabled = true;
     button.innerHTML = '⏳ Membuka Level 3...';
     
-    // Unlock level berikutnya
     fetch('/quiz/penambahan/complete-level/2', {
         method: 'POST',
         headers: {
@@ -452,7 +450,6 @@ function unlockAndGoToNextLevel() {
     .then(response => response.json())
     .then(data => {
         if (data.status === 'ok' || data.success) {
-            // Redirect ke level 3
             window.location.href = '/quiz/penambahan/level3';
         } else {
             alert('Gagal membuka level berikutnya. Silakan coba lagi.');
@@ -475,7 +472,6 @@ function unlockAndGoBack() {
     button.disabled = true;
     button.innerHTML = '⏳ Menyimpan Progress...';
     
-    // Unlock level berikutnya
     fetch('/quiz/penambahan/complete-level/2', {
         method: 'POST',
         headers: {
@@ -492,7 +488,6 @@ function unlockAndGoBack() {
     .then(response => response.json())
     .then(data => {
         if (data.status === 'ok' || data.success) {
-            // Redirect ke halaman penambahan
             window.location.href = '/quiz/penambahan';
         } else {
             alert('Gagal menyimpan progress. Silakan coba lagi.');

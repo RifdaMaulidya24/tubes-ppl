@@ -1,26 +1,25 @@
 <x-app-layout>
 <div class="min-h-screen w-full relative overflow-hidden py-12">
 
-    <!-- Gradient, glow, smoke, simbol, texture -->
-    <div class="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-green-700"></div>
-    <div class="absolute top-[-150px] left-[-120px] w-[420px] h-[420px] bg-green-300 opacity-40 blur-[120px] rounded-full"></div>
-    <div class="absolute bottom-[-160px] right-[-120px] w-[380px] h-[380px] bg-green-200 opacity-30 blur-[140px] rounded-full"></div>
+      <!-- Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-400 via-purple-500 to-purple-700"></div>
+    <div class="absolute top-[-150px] left-[-120px] w-[420px] h-[420px] bg-purple-300 opacity-40 blur-[120px] rounded-full"></div>
+    <div class="absolute bottom-[-160px] right-[-120px] w-[380px] h-[380px] bg-purple-200 opacity-30 blur-[140px] rounded-full"></div>
+    
+    <!-- Floating Elements -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-10 left-10 w-32 h-16 bg-white/20 rounded-full blur-sm animate-float1"></div>
         <div class="absolute top-20 right-20 w-40 h-20 bg-white/15 rounded-full blur-md animate-float2"></div>
         <div class="absolute bottom-20 left-1/4 w-28 h-14 bg-white/25 rounded-full blur-sm animate-float3"></div>
-        <div class="absolute top-1/3 right-10 w-20 h-20 bg-gray-200/10 rounded-full blur-lg animate-smoke1"></div>
-        <div class="absolute bottom-1/3 left-10 w-24 h-24 bg-gray-300/15 rounded-full blur-xl animate-smoke2"></div>
-        <div class="absolute top-1/2 left-1/2 w-16 h-16 bg-white/20 rounded-full blur-md animate-smoke3"></div>
     </div>
+    
+    <!-- Math Symbols -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-1/4 left-1/5 text-white text-6xl font-bold opacity-30 animate-symbol1">+</div>
         <div class="absolute top-1/3 right-1/4 text-white text-5xl font-bold opacity-25 animate-symbol2">-</div>
         <div class="absolute bottom-1/4 left-1/3 text-white text-6xl font-bold opacity-35 animate-symbol3">×</div>
         <div class="absolute bottom-1/3 right-1/5 text-white text-5xl font-bold opacity-30 animate-symbol4">÷</div>
     </div>
-    <div class="absolute inset-0 bg-[url('/img/grain.png')] opacity-[0.12] mix-blend-overlay pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
 
     <!-- CONTENT -->
     <div class="relative max-w-md mx-auto p-6 space-y-6">
