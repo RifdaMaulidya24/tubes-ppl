@@ -72,6 +72,55 @@
         animation: none !important;
     }
 
+     @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-fade-zoom {
+            animation: fadeZoomIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        .animate-content {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        button {
+            transition-delay: 0s !important;
+        }
+        
+        section[style*="background-image"] {
+            animation: none !important;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f0da9f 0%, #ffeb3b 50%, #ffc107 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
     </style>
 </head>
 
@@ -81,57 +130,86 @@
     <nav class="w-full fixed top-0 left-0 z-50 bg-black/30 backdrop-blur-md py-3">
         <div class="max-w-6xl mx-auto flex justify-between items-center px-5">
 
-            <h1 class="text-4xl font-bold">🐣 Mathify</h1>
+            <div class="flex items-center gap-3">
+                <img src="img/logo.png" alt="Logo" class="w-14 h-auto">
+                <h1 class="text-3xl font-black">Mathify</h1>
+            </div>
 
             <div class="flex gap-6 text-sm">
-                <a href="#about" class="text-white hover:!text-[#8FB79A] transition no-underline">About Us</a>
-                <a href="#contact" class="text-white hover:!text-[#8FB79A] transition no-underline">Contact</a>
-                <a href="/login" class="text-white hover:!text-[#8FB79A] transition font-semibold no-underline">Login</a>
-                <a href="/register" class="text-white hover:!text-[#8FB79A] transition font-semibold no-underline">Register</a>
+                <a href="#about" class="text-white hover:!text-[#f0da9f] transition no-underline">About Us</a>
+                <a href="#contact" class="text-white hover:!text-[#f0da9f] transition no-underline">Contact</a>
+                <a href="/login" class="text-white hover:!text-[#f0da9f] transition font-bold no-underline">Login</a>
+                <a href="/register" class="text-white hover:!text-[#f0da9f] transition font-bold no-underline">Register</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
     <section class="min-h-screen flex flex-col items-center justify-center 
-                    bg-cover bg-center relative"
-             style="background-image: url('/img/bg10.png');">
+                    bg-cover bg-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[#123A2D]"></div>
 
-        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="relative z-10 text-center px-6">
-            <h1 class="text-6xl font-bold drop-shadow-lg animate-content animate-fade-zoom">Welcome</h1>
-            <p class="mt-3 text-lg text-gray-200 max-w-xl mx-auto drop-shadow animate-content animate-fade-zoom delay-100">
-                Platform belajar matematika interaktif dan menyenangkan.
-            </p>
+        <div class="absolute inset-0 bg-black/0"></div>
+        
 
-            <!-- BUTTON LOGIN & REGISTER -->
-            <div class="mt-8 flex justify-center gap-4 animate-content animate-fade-zoom delay-100">
-                <a href="/login"
-                   class="w-32 px-6 py-2 bg-[#f0da9f]
-                   rounded-full 
-                         text-black hover:!bg-white
-                         transition no-underlinet">
-                    Login
-                </a>
+        <div class="relative z-10 text-center px-6 w-full">
 
-                <a href="/register"
-                    class="w-32 px-6 py-2 bg-[#f0da9f]
-                    rounded-full 
-                         text-black hover:!bg-white
-                         transition no-underline">
-                    Register
-                </a>
-            </div>
+            
+    <!-- Card -->
+    <div class="bg-[#E8F5E9] backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-white/20  max-w-5xl mx-auto animate-content animate-fade-zoom delay-100">
+        <img src="img/logo.png" alt="Logo" class="w-36 mx-auto mb-4 animate-content animate-fade-zoom delay-100">
+        <h1 class="text-7xl text-[#2F5A47] font-black drop-shadow-lg animate-content animate-fade-zoom">Welcome</h1>
+        <p class="mt-3 text-xl font-semibold text-black max-w-xl mx-auto drop-shadow animate-content animate-fade-zoom delay-100">
+            Halo, Jagoan Matematika!
+        </p>
+        <p class="mt-3 text-lg text-black/50 max-w-xl mx-auto drop-shadow animate-content animate-fade-zoom delay-100">
+            Bersiaplah untuk petualangan seru belajar matematika yang menyenangkan! Raih prestasi terbaik!
+        </p>
+        
+        <div class="mt-8 flex justify-center gap-4 animate-content animate-fade-zoom delay-100">
+            <a href="/login" class="w-40 px-6 py-3 bg-[#1a3d2e] rounded-full text-lg text-[#E8F5E9] font-bold hover:!bg-white hover:!text-[#1a3d2e] transition no-underlinet">
+                Login
+            </a>
+            <a href="/register" class="w-40 px-6 py-3 bg-[#1a3d2e] rounded-full text-lg text-[#E8F5E9] font-bold hover:!bg-white hover:!text-[#1a3d2e] transition no-underline">
+                Register
+            </a>
+        </div>
+
+                <!-- Icon highlights -->
+        <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto animate-content animate-fade-zoom delay-100">
+        <div class="text-center">
+            <div class="text-4xl mb-2">🎯</div>
+            <p class="text-sm text-[#2F5A47] font-semibold">Fokus</p>
+        </div>
+
+        <div class="text-center">
+            <div class="text-4xl mb-2">⚡</div>
+            <p class="text-sm text-[#2F5A47] font-semibold">Cepat</p>
+        </div>
+
+        <div class="text-center">
+            <div class="text-4xl mb-2">🏆</div>
+            <p class="text-sm text-[#2F5A47] font-semibold">Juara</p>
+        </div>
+
+        <div class="text-center">
+            <div class="text-4xl mb-2">🌈</div>
+            <p class="text-sm text-[#2F5A47] font-semibold">Seru</p>
+        </div>
+        </div>
+
+    </div>
+</div>
         </div>
     </section>
 
     <!-- ABOUT US -->
-    <section id="about" class="py-40 bg-[#2F5A47] text-[#f0da9f] text-center px-6">
+    <section id="about" class="py-40 bg-[#123A2D] text-[#f0da9f] text-center px-6 relative overflow-hidden">
         <div class="scroll-fade">
-            <img src="/logo.png" alt="Logo" class="w-24 mx-auto mb-4">
-            <h2 class="text-4xl font-bold mb-4">About Us</h2>
-            <p class="text-xl text-white max-w-3xl mx-auto">
+            <h2 class="text-5xl font-black mb-6">About Us</h2>
+            <div class="max-w-4xl mx-auto">
+            <p class="text-2xl text-white leading-relaxed font-regular mb-8">
                 Platform pembelajaran matematika yang dirancang khusus untuk membantu 
                 siswa Sekolah Dasar menguasai konsep dasar matematika dengan cara yang menyenangkan.
             </p>
@@ -139,11 +217,11 @@
     </section>
 
     <!-- CONTACT US -->
-    <section id="contact" class="py-24 bg-[#123A2D] text-white text-center px-6">
+    <section id="contact" class="py-24 bg-[#E8F5E9] text-[#2F5A47] text-center px-6">
         <div class="scroll-fade">
             <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
 
-            <p class="max-w-xl text-white mx-auto text-lg">
+            <p class="max-w-xl text-[#2F5A47] mx-auto text-lg">
                 Punya saran atau pertanyaan? Hubungi kami:
             </p>
 
