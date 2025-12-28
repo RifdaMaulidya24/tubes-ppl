@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\QuizController;
-use Illuminate\Support\Arr;
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,30 +17,55 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/quiz', function () {
-    return view('quiz.quiz'); // <- kalau file kamu: resources/views/quiz/quiz.blade.php
+    return view('quiz.quiz');
 })->name('quiz.index');
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// =============================
+// AUTHENTICATION ROUTES
+// =============================
 
 // Route Login
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route yang butuh login (protected)
+// =============================
+// EMAIL VERIFICATION ROUTES
+// =============================
+
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Email verification notice
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+
+    // Email verification handler
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/dashboard')->with('status', 'email-verified');
+    })->middleware(['signed'])->name('verification.verify');
+
+    // Resend verification email
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('status', 'verification-link-sent');
+    })->middleware(['throttle:6,1'])->name('verification.send');
 });
 
 // =============================
-// ROUTE QUIZ
+// PROFILE ROUTES
+// =============================
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
+});
+
+// =============================
+// QUIZ ROUTES
 // =============================
 
 // ✅ Result HARUS sebelum wildcard operation
@@ -102,45 +128,30 @@ Route::get('/quiz/result', function () {
 // Halaman pilih level untuk operasi tertentu
 Route::get('/quiz/{operation}', function ($operation) {
     $allowedOperations = ['penambahan', 'pengurangan', 'perkalian', 'pembagian'];
-    if (!in_array($operation, $allowedOperations)) abort(404);
-
-    return view("quiz.$operation.$operation");
-})->name('quiz.levels');
-
-// Halaman level tertentu
-Route::get('/quiz/{operation}/level{level}', function ($operation, $level) {
-    return view("quiz.$operation.level$level");
-})->name('quiz.level');
-
-
-// Halaman pilih level untuk operasi tertentu
-Route::get('/quiz/{operation}', function ($operation) {
-    $allowedOperations = ['penambahan', 'pengurangan', 'perkalian', 'pembagian']; // opsional, validasi
     if (!in_array($operation, $allowedOperations)) {
         abort(404);
     }
-    // Ambil view sesuai nama operasi
     return view("quiz.$operation.$operation");
 })->name('quiz.levels');
 
-
 // Halaman level tertentu
 Route::get('/quiz/{operation}/level{level}', function ($operation, $level) {
-    // contoh: resources/views/quiz/penambahan/level1.blade.php
     return view("quiz.$operation.level$level");
 })->name('quiz.level');
 
-#route ketika 1 level sudah dikerjakan, maka level lainnya terbuka
-Route::post('/quiz/penambahan/complete-level/{level}', function(\Illuminate\Http\Request $request, $level){
+// =============================
+// QUIZ COMPLETION ROUTES
+// =============================
+
+// Route untuk Penambahan
+Route::post('/quiz/penambahan/complete-level/{level}', function(Request $request, $level){
     $level = (int) $level;
 
-    // simpan completed (hindari duplikat)
     $completed = session('penambahan_completed_levels', []);
     $completed[] = $level;
     $completed = array_values(array_unique(array_map('intval', $completed)));
     session(['penambahan_completed_levels' => $completed]);
 
-    // simpan score (ambil yg terbesar kalau main ulang)
     $score = $request->input('score');
     if ($score !== null && is_numeric($score)) {
         $score = (int) $score;
@@ -155,17 +166,16 @@ Route::post('/quiz/penambahan/complete-level/{level}', function(\Illuminate\Http
 
     return response()->json(['status' => 'ok', 'success' => true]);
 });
-#pengurangan
-Route::post('/quiz/pengurangan/complete-level/{level}', function(\Illuminate\Http\Request $request, $level){
+
+// Route untuk Pengurangan
+Route::post('/quiz/pengurangan/complete-level/{level}', function(Request $request, $level){
     $level = (int) $level;
 
-    // simpan completed (hindari duplikat)
     $completed = session('pengurangan_completed_levels', []);
     $completed[] = $level;
     $completed = array_values(array_unique(array_map('intval', $completed)));
     session(['pengurangan_completed_levels' => $completed]);
 
-    // simpan score (ambil yg terbesar kalau main ulang)
     $score = $request->input('score');
     if ($score !== null && is_numeric($score)) {
         $score = (int) $score;
@@ -180,17 +190,16 @@ Route::post('/quiz/pengurangan/complete-level/{level}', function(\Illuminate\Htt
 
     return response()->json(['status' => 'ok', 'success' => true]);
 });
-#perkalian
-Route::post('/quiz/perkalian/complete-level/{level}', function(\Illuminate\Http\Request $request, $level){
+
+// Route untuk Perkalian
+Route::post('/quiz/perkalian/complete-level/{level}', function(Request $request, $level){
     $level = (int) $level;
 
-    // simpan completed (hindari duplikat)
     $completed = session('perkalian_completed_levels', []);
     $completed[] = $level;
     $completed = array_values(array_unique(array_map('intval', $completed)));
     session(['perkalian_completed_levels' => $completed]);
 
-    // simpan score (ambil yg terbesar kalau main ulang)
     $score = $request->input('score');
     if ($score !== null && is_numeric($score)) {
         $score = (int) $score;
@@ -205,17 +214,16 @@ Route::post('/quiz/perkalian/complete-level/{level}', function(\Illuminate\Http\
 
     return response()->json(['status' => 'ok', 'success' => true]);
 });
-#pembagian
-Route::post('/quiz/pembagian/complete-level/{level}', function(\Illuminate\Http\Request $request, $level){
+
+// Route untuk Pembagian
+Route::post('/quiz/pembagian/complete-level/{level}', function(Request $request, $level){
     $level = (int) $level;
 
-    // simpan completed (hindari duplikat)
     $completed = session('pembagian_completed_levels', []);
     $completed[] = $level;
     $completed = array_values(array_unique(array_map('intval', $completed)));
     session(['pembagian_completed_levels' => $completed]);
 
-    // simpan score (ambil yg terbesar kalau main ulang)
     $score = $request->input('score');
     if ($score !== null && is_numeric($score)) {
         $score = (int) $score;
@@ -230,4 +238,3 @@ Route::post('/quiz/pembagian/complete-level/{level}', function(\Illuminate\Http\
 
     return response()->json(['status' => 'ok', 'success' => true]);
 });
-
