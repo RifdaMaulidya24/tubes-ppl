@@ -63,6 +63,34 @@ Route::middleware('auth')->group(function () {
     
     Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 });
+// =============================
+// ROUTE MATERI
+// =============================
+Route::middleware(['auth'])->group(function () {
+
+    // halaman utama materi
+    Route::get('/materi', function () {
+        return view('materi.materi');
+    })->name('materi.index');
+
+    // halaman per materi
+    Route::get('/materi/penambahan', function () {
+        return view('materi.penambahan');
+    })->name('materi.penambahan');
+
+    Route::get('/materi/pengurangan', function () {
+        return view('materi.pengurangan');
+    })->name('materi.pengurangan');
+
+    Route::get('/materi/perkalian', function () {
+        return view('materi.perkalian');
+    })->name('materi.perkalian');
+
+    Route::get('/materi/pembagian', function () {
+        return view('materi.pembagian');
+    })->name('materi.pembagian');
+
+});
 
 // =============================
 // QUIZ ROUTES
