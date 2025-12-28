@@ -60,6 +60,11 @@
                     <span class="text-lg font-semibold">Level 3 (Terkunci)</span>
                 </div>
             </a>
+            <a href="{{ route('quiz.result') }}"
+   class="block bg-white/20 hover:bg-white/30 text-white p-4 rounded-xl font-bold text-center shadow-lg transition">
+   📊 Lihat Result / Statistik
+</a>
+
         </div>
     </div>
 </div>
