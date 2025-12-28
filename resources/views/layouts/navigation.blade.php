@@ -16,10 +16,17 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    {{-- Result / Statistik --}}
+                    <x-nav-link :href="route('materi.index')" :active="request()->routeIs('materi.*')" class="!text-green-600 hover:!text-green-700">
+                        {{ __('Materi') }}
+                    </x-nav-link>
+
+                    {{-- Result --}}
                     <x-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
                         {{ __('Result') }}
                     </x-nav-link>
+
+                    
+
                 </div>
 
             </div>
