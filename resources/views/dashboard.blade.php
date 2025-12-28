@@ -6,7 +6,7 @@
     </x-slot>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         body {
             background: linear-gradient(to bottom right, #2F5A47, #234738, #1a3d2e);
@@ -17,9 +17,6 @@
             scroll-behavior: smooth;
         }
 
-        /* ==========================================
-           BACKGROUND ANIMASI FULL HALAMAN
-        ========================================== */
         body::before,
         body::after {
             content: '';
@@ -48,24 +45,23 @@
             will-change: transform;
         }
 
-        @keyframes bgFloat1 {
+        @@keyframes bgFloat1 {
             0%, 100% { transform: translateY(0) scale(1); }
             50%      { transform: translateY(-40px) scale(1.02); }
         }
 
-        @keyframes bgFloat2 {
+        @@keyframes bgFloat2 {
             0%, 100% { transform: translateX(0) scale(1); }
             50%      { transform: translateX(-55px) scale(1.02); }
         }
 
-        /* ===== layout ===== */
         .section {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            z-index: 1; /* konten di atas background */
+            z-index: 1;
         }
 
         .section-container {
@@ -75,22 +71,34 @@
             width: 100%;
         }
 
-        /* ===== HERO ===== */
-        .hero-split {
+       .hero-split {
             display: grid;
-            grid-template-columns: 1fr; /* ✅ jadi 1 kolom karena kotak kanan dihapus */
+            grid-template-columns: 1.2fr .8fr;
             gap: 40px;
             align-items: center;
             margin-bottom: 44px;
             animation: fadeInDown 0.9s ease-out;
         }
 
-        @keyframes fadeInDown {
+        @@keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-26px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
         .hero-left { text-align: left; }
+        .hero-right{
+            display:flex;
+            justify-content:flex-end;
+            align-items:center;
+        }
+
+        .hero-logo{
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 18px 50px rgba(0,0,0,.25));
+            transform: translate(-150px, -40px);
+        }
 
         .hero-title {
             font-size: 54px;
@@ -119,59 +127,11 @@
             animation: fadeInUp 0.9s ease-out 0.22s both;
         }
 
-        @keyframes fadeInUp {
+        @@keyframes fadeInUp {
             from { opacity: 0; transform: translateY(22px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-form {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            max-width: 540px;
-            animation: fadeInUp 0.9s ease-out 0.3s both;
-        }
-
-        .hero-input {
-            flex: 1;
-            height: 50px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,.20);
-            background: rgba(255,255,255,.10);
-            backdrop-filter: blur(16px);
-            padding: 0 18px;
-            color: #fff;
-            outline: none;
-            box-shadow: 0 14px 36px rgba(0,0,0,.10);
-        }
-
-        .hero-input::placeholder { color: rgba(255,255,255,.65); }
-
-        .hero-btn {
-            height: 50px;
-            padding: 0 22px;
-            border-radius: 999px;
-            border: 0;
-            cursor: pointer;
-            font-weight: 900;
-            color: #1b5e20;
-            background: rgba(255,255,255,.95);
-            box-shadow: 0 16px 40px rgba(0,0,0,.16);
-            transition: .25s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-2px);
-            background: #fff;
-            box-shadow: 0 22px 56px rgba(0,0,0,.22);
-        }
-
-        /* ===== features row ===== */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -195,7 +155,6 @@
         .feature-title { font-weight: 900; font-size: 14px; margin-bottom: 6px; }
         .feature-desc { font-size: 12px; color: rgba(255,255,255,.65); line-height: 1.55; }
 
-        /* ===== quiz section ===== */
         .quiz-section { padding-top: 18px; }
 
         .hero {
@@ -255,7 +214,7 @@
             pointer-events: none;
         }
 
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .points-content { position: relative; display: flex; align-items: center; gap: 18px; z-index: 1; }
         .points-icon {
@@ -268,7 +227,7 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        @keyframes floatIcon {
+        @@keyframes floatIcon {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
@@ -293,9 +252,8 @@
             display: inline-block;
             animation: pulse 2s ease-in-out infinite;
         }
-        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+        @@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
 
-        /* ✅ QUIZ GRID 4 KOLOM */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -305,7 +263,7 @@
         }
 
         .topic-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: #E8F5E9;
             border-radius: 24px;
             padding: 26px;
             text-align: center;
@@ -323,7 +281,6 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a);
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
@@ -348,23 +305,19 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 18px;
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            color: #2e7d32;
             transition: all 0.3s ease;
         }
         .topic-card:hover .topic-icon {
             transform: scale(1.1) rotate(5deg);
-            background: linear-gradient(135deg, #4caf50, #66bb6a);
-            color: #fff;
         }
 
-        .topic-title { font-size: 20px; font-weight: 900; color: #1b5e20; margin-bottom: 8px; }
-        .topic-level { font-size: 13px; color: #4caf50; margin-bottom: 18px; font-weight: 800; }
+        .topic-title { font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+        .topic-level { font-size: 13px; margin-bottom: 18px; font-weight: 800; }
 
         .progress-bar {
             width: 100%;
@@ -377,7 +330,6 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2e7d32, #4caf50);
             border-radius: 10px;
             transition: width 0.6s ease;
             position: relative;
@@ -391,7 +343,7 @@
             animation: shimmer 2s infinite;
         }
 
-        @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+        @@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
         .progress-text { font-size: 12px; color: #666; margin-top: 8px; }
 
         .topic-footer {
@@ -399,8 +351,85 @@
             padding-top: 14px;
             border-top: 1px solid #e8f5e9;
             font-size: 13px;
-            color: #388e3c;
             font-weight: 800;
+        }
+
+        /* WARNA UNTUK SETIAP TOPIK */
+        
+        /* Penambahan - Blue */
+        .topic-card.blue .topic-icon {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+        }
+        .topic-card.blue:hover .topic-icon {
+            background: linear-gradient(135deg, #42a5f5, #2196f3);
+            color: #fff;
+        }
+        .topic-card.blue::before {
+            background: linear-gradient(90deg, #1565c0, #42a5f5, #64b5f6);
+        }
+        .topic-card.blue .topic-title { color: #1565c0; }
+        .topic-card.blue .topic-level { color: #42a5f5; }
+        .topic-card.blue .topic-footer { color: #1976d2; }
+        .topic-card.blue .progress-fill {
+            background: linear-gradient(90deg, #1565c0, #42a5f5);
+        }
+
+        /* Pengurangan - Green */
+        .topic-card.green .topic-icon {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #2e7d32;
+        }
+        .topic-card.green:hover .topic-icon {
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            color: #fff;
+        }
+        .topic-card.green::before {
+            background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a);
+        }
+        .topic-card.green .topic-title { color: #1b5e20; }
+        .topic-card.green .topic-level { color: #4caf50; }
+        .topic-card.green .topic-footer { color: #388e3c; }
+        .topic-card.green .progress-fill {
+            background: linear-gradient(90deg, #2e7d32, #4caf50);
+        }
+
+        /* Perkalian - Purple */
+        .topic-card.purple .topic-icon {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            color: #6a1b9a;
+        }
+        .topic-card.purple:hover .topic-icon {
+            background: linear-gradient(135deg, #ab47bc, #ba68c8);
+            color: #fff;
+        }
+        .topic-card.purple::before {
+            background: linear-gradient(90deg, #6a1b9a, #ab47bc, #ba68c8);
+        }
+        .topic-card.purple .topic-title { color: #6a1b9a; }
+        .topic-card.purple .topic-level { color: #ab47bc; }
+        .topic-card.purple .topic-footer { color: #8e24aa; }
+        .topic-card.purple .progress-fill {
+            background: linear-gradient(90deg, #6a1b9a, #ab47bc);
+        }
+
+        /* Pembagian - Orange */
+        .topic-card.orange .topic-icon {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            color: #e65100;
+        }
+        .topic-card.orange:hover .topic-icon {
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+            color: #fff;
+        }
+        .topic-card.orange::before {
+            background: linear-gradient(90deg, #e65100, #ff9800, #ffb74d);
+        }
+        .topic-card.orange .topic-title { color: #e65100; }
+        .topic-card.orange .topic-level { color: #ff9800; }
+        .topic-card.orange .topic-footer { color: #f57c00; }
+        .topic-card.orange .progress-fill {
+            background: linear-gradient(90deg, #e65100, #ff9800);
         }
 
         .floating-quote {
@@ -419,20 +448,25 @@
             animation: fadeIn 1s ease-out 1s both;
             z-index: 100;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* responsive */
-        @media (max-width: 1100px) {
+        @@media (max-width: 1100px) {
             .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
-        @media (max-width: 980px) {
+        @@media (max-width: 980px) {
             .hero-left { text-align: center; }
             .hero-subtitle { margin-left: auto; margin-right: auto; }
-            .hero-form { margin-left: auto; margin-right: auto; }
+            .hero-split{
+                grid-template-columns: 1fr;
+                text-align:center;
+            }
+            .hero-right{
+                justify-content:center;
+            }
         }
 
-        @media (max-width: 768px) {
+        @@media (max-width: 768px) {
             .section-container { padding: 46px 18px; }
             .hero-title { font-size: 38px; letter-spacing: -1px; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -441,7 +475,6 @@
         }
     </style>
 
-    {{-- ===== WELCOME HERO ===== --}}
     <section id="welcome" class="section welcome-section">
         <div class="section-container">
             <div class="hero-split">
@@ -450,47 +483,40 @@
                         We help you to <span class="accent">learn</span><br>
                         and <span class="accent">enjoy</span> math.
                     </h1>
-
                     <p class="hero-subtitle">
                         Belajar matematika dengan cara yang lebih mudah dan menyenangkan. Jelajahi quiz interaktif,
                         naik level, dan kumpulkan poin di setiap langkah.
                     </p>
-
-                    <div class="hero-form">
-                        <input class="hero-input" type="text" placeholder="Cari topik atau ketik 'penambahan'..." />
-                        <a href="#quiz" class="hero-btn"
-                           onclick="event.preventDefault(); document.getElementById('quiz').scrollIntoView({behavior: 'smooth'})">
-                            Get Started →
-                        </a>
-                    </div>
-
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">📚</div>
-                            <div class="feature-title">Materi Lengkap</div>
-                            <div class="feature-desc">Topik dari dasar hingga lanjutan</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-title">Level Bertahap</div>
-                            <div class="feature-desc">Belajar sistematis dengan 5 level</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✨</div>
-                            <div class="feature-title">Sistem Poin</div>
-                            <div class="feature-desc">Kumpulkan poin setiap quiz</div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🏆</div>
-                            <div class="feature-title">Pencapaian</div>
-                            <div class="feature-desc">Raih badge dan milestone</div>
-                        </div>
-                    </div>
+                </div>
+                <div class="hero-right">
+                    <img src="{{ asset('img/logo.png') }}" alt="Mathify" class="hero-logo">
+                </div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">Materi Lengkap</div>
+                    <div class="feature-desc">Topik dari dasar hingga lanjutan</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Level Bertahap</div>
+                    <div class="feature-desc">Belajar sistematis dengan 5 level</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-title">Sistem Poin</div>
+                    <div class="feature-desc">Kumpulkan poin setiap quiz</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-title">Pencapaian</div>
+                    <div class="feature-desc">Raih badge dan milestone</div>
                 </div>
             </div>
         </div>
     </section>
-    {{-- ===== QUIZ SECTION ===== --}}
+
     <section id="quiz" class="section quiz-section">
         <div class="section-container">
             <div class="hero">
@@ -515,7 +541,7 @@
             </div>
 
             <div class="cards-grid">
-                <a href="/quiz/penambahan" class="topic-card">
+                <a href="/quiz/penambahan" class="topic-card blue">
                     <div class="topic-icon">+</div>
                     <div class="topic-title">Penambahan</div>
                     <div class="topic-level">Level 1–5 | Poin: 100</div>
@@ -528,7 +554,7 @@
                     <div class="topic-footer">Lanjutkan dari Level 3!</div>
                 </a>
 
-                <a href="/quiz/pengurangan" class="topic-card">
+                <a href="/quiz/pengurangan" class="topic-card green">
                     <div class="topic-icon">−</div>
                     <div class="topic-title">Pengurangan</div>
                     <div class="topic-level">Level 1–5 | Poin: 100</div>
@@ -541,7 +567,7 @@
                     <div class="topic-footer">Lanjutkan dari Level 2!</div>
                 </a>
 
-                <a href="/quiz/perkalian" class="topic-card">
+                <a href="/quiz/perkalian" class="topic-card purple">
                     <div class="topic-icon">×</div>
                     <div class="topic-title">Perkalian</div>
                     <div class="topic-level">Level 1–5 | Poin: 100</div>
@@ -554,7 +580,7 @@
                     <div class="topic-footer">Lanjutkan dari Level 4!</div>
                 </a>
 
-                <a href="/quiz/pembagian" class="topic-card">
+                <a href="/quiz/pembagian" class="topic-card orange">
                     <div class="topic-icon">÷</div>
                     <div class="topic-title">Pembagian</div>
                     <div class="topic-level">Level 1–5 | Poin: 100</div>
