@@ -16,12 +16,6 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    {{-- Menu Quiz --}}
-                    <x-nav-link :href="route('quiz.index')" :active="request()->routeIs('quiz.*')" class="!text-green-600 hover:!text-green-700">
-                        {{ __('Quiz') }}
-                    </x-nav-link>
-
-
                     {{-- Result / Statistik --}}
                     <x-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
                         {{ __('Result') }}
