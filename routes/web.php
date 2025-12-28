@@ -15,6 +15,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/quiz', function () {
+    return view('quiz.quiz'); // <- kalau file kamu: resources/views/quiz/quiz.blade.php
+})->name('quiz.index');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -36,11 +41,6 @@ Route::middleware('auth')->group(function () {
 // =============================
 // ROUTE QUIZ
 // =============================
-
-// Halaman utama quiz (pilih operasi)
-Route::get('/quiz', function () {
-    return view('quiz.index');
-})->name('quiz.index');
 
 // ✅ Result HARUS sebelum wildcard operation
 Route::get('/quiz/result', function () {
