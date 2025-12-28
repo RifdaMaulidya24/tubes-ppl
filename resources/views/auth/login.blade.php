@@ -48,7 +48,7 @@
 <div class="bg-[#123A2D]/95 backdrop-blur-md text-white p-10 flex flex-col justify-center">
   
   <div class="flex items-center gap-2">
-    <img src="img/logo.png" alt="Logo" class="w-30 h-28 object-contain">
+    <img src="img/logo1.png" alt="Logo" class="w-36 h-auto object-contain">
     <div>
       <h1 class="text-4xl font-black leading-none">Mathify</h1>
       <p class="mt-2 text-white/80 ">Belajar matematika jadi lebih seru dan interaktif!</p>

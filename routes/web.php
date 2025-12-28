@@ -266,3 +266,5 @@ Route::post('/quiz/pembagian/complete-level/{level}', function(Request $request,
 
     return response()->json(['status' => 'ok', 'success' => true]);
 });
+
+require __DIR__.'/auth.php';

@@ -131,7 +131,7 @@
         <div class="max-w-6xl mx-auto flex justify-between items-center px-5">
 
             <div class="flex items-center gap-3">
-                <img src="img/logo.png" alt="Logo" class="w-14 h-auto">
+                <img src="img/logo1.png" alt="Logo" class="w-14 h-auto">
                 <h1 class="text-3xl font-black">Mathify</h1>
             </div>
 
