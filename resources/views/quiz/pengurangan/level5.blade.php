@@ -225,7 +225,7 @@
             <button onclick="unlockAndGoBack()" id="btn-go-back"
               class="mt-3 block bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800
                      text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
-              Kembali
+              Selesai
             </button>
           </div>
         </div>
@@ -535,12 +535,12 @@ function saveProgress(finalScore) {
   .catch(err => console.error('Gagal menyimpan score:', err));
 }
 
-function unlockAndGoToNextLevel() {
+function unlockAndGoBack() {
   const finalScore = Math.round((calculateTotalPoints() / originalQuestions.length) * 100);
-  const button = document.getElementById('btn-next-level');
+  const button = document.getElementById('btn-go-back');
 
   button.disabled = true;
-  button.innerHTML = 'Menyelesaikan...';
+  button.innerHTML = 'Menyimpan Progress...';
 
   fetch('/quiz/pengurangan/complete-level/5', {
     method: 'POST',
@@ -548,21 +548,33 @@ function unlockAndGoToNextLevel() {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
+    body: JSON.stringify({
+      level: 5,
+      score: finalScore,
+      unlock_next: true
+      // kalau backend butuh next_level:
+      // next_level: 6
+    })
   })
-  .then(r => r.json())
-  .then(data => {
-    if (data.status === 'ok' || data.success) window.location.href = '/quiz/pengurangan';
-    else {
-      alert('Gagal menyimpan. Silakan coba lagi.');
-      button.disabled = false;
-      button.innerHTML = 'Lanjut';
+  .then(async (r) => {
+    let data = null;
+    try { data = await r.json(); } catch (_) {}
+
+    if (r.ok && (data?.status === 'ok' || data?.status === 'success' || data?.success === true || data === null)) {
+      window.location.href = '/quiz/pengurangan';
+      return;
     }
+
+    console.log('Response:', r.status, data);
+    alert('Gagal menyimpan progress. Silakan coba lagi.');
+    button.disabled = false;
+    button.innerHTML = 'Selesai';
   })
-  .catch(() => {
+  .catch((e) => {
+    console.error(e);
     alert('Terjadi kesalahan. Silakan coba lagi.');
     button.disabled = false;
-    button.innerHTML = 'Lanjut';
+    button.innerHTML = 'Selesai';
   });
 }
 
