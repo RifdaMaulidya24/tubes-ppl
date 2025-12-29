@@ -215,7 +215,7 @@ function selectAnswer(selectedAnswer, button) {
     });
     
     if (selectedAnswer === q.answer) {
-        button.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+        button.classList.add('bg-blue-500', 'text-white', 'border-blue-600', 'animate-correct');
         userAnswers[index] = selectedAnswer;
         
         if (!isRetryMode) {
@@ -243,7 +243,7 @@ function selectAnswer(selectedAnswer, button) {
         allButtons.forEach(btn => {
             if (parseInt(btn.innerText) === q.answer) {
                 setTimeout(() => {
-                    btn.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+                    btn.classList.add('bg-blue-500', 'text-white', 'border-blue-600', 'animate-correct');
                 }, 500);
             }
         });
@@ -323,7 +323,7 @@ function showResult() {
             
             let bgColor = 'bg-red-100';
             if (isCorrect && correctFirstAttempt) {
-                bgColor = 'bg-green-100';
+                bgColor = 'bg-blue-100';
             } else if (isCorrect && !correctFirstAttempt) {
                 bgColor = 'bg-yellow-100';
             }
@@ -332,7 +332,7 @@ function showResult() {
                 <b>${q.text}</b><br>
                 Jawaban Kamu: ${finalAnswer}<br>
                 Kunci Jawaban: ${q.answer}<br>
-                ${correctFirstAttempt ? '<span class="text-green-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
+                ${correctFirstAttempt ? '<span class="text-blue-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
                   isCorrect ? '<span class="text-orange-600">✓ Benar setelah retry (+5 poin)</span>' : 
                   '<span class="text-red-600 font-bold">✗ Salah (+0 poin)</span>'}
             </p>`;

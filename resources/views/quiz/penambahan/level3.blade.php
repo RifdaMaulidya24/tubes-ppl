@@ -80,24 +80,31 @@
 
         <!-- Result Section -->
         <div id="section-result" class="hidden transition-all duration-500 ease-out text-black">
-            <div class="bg-white p-6 rounded-2xl shadow-xl">
-                <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
-                <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-green-600"></span></p>
-                <h3 class="font-bold mb-2">Review:</h3>
-                <div id="review-list" class="max-h-96 overflow-y-auto"></div>
-
-                <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
-                   class="mt-4 block bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold w-full text-center">
-                    Lanjut ke Level 4
-                </button>
-
-                <button onclick="unlockAndGoBack()" id="btn-go-back"
-                   class="mt-2 block bg-gray-500 hover:bg-gray-600 text-white p-3 rounded-xl font-bold w-full text-center">
-                    Kembali ke Halaman Penambahan
-                </button>
-            </div>
+    <div class="bg-white p-6 rounded-2xl shadow-xl">
+        <div class="text-6xl mb-4">🎉</div>
+        <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
+        <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-green-600"></span></p>
+        
+        <!-- Badge jika perfect score -->
+        <div id="perfect-badge" class="hidden bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 p-4 rounded-xl mb-4 font-bold text-center">
+            🏆 SEMPURNA! Kamu menguasai level ini!
         </div>
+        
+        <h3 class="font-bold mb-2">Review:</h3>
+        <div id="review-list" class="max-h-96 overflow-y-auto mb-4"></div>
+
+        <!-- Hanya tombol kembali, tanpa next level -->
+        <button onclick="saveAndGoBack()" id="btn-go-back"
+           class="block bg-green-600 hover:bg-green-700 text-white p-3 rounded-xl font-bold w-full text-center">
+            Kembali ke Halaman Penambahan
+        </button>
+        
+        <a href="{{ route('quiz.result') }}"
+           class="mt-2 block bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold w-full text-center">
+            📊 Lihat Result & Statistik
+        </a>
+    </div>
+</div>
 
     </div>
 </div>
@@ -341,6 +348,11 @@ function showResult() {
         document.getElementById('result-score').innerText = finalScore;
         document.getElementById('review-list').innerHTML = reviewHTML;
         
+        // Tampilkan badge jika perfect score
+        if (finalScore === 100) {
+            document.getElementById('perfect-badge').classList.remove('hidden');
+        }
+        
         saveProgress(finalScore);
     }, 500);
 }
@@ -427,45 +439,8 @@ function saveProgress(finalScore) {
     });
 }
 
-function unlockAndGoToNextLevel() {
-    const finalScore = Math.round((calculateTotalPoints() / originalQuestions.length) * 100);
-    const button = document.getElementById('btn-next-level');
-    
-    button.disabled = true;
-    button.innerHTML = '⏳ Membuka Level 4...';
-    
-    fetch('/quiz/penambahan/complete-level/3', {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-            level: 3,
-            score: finalScore,
-            next_level: 4,
-            unlock_next: true
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'ok' || data.success) {
-            window.location.href = '/quiz/penambahan/level4';
-        } else {
-            alert('Gagal membuka level berikutnya. Silakan coba lagi.');
-            button.disabled = false;
-            button.innerHTML = 'Lanjut ke Level 4';
-        }
-    })
-    .catch(err => {
-        console.error('Gagal unlock level:', err);
-        alert('Terjadi kesalahan. Silakan coba lagi.');
-        button.disabled = false;
-        button.innerHTML = 'Lanjut ke Level 4';
-    });
-}
 
-function unlockAndGoBack() {
+function saveAndGoBack() {
     const finalScore = Math.round((calculateTotalPoints() / originalQuestions.length) * 100);
     const button = document.getElementById('btn-go-back');
     
@@ -481,8 +456,7 @@ function unlockAndGoBack() {
         body: JSON.stringify({ 
             level: 3,
             score: finalScore,
-            next_level: 4,
-            unlock_next: true
+            unlock_next: false  // Tidak ada level berikutnya
         })
     })
     .then(response => response.json())
@@ -502,15 +476,6 @@ function unlockAndGoBack() {
         button.innerHTML = 'Kembali ke Halaman Penambahan';
     });
 }
-
-window.addEventListener('beforeunload', function (e) {
-    if (!quizStarted) return;
-    if (!document.getElementById('section-result').classList.contains('hidden')) return;
-    
-    e.preventDefault();
-    e.returnValue = '';
-    return '';
-});
 </script>
 
 <style>

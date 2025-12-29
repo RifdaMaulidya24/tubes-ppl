@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Quiz Level 3 - Pembagian</title>
+    <title>Quiz Level 3 - Perkalian</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -36,14 +36,14 @@
 
         <!-- Tutor Section -->
         <div id="section-tutor" class="transition-all duration-500 ease-out">
-            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Level 3 - Pembagian</h1>
+            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Level 3 - Perkalian</h1>
             <p class="mb-4">Pelajari materi sebelum mulai mengerjakan soal.</p>
             <div class="mx-auto w-64 h-64 bg-white/20 rounded-2xl mb-4 flex items-center justify-center">
-                <span class="text-6xl">➗</span>
+                <span class="text-6xl">✖️</span>
             </div>
             <div class="bg-white text-black p-4 rounded-2xl shadow-xl mb-6">
-                <p class="mb-2">Pembagian adalah membagi suatu angka menjadi beberapa bagian yang sama.</p>
-                <p class="font-bold">Contoh: 6 ÷ 2 = 3</p>
+                <p class="mb-2">Perkalian adalah penjumlahan berulang dari suatu angka.</p>
+                <p class="font-bold">Contoh: 3 × 4 = 12</p>
             </div>
             <button onclick="startQuiz()"
                     class="bg-purple-700 hover:bg-purple-800 w-full p-3 rounded-xl font-bold transition">
@@ -88,13 +88,13 @@
                 <div id="review-list" class="max-h-96 overflow-y-auto"></div>
 
                 <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
-                   class="mt-4 block bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold w-full text-center">
+                   class="mt-4 block bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-xl font-bold w-full text-center">
                     Lanjut ke Level 4
                 </button>
 
                 <button onclick="unlockAndGoBack()" id="btn-go-back"
                    class="mt-2 block bg-gray-500 hover:bg-gray-600 text-white p-3 rounded-xl font-bold w-full text-center">
-                    Kembali ke Halaman Pembagian
+                    Kembali ke Halaman Perkalian
                 </button>
             </div>
         </div>
@@ -104,18 +104,18 @@
 
 <script>
 const questions = [
-    { text: "6 ÷ 2 = ?", answer: 3 }
+    { text: "3 × 4 = ?", answer: 12 }
     
 //     ,
-//     { text: "8 ÷ 4 = ?", answer: 2 },
-//     { text: "10 ÷ 5 = ?", answer: 2 },
-//     { text: "12 ÷ 3 = ?", answer: 4 },
-//     { text: "15 ÷ 5 = ?", answer: 3 },
-//     { text: "18 ÷ 6 = ?", answer: 3 },
-//     { text: "20 ÷ 4 = ?", answer: 5 },
-//     { text: "16 ÷ 8 = ?", answer: 2 },
-//     { text: "14 ÷ 7 = ?", answer: 2 },
-//     { text: "21 ÷ 7 = ?", answer: 3 }
+//     { text: "4 × 5 = ?", answer: 20 },
+//     { text: "3 × 6 = ?", answer: 18 },
+//     { text: "5 × 4 = ?", answer: 20 },
+//     { text: "6 × 3 = ?", answer: 18 },
+//     { text: "4 × 4 = ?", answer: 16 },
+//     { text: "5 × 5 = ?", answer: 25 },
+//     { text: "6 × 4 = ?", answer: 24 },
+//     { text: "3 × 7 = ?", answer: 21 },
+//     { text: "4 × 6 = ?", answer: 24 }
 ];
 
 let index = 0;
@@ -161,7 +161,7 @@ function startQuiz() {
 function generateChoices(correctAnswer) {
     const choices = [correctAnswer];
     while (choices.length < 4) {
-        const random = Math.floor(Math.random() * 15) + 1;
+        const random = Math.floor(Math.random() * 30) + 1;
         if (!choices.includes(random)) {
             choices.push(random);
         }
@@ -215,7 +215,7 @@ function selectAnswer(selectedAnswer, button) {
     });
     
     if (selectedAnswer === q.answer) {
-        button.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+        button.classList.add('bg-purple-500', 'text-white', 'border-purple-600', 'animate-correct');
         userAnswers[index] = selectedAnswer;
         
         if (!isRetryMode) {
@@ -243,7 +243,7 @@ function selectAnswer(selectedAnswer, button) {
         allButtons.forEach(btn => {
             if (parseInt(btn.innerText) === q.answer) {
                 setTimeout(() => {
-                    btn.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+                    btn.classList.add('bg-purple-500', 'text-white', 'border-purple-600', 'animate-correct');
                 }, 500);
             }
         });
@@ -323,7 +323,7 @@ function showResult() {
             
             let bgColor = 'bg-red-100';
             if (isCorrect && correctFirstAttempt) {
-                bgColor = 'bg-green-100';
+                bgColor = 'bg-purple-100';
             } else if (isCorrect && !correctFirstAttempt) {
                 bgColor = 'bg-yellow-100';
             }
@@ -332,7 +332,7 @@ function showResult() {
                 <b>${q.text}</b><br>
                 Jawaban Kamu: ${finalAnswer}<br>
                 Kunci Jawaban: ${q.answer}<br>
-                ${correctFirstAttempt ? '<span class="text-green-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
+                ${correctFirstAttempt ? '<span class="text-purple-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
                   isCorrect ? '<span class="text-orange-600">✓ Benar setelah retry (+5 poin)</span>' : 
                   '<span class="text-red-600 font-bold">✗ Salah (+0 poin)</span>'}
             </p>`;
@@ -493,14 +493,14 @@ function unlockAndGoBack() {
         } else {
             alert('Gagal menyimpan progress. Silakan coba lagi.');
             button.disabled = false;
-            button.innerHTML = 'Kembali ke Halaman Pembagian';
+            button.innerHTML = 'Kembali ke Halaman Perkalian';
         }
     })
     .catch(err => {
         console.error('Gagal menyimpan progress:', err);
         alert('Terjadi kesalahan. Silakan coba lagi.');
         button.disabled = false;
-        button.innerHTML = 'Kembali ke Halaman Pembagian';
+        button.innerHTML = 'Kembali ke Halaman Perkalian';
     });
 }
 

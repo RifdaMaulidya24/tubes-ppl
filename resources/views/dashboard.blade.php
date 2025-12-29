@@ -6,7 +6,7 @@
     </x-slot>
 
     <style>
-        @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         body {
             background: linear-gradient(to bottom right, #2F5A47, #234738, #1a3d2e);
@@ -45,12 +45,12 @@
             will-change: transform;
         }
 
-        @@keyframes bgFloat1 {
+        @keyframes bgFloat1 {
             0%, 100% { transform: translateY(0) scale(1); }
             50%      { transform: translateY(-40px) scale(1.02); }
         }
 
-        @@keyframes bgFloat2 {
+        @keyframes bgFloat2 {
             0%, 100% { transform: translateX(0) scale(1); }
             50%      { transform: translateX(-55px) scale(1.02); }
         }
@@ -80,7 +80,7 @@
             animation: fadeInDown 0.9s ease-out;
         }
 
-        @@keyframes fadeInDown {
+        @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-26px); }
             to   { opacity: 1; transform: translateY(0); }
         }
@@ -127,7 +127,7 @@
             animation: fadeInUp 0.9s ease-out 0.22s both;
         }
 
-        @@keyframes fadeInUp {
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(22px); }
             to   { opacity: 1; transform: translateY(0); }
         }
@@ -214,7 +214,7 @@
             pointer-events: none;
         }
 
-        @@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         .points-content { position: relative; display: flex; align-items: center; gap: 18px; z-index: 1; }
         .points-icon {
@@ -227,7 +227,7 @@
             animation: floatIcon 3s ease-in-out infinite;
         }
 
-        @@keyframes floatIcon {
+        @keyframes floatIcon {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
@@ -252,7 +252,69 @@
             display: inline-block;
             animation: pulse 2s ease-in-out infinite;
         }
-        @@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+        @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+        /* Badge Section */
+        .badges-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.9s ease-out 0.3s both;
+        }
+
+        .badges-title {
+            font-size: 24px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge-card {
+            background: rgba(255,255,255,.09);
+            border: 2px solid rgba(255,255,255,.15);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(14px);
+            transition: all 0.3s ease;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,215,0,0.5);
+            box-shadow: 0 12px 32px rgba(255,215,0,0.25);
+        }
+
+        .badge-icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+        }
+
+        .badge-name {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .badge-desc {
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        .badge-locked {
+            opacity: 0.4;
+            filter: grayscale(1);
+        }
 
         .cards-grid {
             display: grid;
@@ -343,7 +405,7 @@
             animation: shimmer 2s infinite;
         }
 
-        @@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+        @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
         .progress-text { font-size: 12px; color: #666; margin-top: 8px; }
 
         .topic-footer {
@@ -356,7 +418,6 @@
 
         /* WARNA UNTUK SETIAP TOPIK */
         
-        /* Penambahan - Blue */
         .topic-card.blue .topic-icon {
             background: linear-gradient(135deg, #e3f2fd, #bbdefb);
             color: #1565c0;
@@ -375,7 +436,6 @@
             background: linear-gradient(90deg, #1565c0, #42a5f5);
         }
 
-        /* Pengurangan - Green */
         .topic-card.green .topic-icon {
             background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
             color: #2e7d32;
@@ -394,7 +454,6 @@
             background: linear-gradient(90deg, #2e7d32, #4caf50);
         }
 
-        /* Perkalian - Purple */
         .topic-card.purple .topic-icon {
             background: linear-gradient(135deg, #f3e5f5, #e1bee7);
             color: #6a1b9a;
@@ -413,7 +472,6 @@
             background: linear-gradient(90deg, #6a1b9a, #ab47bc);
         }
 
-        /* Pembagian - Orange */
         .topic-card.orange .topic-icon {
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
             color: #e65100;
@@ -448,13 +506,13 @@
             animation: fadeIn 1s ease-out 1s both;
             z-index: 100;
         }
-        @@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @@media (max-width: 1100px) {
+        @media (max-width: 1100px) {
             .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
-        @@media (max-width: 980px) {
+        @media (max-width: 980px) {
             .hero-left { text-align: center; }
             .hero-subtitle { margin-left: auto; margin-right: auto; }
             .hero-split{
@@ -466,7 +524,7 @@
             }
         }
 
-        @@media (max-width: 768px) {
+        @media (max-width: 768px) {
             .section-container { padding: 46px 18px; }
             .hero-title { font-size: 38px; letter-spacing: -1px; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -532,66 +590,70 @@
                         <div>
                             <div class="points-label">Total Poin</div>
                             <div>
-                                <span class="points-number">1,250</span>
-                                <span class="points-badge">+150</span>
+                                <span class="points-number">{{ number_format($totalPoints) }}</span>
+                                @if($recentPoints > 0)
+                                    <span class="points-badge">+{{ $recentPoints }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Badge Section -->
+            @if(count($badges) > 0)
+            <div class="badges-section">
+                <h2 class="badges-title">🏆 Badge yang Kamu Miliki</h2>
+                <div class="badges-grid">
+                    @foreach($badges as $badge)
+                        <div class="badge-card">
+                            <div class="badge-icon">{{ $badge['icon'] }}</div>
+                            <div class="badge-name">{{ $badge['name'] }}</div>
+                            <div class="badge-desc">{{ $badge['description'] }}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+
             <div class="cards-grid">
-                <a href="/quiz/penambahan" class="topic-card blue">
-                    <div class="topic-icon">+</div>
-                    <div class="topic-title">Penambahan</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 60%"></div>
+                @foreach($topicsProgress as $topic)
+                    @php
+                        $colors = [
+                            'penambahan' => 'blue',
+                            'pengurangan' => 'green',
+                            'perkalian' => 'purple',
+                            'pembagian' => 'orange'
+                        ];
+                        $icons = [
+                            'penambahan' => '+',
+                            'pengurangan' => '−',
+                            'perkalian' => '×',
+                            'pembagian' => '÷'
+                        ];
+                        $color = $colors[$topic['operation']];
+                        $icon = $icons[$topic['operation']];
+                    @endphp
+                    
+                    <a href="/quiz/{{ $topic['operation'] }}" class="topic-card {{ $color }}">
+                        <div class="topic-icon">{{ $icon }}</div>
+                        <div class="topic-title">{{ ucfirst($topic['operation']) }}</div>
+                        <div class="topic-level">Level 1–5 | Poin: 100</div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: {{ $topic['progress'] }}%"></div>
+                            </div>
+                            <div class="progress-text">{{ $topic['progress'] }}% Selesai</div>
                         </div>
-                        <div class="progress-text">60% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 3!</div>
-                </a>
-
-                <a href="/quiz/pengurangan" class="topic-card green">
-                    <div class="topic-icon">−</div>
-                    <div class="topic-title">Pengurangan</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 40%"></div>
+                        <div class="topic-footer">
+                            @if($topic['completed'] > 0)
+                                Lanjutkan dari Level {{ $topic['completed'] + 1 }}!
+                            @else
+                                Mulai dari Level 1!
+                            @endif
                         </div>
-                        <div class="progress-text">40% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 2!</div>
-                </a>
-
-                <a href="/quiz/perkalian" class="topic-card purple">
-                    <div class="topic-icon">×</div>
-                    <div class="topic-title">Perkalian</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 80%"></div>
-                        </div>
-                        <div class="progress-text">80% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 4!</div>
-                </a>
-
-                <a href="/quiz/pembagian" class="topic-card orange">
-                    <div class="topic-icon">÷</div>
-                    <div class="topic-title">Pembagian</div>
-                    <div class="topic-level">Level 1–5 | Poin: 100</div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 20%"></div>
-                        </div>
-                        <div class="progress-text">20% Selesai</div>
-                    </div>
-                    <div class="topic-footer">Lanjutkan dari Level 1!</div>
-                </a>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>

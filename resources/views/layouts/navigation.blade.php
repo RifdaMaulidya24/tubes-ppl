@@ -29,11 +29,7 @@
                     <x-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
                         {{ __('Result') }}
                     </x-nav-link>
-
-                    
-
                 </div>
-
             </div>
 
             <!-- Settings Dropdown -->
@@ -106,10 +102,8 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('quiz.index')" :active="request()->routeIs('quiz.index') ||
-                request()->routeIs('quiz.levels') ||
-                request()->routeIs('quiz.level')" class="!text-green-600 hover:!text-green-700">
-                {{ __('Quiz') }}
+            <x-responsive-nav-link :href="route('materi.index')" :active="request()->routeIs('materi.*')" class="!text-green-600 hover:!text-green-700">
+                {{ __('Materi') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
