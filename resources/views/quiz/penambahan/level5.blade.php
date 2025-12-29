@@ -212,7 +212,7 @@
             <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
               class="mt-4 block bg-gradient-to-r from-blue-700 to-sky-700 hover:from-blue-800 hover:to-sky-800
                      text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
-              Lanjut
+              Selesai
             </button>
           </div>
         </div>
@@ -526,21 +526,34 @@ function unlockAndGoToNextLevel() {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
+    body: JSON.stringify({
+      level: 5,
+      score: finalScore,
+      unlock_next: true
+      // kalau backend kamu butuh next_level, isi angka:
+      // next_level: 6
+    })
   })
-  .then(r => r.json())
-  .then(data => {
-    if (data.status === 'ok' || data.success) window.location.href = '/quiz/penambahan';
-    else {
-      alert('Gagal menyimpan. Silakan coba lagi.');
-      button.disabled = false;
-      button.innerHTML = 'Lanjut';
+  .then(async (r) => {
+    // coba parse json, tapi jangan wajib
+    let data = null;
+    try { data = await r.json(); } catch (_) {}
+
+    if (r.ok && (data?.status === 'ok' || data?.status === 'success' || data?.success === true || data === null)) {
+      window.location.href = '/quiz/penambahan'; // ini yang bikin dia buka penambahan.blade.php (index)
+      return;
     }
+
+    console.log('Response:', r.status, data);
+    alert('Gagal menyimpan. Silakan coba lagi.');
+    button.disabled = false;
+    button.innerHTML = 'Selesai';
   })
-  .catch(() => {
+  .catch((e) => {
+    console.error(e);
     alert('Terjadi kesalahan. Silakan coba lagi.');
     button.disabled = false;
-    button.innerHTML = 'Lanjut';
+    button.innerHTML = 'Selesai';
   });
 }
 
