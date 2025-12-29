@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Quiz Level 3 - Pengurangan</title>
+  <title>Quiz Level 5 - Pengurangan</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,7 +120,7 @@
         <!-- Tutor -->
         <div id="section-tutor" class="transition-all duration-500 ease-out text-center text-white max-w-xl mx-auto px-6 py-10 sm:py-14">
           <h1 class="text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow animate-fade-zoom delay-0">
-            Level 3 • Pengurangan
+            Level 5 • Pengurangan
           </h1>
 
           <div class="mt-7 flex justify-center animate-fade-zoom delay-100">
@@ -222,12 +222,6 @@
             <h3 class="font-extrabold mb-2">Review:</h3>
             <div id="review-list" class="max-h-96 overflow-y-auto"></div>
 
-            <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
-              class="mt-4 block bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800
-                     text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
-              Lanjut ke Level 4
-            </button>
-
             <button onclick="unlockAndGoBack()" id="btn-go-back"
               class="mt-3 block bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800
                      text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
@@ -242,16 +236,16 @@
 
 <script>
 const questions = [
-  { text: "18 - 9 = ?",  answer: 9 },
-  { text: "17 - 8 = ?",  answer: 9 },
-  { text: "19 - 7 = ?",  answer: 12 },
-  { text: "20 - 6 = ?",  answer: 14 },
-  { text: "16 - 9 = ?",  answer: 7 },
-  { text: "22 - 8 = ?",  answer: 14 },
-  { text: "21 - 7 = ?",  answer: 14 },
-  { text: "23 - 9 = ?",  answer: 14 },
-  { text: "24 - 11 = ?", answer: 13 },
-  { text: "25 - 12 = ?", answer: 13 }
+  { text: "31 - 16 = ?", answer: 15 },
+  { text: "33 - 18 = ?", answer: 15 },
+  { text: "35 - 20 = ?", answer: 15 },
+  { text: "29 - 14 = ?", answer: 15 },
+  { text: "34 - 19 = ?", answer: 15 },
+  { text: "32 - 17 = ?", answer: 15 },
+  { text: "27 - 12 = ?", answer: 15 },
+  { text: "36 - 21 = ?", answer: 15 },
+  { text: "28 - 13 = ?", answer: 15 },
+  { text: "30 - 15 = ?", answer: 15 }
 ];
 
 let index = 0;
@@ -347,7 +341,7 @@ function selectAnswer(selectedAnswer, button) {
   const q = questions[index];
   const allButtons = document.querySelectorAll('.choice-btn');
 
-  // MATIIN HOVER 
+ // MATIIN HOVER 
 allButtons.forEach(btn => {
   btn.disabled = true;
 
@@ -356,6 +350,7 @@ allButtons.forEach(btn => {
   
   btn.classList.add('cursor-default');
 });
+
 
   if (selectedAnswer === q.answer) {
     // benar -> hijau
@@ -527,13 +522,13 @@ function calculateTotalPoints() {
 }
 
 function saveProgress(finalScore) {
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/pengurangan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, unlock_next: false })
+    body: JSON.stringify({ level: 5, score: finalScore, unlock_next: false })
   })
   .then(r => r.json())
   .then(data => console.log('Score saved:', data))
@@ -545,29 +540,29 @@ function unlockAndGoToNextLevel() {
   const button = document.getElementById('btn-next-level');
 
   button.disabled = true;
-  button.innerHTML = 'Membuka Level 4...';
+  button.innerHTML = 'Menyelesaikan...';
 
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/pengurangan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, next_level: 4, unlock_next: true })
+    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
   })
   .then(r => r.json())
   .then(data => {
-    if (data.status === 'ok' || data.success) window.location.href = '/quiz/pengurangan/level4';
+    if (data.status === 'ok' || data.success) window.location.href = '/quiz/pengurangan';
     else {
-      alert('Gagal membuka level berikutnya. Silakan coba lagi.');
+      alert('Gagal menyimpan. Silakan coba lagi.');
       button.disabled = false;
-      button.innerHTML = 'Lanjut ke Level 4';
+      button.innerHTML = 'Lanjut';
     }
   })
   .catch(() => {
     alert('Terjadi kesalahan. Silakan coba lagi.');
     button.disabled = false;
-    button.innerHTML = 'Lanjut ke Level 4';
+    button.innerHTML = 'Lanjut';
   });
 }
 
@@ -578,13 +573,13 @@ function unlockAndGoBack() {
   button.disabled = true;
   button.innerHTML = ' Menyimpan Progress...';
 
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/pengurangan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, next_level: 4, unlock_next: true })
+    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
   })
   .then(r => r.json())
   .then(data => {

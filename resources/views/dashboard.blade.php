@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         body {
-            background: linear-gradient(to bottom right, #2F5A47, #234738, #1a3d2e);
+            background: linear-gradient(to bottom right, #123A2D, #123A2D, #123A2D);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             position: relative;
             overflow-x: hidden;
@@ -547,7 +547,7 @@
                     </p>
                 </div>
                 <div class="hero-right">
-                    <img src="{{ asset('img/logo.png') }}" alt="Mathify" class="hero-logo">
+                    <img src="{{ asset('img/anu.png') }}" alt="Mathify" class="hero-logo">
                 </div>
             </div>
             <div class="features-grid">
