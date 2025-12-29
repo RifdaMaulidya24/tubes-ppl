@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial, initial-scale=1.0" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Quiz Level 3 - Pengurangan</title>
+  <title>Quiz Level 5 - Penambahan</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,6 @@
   <style>
     body { font-family: "Baloo 2", system-ui, sans-serif; }
 
-    /* Animasi dasar*/
     @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     @keyframes zoomOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -24,15 +23,8 @@
     .fade-in { animation: fadeIn 0.3s ease-out forwards; }
     .fade-out { animation: fadeOut 0.3s ease-out forwards; }
 
-    /*  Fade + Zoom + Delay === */
-    @keyframes fadeZoomIn {
-      from { opacity: 0; transform: translateY(10px) scale(0.92); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes fadeZoomOut {
-      from { opacity: 1; transform: translateY(0) scale(1); }
-      to   { opacity: 0; transform: translateY(-10px) scale(0.92); }
-    }
+    @keyframes fadeZoomIn { from { opacity: 0; transform: translateY(10px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes fadeZoomOut { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(-10px) scale(0.92); } }
     .animate-fade-zoom { animation: fadeZoomIn 0.6s cubic-bezier(.2,.8,.2,1) both; }
     .animate-fade-zoom-out { animation: fadeZoomOut 0.45s ease-in both; }
 
@@ -46,7 +38,6 @@
     .delay-500 { animation-delay: 500ms; }
     .delay-700 { animation-delay: 700ms; }
 
-    /* Floating */
     @keyframes float1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
     @keyframes float3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -54,7 +45,6 @@
     .animate-float2 { animation: float2 8s infinite; }
     .animate-float3 { animation: float3 7s infinite; }
 
-    /* Smoke */
     @keyframes smoke1 { 0%,100% { transform: translate(0,0) scale(1); opacity:.35; } 50% { transform: translate(12px,-14px) scale(1.08); opacity:.18; } }
     @keyframes smoke2 { 0%,100% { transform: translate(0,0) scale(1); opacity:.35; } 50% { transform: translate(-10px,12px) scale(1.1); opacity:.18; } }
     @keyframes smoke3 { 0%,100% { transform: translate(0,0) scale(1); opacity:.3; } 50% { transform: translate(10px,10px) scale(1.06); opacity:.16; } }
@@ -62,13 +52,10 @@
     .animate-smoke2 { animation: smoke2 11s infinite; }
     .animate-smoke3 { animation: smoke3 10s infinite; }
 
-    /* Feedback */
     @keyframes pop { 0% { transform: scale(.92); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
     .animate-correct { animation: pop 0.35s ease-out; }
-
     .animate-wrong { animation: none !important; }
 
-    /* Symbol rotation */
     @keyframes symbol1 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } }
     @keyframes symbol2 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(-180deg) scale(1.1); } }
     @keyframes symbol3 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } }
@@ -86,10 +73,10 @@
 <body>
   <div class="min-h-screen w-full relative overflow-hidden">
 
-    <!-- Background Hijau -->
-    <div class="absolute inset-0" style="background: linear-gradient(to bottom right, #66bb6a, #4caf50, #43a047);"></div>
-    <div class="absolute top-[-150px] left-[-120px] w-[420px] h-[420px] bg-green-300 opacity-40 blur-[120px] rounded-full"></div>
-    <div class="absolute bottom-[-160px] right-[-120px] w-[380px] h-[380px] bg-green-200 opacity-30 blur-[140px] rounded-full"></div>
+    <!-- Background Biru -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom right, #42a5f5, #2196f3, #1976d2);"></div>
+    <div class="absolute top-[-150px] left-[-120px] w-[420px] h-[420px] opacity-40 blur-[120px] rounded-full" style="background: #64b5f6;"></div>
+    <div class="absolute bottom-[-160px] right-[-120px] w-[380px] h-[380px] opacity-30 blur-[140px] rounded-full" style="background: #90caf9;"></div>
 
     <!-- Floating Elements & Smoke -->
     <div class="absolute inset-0 pointer-events-none">
@@ -101,12 +88,12 @@
       <div class="absolute top-1/2 left-1/2 w-16 h-16 bg-white/20 rounded-full blur-md animate-smoke3"></div>
     </div>
 
-    <!-- Math Symbols - MINUS -->
+    <!-- Math Symbols - PLUS -->
     <div class="absolute inset-0 pointer-events-none select-none">
-      <div class="absolute top-1/4 left-1/5 text-white text-6xl font-bold opacity-30 animate-symbol1">−</div>
-      <div class="absolute top-1/3 right-1/4 text-white text-5xl font-bold opacity-25 animate-symbol2">−</div>
-      <div class="absolute bottom-1/4 left-1/3 text-white text-6xl font-bold opacity-35 animate-symbol3">−</div>
-      <div class="absolute bottom-1/3 right-1/5 text-white text-5xl font-bold opacity-30 animate-symbol4">−</div>
+      <div class="absolute top-1/4 left-1/5 text-white text-6xl font-bold opacity-30 animate-symbol1">+</div>
+      <div class="absolute top-1/3 right-1/4 text-white text-5xl font-bold opacity-25 animate-symbol2">+</div>
+      <div class="absolute bottom-1/4 left-1/3 text-white text-6xl font-bold opacity-35 animate-symbol3">+</div>
+      <div class="absolute bottom-1/3 right-1/5 text-white text-5xl font-bold opacity-30 animate-symbol4">+</div>
     </div>
 
     <!-- Texture & Overlay -->
@@ -120,31 +107,31 @@
         <!-- Tutor -->
         <div id="section-tutor" class="transition-all duration-500 ease-out text-center text-white max-w-xl mx-auto px-6 py-10 sm:py-14">
           <h1 class="text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow animate-fade-zoom delay-0">
-            Level 3 • Pengurangan
+            Level 5 • Penambahan
           </h1>
 
           <div class="mt-7 flex justify-center animate-fade-zoom delay-100">
             <img
               src="/img/anu.png"
-              alt="Onboarding Pengurangan"
+              alt="Onboarding Penambahan"
               class="w-[190px] sm:w-[220px] drop-shadow-2xl select-none pointer-events-none"
               onerror="this.classList.add('hidden');"
             />
           </div>
 
           <p class="mt-6 text-white/80 text-gl sm:text-[17px] leading-relaxed max-w-md mx-auto animate-fade-zoom delay-200">
-            Lebih mudah kalau kamu hitung mundur. Yuk baca singkatnya dulu, lalu mulai kuis
+            Penambahan itu gampang. Yuk baca singkatnya dulu, lalu mulai kuis
           </p>
 
           <div class="mt-6 rounded-3xl bg-white/50 border border-white/15 p-4 text-left animate-fade-zoom delay-300">
-            <p class="text-sm text-emerald-700">
-              Pengurangan artinya <b>mengurangi</b> angka.
+            <p class="text-sm text-blue-800">
+              Penambahan artinya <b>menambah</b> angka.
             </p>
 
             <div class="mt-3 rounded-xl bg-white/45 px-10 py-3">
-              <p class="text-xs text-emerald-700">Contoh:</p>
-              <p class="text-2xl font-extrabold tracking-wider text-emerald-700">
-                5 − 2 = 3
+              <p class="text-xs text-blue-800">Contoh:</p>
+              <p class="text-2xl font-extrabold tracking-wider text-blue-800">
+                45 + 27 = 72
               </p>
             </div>
           </div>
@@ -153,7 +140,7 @@
             type="button"
             onclick="startQuiz()"
             class="mt-7 inline-flex items-center justify-center px-32 py-3.5 rounded-2xl
-                   font-extrabold text-base sm:text-lg bg-white text-emerald-700
+                   font-extrabold text-base sm:text-lg bg-white text-blue-700
                    hover:bg-white/70 active:scale-[0.99] shadow-xl transition animate-fade-zoom delay-400"
           >
             Mulai
@@ -172,7 +159,7 @@
             </div>
 
             <div class="w-full h-3 rounded-full bg-white/15 overflow-hidden mb-6 border border-white/20 animate-fade-zoom delay-100">
-              <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-emerald-300 to-lime-200 transition-all duration-300"></div>
+              <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-sky-200 to-blue-200 transition-all duration-300"></div>
             </div>
 
             <div class="soal-card mx-auto rounded-[22px] overflow-hidden shadow-2xl border border-white/10
@@ -198,10 +185,10 @@
             <div class="text-6xl mb-3">😵</div>
             <h2 class="text-2xl font-extrabold mb-2">Ada yang salah nih!</h2>
             <p class="text-lg mb-6">
-              Kamu perlu mengulang <span id="wrong-count" class="font-extrabold text-emerald-700"></span>.
+              Kamu perlu mengulang <span id="wrong-count" class="font-extrabold text-blue-700"></span>.
             </p>
             <button onclick="startRetry()"
-              class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700
+              class="bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700
                      text-white w-full p-4 rounded-2xl font-extrabold text-lg transition shadow-xl active:scale-[0.99]">
               Ulang Soalnya
             </button>
@@ -216,22 +203,16 @@
 
             <div class="text-xl mb-4">
               Nilai Kamu:
-              <span id="result-score" class="font-extrabold text-3xl text-emerald-700"></span>
+              <span id="result-score" class="font-extrabold text-3xl text-blue-700"></span>
             </div>
 
             <h3 class="font-extrabold mb-2">Review:</h3>
             <div id="review-list" class="max-h-96 overflow-y-auto"></div>
 
             <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
-              class="mt-4 block bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800
+              class="mt-4 block bg-gradient-to-r from-blue-700 to-sky-700 hover:from-blue-800 hover:to-sky-800
                      text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
-              Lanjut ke Level 4
-            </button>
-
-            <button onclick="unlockAndGoBack()" id="btn-go-back"
-              class="mt-3 block bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800
-                     text-white p-4 rounded-2xl font-extrabold w-full text-center transition shadow-xl active:scale-[0.99]">
-              Kembali
+              Lanjut
             </button>
           </div>
         </div>
@@ -242,16 +223,16 @@
 
 <script>
 const questions = [
-  { text: "18 - 9 = ?",  answer: 9 },
-  { text: "17 - 8 = ?",  answer: 9 },
-  { text: "19 - 7 = ?",  answer: 12 },
-  { text: "20 - 6 = ?",  answer: 14 },
-  { text: "16 - 9 = ?",  answer: 7 },
-  { text: "22 - 8 = ?",  answer: 14 },
-  { text: "21 - 7 = ?",  answer: 14 },
-  { text: "23 - 9 = ?",  answer: 14 },
-  { text: "24 - 11 = ?", answer: 13 },
-  { text: "25 - 12 = ?", answer: 13 }
+  { text: "45 + 27 = ?", answer: 72 },
+  { text: "38 + 34 = ?", answer: 72 },
+  { text: "50 + 22 = ?", answer: 72 },
+  { text: "60 + 15 = ?", answer: 75 },
+  { text: "48 + 26 = ?", answer: 74 },
+  { text: "55 + 19 = ?", answer: 74 },
+  { text: "63 + 18 = ?", answer: 81 },
+  { text: "41 + 39 = ?", answer: 80 },
+  { text: "47 + 33 = ?", answer: 80 },
+  { text: "52 + 28 = ?", answer: 80 }
 ];
 
 let index = 0;
@@ -264,7 +245,6 @@ let firstAttemptCorrect = [];
 let countdownInterval = null;
 let quizStarted = false;
 
-/* progress bar */
 function updateProgress() {
   const bar = document.getElementById('progress-bar');
   if (!bar) return;
@@ -308,7 +288,7 @@ function startQuiz() {
 function generateChoices(correctAnswer) {
   const choices = [correctAnswer];
   while (choices.length < 4) {
-    const random = Math.floor(Math.random() * 15) + 1;
+    const random = Math.floor(Math.random() * 100) + 1;
     if (!choices.includes(random)) choices.push(random);
   }
   return choices.sort(() => Math.random() - 0.5);
@@ -331,7 +311,7 @@ function loadQuestion() {
 
     button.className =
       'choice-btn w-full py-5 sm:py-6 rounded-full ' +
-      'bg-white text-emerald-700 border border-gray-200 ' +
+      'bg-white text-blue-700 border border-gray-200 ' +
       'font-extrabold text-2xl sm:text-3xl shadow-2xl ' +
       'transition active:scale-[0.99] ' +
       'hover:bg-white/70 hover:scale-[1.01] ' +
@@ -347,19 +327,14 @@ function selectAnswer(selectedAnswer, button) {
   const q = questions[index];
   const allButtons = document.querySelectorAll('.choice-btn');
 
-  // MATIIN HOVER 
-allButtons.forEach(btn => {
-  btn.disabled = true;
-
-  btn.classList.remove('hover:bg-white/70', 'hover:scale-[1.01]');
-
-  
-  btn.classList.add('cursor-default');
-});
+  allButtons.forEach(btn => {
+    btn.disabled = true;
+    btn.classList.remove('hover:bg-white/70', 'hover:scale-[1.01]');
+    btn.classList.add('cursor-default');
+  });
 
   if (selectedAnswer === q.answer) {
-    // benar -> hijau
-    button.classList.add('bg-emerald-600','text-white','border-emerald-700','animate-correct');
+    button.classList.add('bg-blue-600','text-white','border-blue-700','animate-correct');
     userAnswers[index] = selectedAnswer;
 
     if (!isRetryMode) {
@@ -372,7 +347,6 @@ allButtons.forEach(btn => {
 
     startCountdown(1000);
   } else {
-    // salah -> merah
     button.classList.add('bg-red-600','text-white','border-red-700');
     userAnswers[index] = selectedAnswer;
 
@@ -384,10 +358,9 @@ allButtons.forEach(btn => {
       allAnswersHistory[originalIndex] = selectedAnswer;
     }
 
-    // kunci -> hijau
     allButtons.forEach(btn => {
       if (parseInt(btn.innerText) === q.answer) {
-        btn.classList.add('bg-emerald-600','text-white','border-emerald-700','animate-correct');
+        btn.classList.add('bg-blue-600','text-white','border-blue-700','animate-correct');
       }
     });
 
@@ -448,14 +421,14 @@ function showResult() {
       else if (isCorrect && !correctFirstAttempt) totalPoints += 0.5;
 
       let bgColor = 'bg-red-100';
-      if (isCorrect && correctFirstAttempt) bgColor = 'bg-emerald-100';
+      if (isCorrect && correctFirstAttempt) bgColor = 'bg-blue-100';
       else if (isCorrect && !correctFirstAttempt) bgColor = 'bg-yellow-100';
 
       reviewHTML += `<div class="mb-3 p-3 rounded-2xl ${bgColor} text-left">
         <b class="text-lg">${q.text}</b><br>
         Jawaban Kamu: <b>${finalAnswer}</b><br>
         Kunci Jawaban: <b>${q.answer}</b><br>
-        ${correctFirstAttempt ? '<span class="text-emerald-700 font-bold">✓ Benar pertama (+10)</span>' :
+        ${correctFirstAttempt ? '<span class="text-blue-700 font-bold">✓ Benar pertama (+10)</span>' :
           isCorrect ? '<span class="text-orange-700 font-bold">✓ Benar setelah ulang (+5)</span>' :
           '<span class="text-red-700 font-bold">✗ Salah (+0)</span>'}
       </div>`;
@@ -527,13 +500,13 @@ function calculateTotalPoints() {
 }
 
 function saveProgress(finalScore) {
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/penambahan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, unlock_next: false })
+    body: JSON.stringify({ level: 5, score: finalScore, unlock_next: false })
   })
   .then(r => r.json())
   .then(data => console.log('Score saved:', data))
@@ -545,29 +518,29 @@ function unlockAndGoToNextLevel() {
   const button = document.getElementById('btn-next-level');
 
   button.disabled = true;
-  button.innerHTML = 'Membuka Level 4...';
+  button.innerHTML = 'Menyelesaikan...';
 
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/penambahan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, next_level: 4, unlock_next: true })
+    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
   })
   .then(r => r.json())
   .then(data => {
-    if (data.status === 'ok' || data.success) window.location.href = '/quiz/pengurangan/level4';
+    if (data.status === 'ok' || data.success) window.location.href = '/quiz/penambahan';
     else {
-      alert('Gagal membuka level berikutnya. Silakan coba lagi.');
+      alert('Gagal menyimpan. Silakan coba lagi.');
       button.disabled = false;
-      button.innerHTML = 'Lanjut ke Level 4';
+      button.innerHTML = 'Lanjut';
     }
   })
   .catch(() => {
     alert('Terjadi kesalahan. Silakan coba lagi.');
     button.disabled = false;
-    button.innerHTML = 'Lanjut ke Level 4';
+    button.innerHTML = 'Lanjut';
   });
 }
 
@@ -578,17 +551,17 @@ function unlockAndGoBack() {
   button.disabled = true;
   button.innerHTML = ' Menyimpan Progress...';
 
-  fetch('/quiz/pengurangan/complete-level/3', {
+  fetch('/quiz/penambahan/complete-level/5', {
     method: 'POST',
     headers: {
       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ level: 3, score: finalScore, next_level: 4, unlock_next: true })
+    body: JSON.stringify({ level: 5, score: finalScore, next_level: null, unlock_next: true })
   })
   .then(r => r.json())
   .then(data => {
-    if (data.status === 'ok' || data.success) window.location.href = '/quiz/pengurangan';
+    if (data.status === 'ok' || data.success) window.location.href = '/quiz/penambahan';
     else {
       alert('Gagal menyimpan progress. Silakan coba lagi.');
       button.disabled = false;
