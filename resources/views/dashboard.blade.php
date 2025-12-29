@@ -8,7 +8,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
-     
         .welcome-section .feature-head {
             text-align: center;
             max-width: 760px;
@@ -216,7 +215,7 @@
             filter: drop-shadow(0 18px 50px rgba(0, 0, 0, .25));
             transform: translate(-50px, -5px);
         }
-        
+
         .hero-title {
             font-size: 54px;
             line-height: 1.06;
@@ -273,7 +272,6 @@
             transition: transform .22s ease, filter .22s ease;
         }
 
-        /* hover lembut biar hidup */
         .feature-item:hover {
             transform: translateY(-4px);
             filter: drop-shadow(0 10px 24px rgba(0,0,0,.14));
@@ -342,25 +340,45 @@
             backdrop-filter: blur(16px);
             min-height: 142px;
 
-            /* sebelumnya transition: none; -> kasih animasi halus */
-            transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
         }
 
-        .materi-card:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, .09);
-            border-color: rgba(255,255,255,.22);
-            box-shadow: 0 18px 44px rgba(0,0,0,.20);
+        /* ✅ Tambahan efek hover seperti quiz */
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            z-index: 2;
         }
+
+        .materi-card:hover::before { transform: scaleX(1); }
 
         .materi-card::after {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: 22px;
-            background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, .12), transparent 55%);
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .35), transparent);
+            transform: translateX(-120%);
+            transition: transform .6s ease;
             pointer-events: none;
             opacity: .9;
+        }
+
+        .materi-card:hover::after { transform: translateX(120%); }
+
+        .materi-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255,255,255,.20);
+            background: rgba(255, 255, 255, .09);
         }
 
         .materi-top {
@@ -369,7 +387,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            z-index: 1;
+            z-index: 3;
             margin-bottom: 12px;
         }
 
@@ -399,16 +417,17 @@
             font-size: 22px;
 
             box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
-            transition: transform .22s ease;
+            transition: all 0.3s ease;
+            z-index: 3;
         }
 
         .materi-card:hover .materi-symbol{
-            transform: rotate(-3deg) scale(1.04);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .materi-name {
             position: relative;
-            z-index: 1;
+            z-index: 3;
             font-weight: 900;
             font-size: 15px;
             margin-bottom: 6px;
@@ -417,11 +436,17 @@
 
         .materi-desc {
             position: relative;
-            z-index: 1;
+            z-index: 3;
             font-size: 12.5px;
             line-height: 1.65;
             color: rgba(255, 255, 255, .74);
         }
+
+        /* ✅ Garis warna kayak quiz */
+        .materi-card.blue::before   { background: linear-gradient(90deg, #1565c0, #42a5f5, #64b5f6); }
+        .materi-card.green::before  { background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a); }
+        .materi-card.purple::before { background: linear-gradient(90deg, #6a1b9a, #ab47bc, #ba68c8); }
+        .materi-card.orange::before { background: linear-gradient(90deg, #e65100, #ff9800, #ffb74d); }
 
         .materi-card.blue .materi-symbol { color: #0f4aa8; }
         .materi-card.green .materi-symbol { color: #1b5e20; }
@@ -435,6 +460,8 @@
         @media (max-width: 768px) {
             .materi-grid { grid-template-columns: 1fr; }
         }
+
+        /* ===== SISANYA TETAP (DARI KODE KAMU) ===== */
 
         .quiz-section { padding-top: 18px; }
 
@@ -561,7 +588,6 @@
             50% { transform: scale(1.05) }
         }
 
-        /* Badge Section */
         .badges-section {
             margin-bottom: 40px;
             animation: fadeInUp 0.9s ease-out 0.3s both;
@@ -730,7 +756,6 @@
             font-weight: 800;
         }
 
-        /* WARNA SETIAP TOPIK */
         .topic-card.blue .topic-icon { background: linear-gradient(135deg, #e3f2fd, #bbdefb); color: #1565c0; }
         .topic-card.blue:hover .topic-icon { background: linear-gradient(135deg, #42a5f5, #2196f3); color: #fff; }
         .topic-card.blue::before { background: linear-gradient(90deg, #1565c0, #42a5f5, #64b5f6); }
@@ -980,7 +1005,6 @@
             .footer-surface{ padding: 22px 18px; }
         }
 
-        
         .reveal{
             opacity: 0;
             transform: translateY(18px);
@@ -1031,7 +1055,6 @@
                 </div>
             </div>
 
-            
             <div class="feature-head reveal reveal--up">
                 <h2 class="feature-heading">Kenapa Mathify?</h2>
                 <p class="feature-subtitle">
@@ -1069,7 +1092,6 @@
 
             <div class="materi-wrap"></div>
 
-          
             <div id="materi" class="materi-head2 reveal reveal--up">
                 <h2 class="materi-heading2">Pilih Materi</h2>
                 <p class="materi-subtitle2">
@@ -1181,7 +1203,7 @@
                         ];
                         $color = $colors[$topic['operation']];
                         $icon = $icons[$topic['operation']];
-                        $delay = ($i % 4) * 90 + 80; 
+                        $delay = ($i % 4) * 90 + 80;
                     @endphp
 
                     <a href="/quiz/{{ $topic['operation'] }}" class="topic-card {{ $color }} reveal reveal--up" style="--d: {{ $delay }}ms;">
@@ -1305,7 +1327,6 @@
         </div>
     </footer>
 
-   
     <script>
         (function () {
             const els = document.querySelectorAll('.reveal');
@@ -1318,7 +1339,7 @@
                 entries.forEach((e) => {
                     if (e.isIntersecting) {
                         e.target.classList.add('is-visible');
-                        io.unobserve(e.target); 
+                        io.unobserve(e.target);
                     }
                 });
             }, {
