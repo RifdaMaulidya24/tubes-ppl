@@ -425,34 +425,31 @@
 
             {{-- HERO --}}
             <div class="hero">
-                <div class="hero-card">
-                    <div class="chip-row">
-                        <div class="chip">📘 Materi</div>
-                        <div class="chip">⭐ Level Dasar</div>
-                        <div class="chip">➕ Penambahan</div>
-                    </div>
+    <div class="hero-card">
+        <h1 class="hero-title">Materi Penambahan</h1>
+        <p class="hero-desc">
+            Penambahan itu artinya <b>menjumlahkan</b>.
+            Misal 7 + 5 jadi berapa? 😄
+        </p>
 
-                    <h1 class="hero-title">Materi Penambahan ➕</h1>
-                    <p class="hero-desc">
-                        Penambahan adalah proses <b>menjumlahkan</b> dua angka atau lebih.
-                        Yuk belajar pelan-pelan, pakai contoh yang gampang, dan coba latihan kecil biar makin paham!
-                    </p>
+        <div class="hero-actions">
+            <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
+            <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
+        </div>
+    </div>
 
-                    <div class="hero-actions">
-                        <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
-                        <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
-                    </div>
-                </div>
+    <div class="hero-mascot">
+        <img
+            src="{{ asset('img/tb.png') }}"
+            alt="Logo Penambahan"
+            style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
+        >
+        <p class="mascot-title">Penambahan</p>
+        <p class="mascot-mini">Tambah angka jadi makin jago ✨</p>
+    </div>
+</div>
 
-                <div class="hero-mascot">
-                    <div class="big-emoji">🧠✨</div>
-                    <p class="mascot-title">Tips Cepat!</p>
-                    <p class="mascot-mini">
-                        Mulai dari angka yang lebih besar, lalu tambah sisanya.
-                        Ini bikin hitung jadi lebih cepat 😄
-                    </p>
-                </div>
-            </div>
+            
 
             {{-- GRID --}}
             <div class="grid">

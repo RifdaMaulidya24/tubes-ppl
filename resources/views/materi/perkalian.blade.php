@@ -94,34 +94,30 @@
         <div class="container-materi">
 
             <div class="hero">
-                <div class="hero-card">
-                    <div class="chip-row">
-                        <div class="chip">📘 Materi</div>
-                        <div class="chip">⭐ Level Dasar</div>
-                        <div class="chip">✖ Perkalian</div>
-                    </div>
+    <div class="hero-card">
+        <h1 class="hero-title">Materi Perkalian</h1>
+        <p class="hero-desc">
+            Perkalian itu artinya <b>penjumlahan berulang</b>.
+            Misal 4 × 3 artinya 4 + 4 + 4 😄
+        </p>
 
-                    <h1 class="hero-title">Materi Perkalian ✖</h1>
-                    <p class="hero-desc">
-                        Perkalian itu <b>penjumlahan berulang</b>.
-                        Contoh: 3 × 4 artinya 4 + 4 + 4 (tiga kali) 😄
-                    </p>
+        <div class="hero-actions">
+            <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
+            <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
+        </div>
+    </div>
 
-                    <div class="hero-actions">
-                        <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
-                        <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
-                    </div>
-                </div>
+    <div class="hero-mascot">
+        <img
+            src="{{ asset('img/kl.png') }}"
+            alt="Logo Perkalian"
+            style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
+        >
+        <p class="mascot-title">Perkalian</p>
+        <p class="mascot-mini">Latihan kali biar makin pro ✨</p>
+    </div>
+</div>
 
-                <div class="hero-mascot">
-                    <div class="big-emoji">📦✨</div>
-                    <p class="mascot-title">Tips Cepat!</p>
-                    <p class="mascot-mini">
-                        Ingat tabel kecil dulu: 1–5.
-                        Nanti yang besar jadi gampang!
-                    </p>
-                </div>
-            </div>
 
             <div class="grid">
                 <div class="card">

@@ -80,6 +80,23 @@
             .grid{grid-template-columns:1fr;}
             .video-wrap iframe{height:240px;}
         }
+
+            .hero-title-row{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            }
+            .hero-logo{
+            width:54px;
+            height:54px;
+            border-radius:14px;
+            background: rgba(255,255,255,.18);
+            border: 1px solid rgba(255,255,255,.22);
+            box-shadow: 0 14px 40px rgba(0,0,0,.18);
+            padding:10px;
+            object-fit: contain;
+            }
+
     </style>
 
     <div class="materi-page">
@@ -94,34 +111,29 @@
         <div class="container-materi">
 
             <div class="hero">
-                <div class="hero-card">
-                    <div class="chip-row">
-                        <div class="chip">📘 Materi</div>
-                        <div class="chip">⭐ Level Dasar</div>
-                        <div class="chip">➗ Pembagian</div>
-                    </div>
+    <div class="hero-card">
+        <h1 class="hero-title">Materi Pembagian </h1>
+        <p class="hero-desc">
+            Pembagian itu artinya <b>membagi rata</b>.
+            Misal 12 permen dibagi 3 anak, tiap anak dapat berapa? 😄
+        </p>
 
-                    <h1 class="hero-title">Materi Pembagian ➗</h1>
-                    <p class="hero-desc">
-                        Pembagian itu artinya <b>membagi rata</b>.
-                        Misal 12 permen dibagi 3 anak, tiap anak dapat berapa? 😄
-                    </p>
+        <div class="hero-actions">
+            <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
+            <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
+        </div>
+    </div>
 
-                    <div class="hero-actions">
-                        <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
-                        <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
-                    </div>
-                </div>
-
-                <div class="hero-mascot">
-                    <div class="big-emoji">🧁👧🧒</div>
-                    <p class="mascot-title">Tips Cepat!</p>
-                    <p class="mascot-mini">
-                        Pembagian adalah kebalikan dari perkalian.
-                        Kalau 3 × 4 = 12, maka 12 ÷ 3 = 4.
-                    </p>
-                </div>
-            </div>
+    <div class="hero-mascot">
+        <img
+            src="{{ asset('img/bg.png') }}"
+            alt="Logo Mathify"
+            style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
+        >
+            <p class="mascot-title">Mathify</p>
+            <p class="mascot-mini">Belajar pembagian jadi gampang ✨</p>
+        </div>
+    </div>
 
             <div class="grid">
                 <div class="card">
