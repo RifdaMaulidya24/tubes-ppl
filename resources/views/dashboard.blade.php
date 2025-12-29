@@ -8,17 +8,14 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
-        /* Heading + subheading untuk features (welcome saja) */
+     
         .welcome-section .feature-head {
             text-align: center;
             max-width: 760px;
             margin: 26px auto 18px;
         }
-#materi { 
-    scroll-margin-top: 90px; 
-}
-#quiz { scroll-margin-top: 90px; }
-
+        #materi { scroll-margin-top: 90px; }
+        #quiz { scroll-margin-top: 90px; }
 
         .welcome-section .feature-heading {
             font-size: 30px;
@@ -37,51 +34,51 @@
             color: rgba(255, 255, 255, .78);
             margin: 0;
         }
-.get-started-btn{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
 
-    margin-top: 14px;
-    padding: 12px 18px;
-    border-radius: 999px;
+        .get-started-btn{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
 
-    font-weight: 900;
-    font-size: 14px;
-    letter-spacing: .2px;
-    text-decoration: none;
+            margin-top: 14px;
+            padding: 12px 18px;
+            border-radius: 999px;
 
-    color: #1a3d2e;
-    background: rgba(255,255,255,.92);
-    border: 1px solid rgba(255,255,255,.22);
-    box-shadow: 0 16px 40px rgba(0,0,0,.18);
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: .2px;
+            text-decoration: none;
 
-    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-}
+            color: #1a3d2e;
+            background: rgba(255,255,255,.92);
+            border: 1px solid rgba(255,255,255,.22);
+            box-shadow: 0 16px 40px rgba(0,0,0,.18);
 
-.get-started-btn::after{
-    content: "↓";
-    font-weight: 900;
-    opacity: .9;
-}
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
 
-.get-started-btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 22px 56px rgba(0,0,0,.22);
-    background: rgba(255,255,255,.98);
-}
+        .get-started-btn::after{
+            content: "↓";
+            font-weight: 900;
+            opacity: .9;
+        }
 
-.get-started-btn:active{
-    transform: translateY(0px);
-}
+        .get-started-btn:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 22px 56px rgba(0,0,0,.22);
+            background: rgba(255,255,255,.98);
+        }
+
+        .get-started-btn:active{
+            transform: translateY(0px);
+        }
 
         /* Heading khusus section materi */
         .welcome-section .materi-head2 {
             text-align: center;
             max-width: 760px;
             margin: 34px auto 18px;
-            /* jarak dari section atas */
         }
 
         .welcome-section .materi-heading2 {
@@ -165,27 +162,13 @@
         }
 
         @keyframes bgFloat1 {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-40px) scale(1.02);
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-40px) scale(1.02); }
         }
 
         @keyframes bgFloat2 {
-
-            0%,
-            100% {
-                transform: translateX(0) scale(1);
-            }
-
-            50% {
-                transform: translateX(-55px) scale(1.02);
-            }
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(-55px) scale(1.02); }
         }
 
         .section {
@@ -214,20 +197,11 @@
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-26px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-26px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-left {
-            text-align: left;
-        }
+        .hero-left { text-align: left; }
 
         .hero-right {
             display: flex;
@@ -240,9 +214,9 @@
             max-width: 100%;
             height: auto;
             filter: drop-shadow(0 18px 50px rgba(0, 0, 0, .25));
-            transform: translate(-150px, -40px);
+            transform: translate(-50px, -5px);
         }
-
+        
         .hero-title {
             font-size: 54px;
             line-height: 1.06;
@@ -271,15 +245,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(22px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== Feature Highlights (bukan card) ===== */
@@ -289,7 +256,6 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 22px;
 
-            /* biar feel-nya “rapi tengah” */
             max-width: 860px;
             margin-left: auto;
             margin-right: auto;
@@ -304,12 +270,13 @@
             background: transparent;
             backdrop-filter: none;
             min-height: auto;
-            transition: none;
+            transition: transform .22s ease, filter .22s ease;
         }
 
+        /* hover lembut biar hidup */
         .feature-item:hover {
-            transform: none;
-            background: transparent;
+            transform: translateY(-4px);
+            filter: drop-shadow(0 10px 24px rgba(0,0,0,.14));
         }
 
         .feature-icon {
@@ -335,25 +302,15 @@
             max-width: 220px;
         }
 
-        /* responsive */
         @media (max-width: 980px) {
-            .features-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+            .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
         @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 18px;
-            }
-
-            .feature-icon {
-                font-size: 34px;
-            }
+            .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+            .feature-icon { font-size: 34px; }
         }
 
-        /* jarak pemisah antara features dan materi */
         .features-divider {
             height: 1px;
             width: 100%;
@@ -362,35 +319,8 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
         }
 
-
         /* ===== Materi Section ===== */
-        .materi-wrap {
-            margin-top: 26px;
-            padding-top: 6px;
-        }
-
-        .materi-head {
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto 18px;
-        }
-
-        .materi-title {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: -0.4px;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #ffffff, #e8f5e9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .materi-subtitle {
-            font-size: 13.5px;
-            line-height: 1.75;
-            color: rgba(255, 255, 255, .78);
-        }
+        .materi-wrap { margin-top: 26px; padding-top: 6px; }
 
         .materi-grid {
             display: grid;
@@ -411,12 +341,16 @@
             border: 1px solid rgba(255, 255, 255, .14);
             backdrop-filter: blur(16px);
             min-height: 142px;
-            transition: none;
+
+            /* sebelumnya transition: none; -> kasih animasi halus */
+            transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
         }
 
         .materi-card:hover {
-            transform: none;
-            background: rgba(255, 255, 255, .07);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, .09);
+            border-color: rgba(255,255,255,.22);
+            box-shadow: 0 18px 44px rgba(0,0,0,.20);
         }
 
         .materi-card::after {
@@ -465,6 +399,11 @@
             font-size: 22px;
 
             box-shadow: 0 14px 40px rgba(0, 0, 0, .18);
+            transition: transform .22s ease;
+        }
+
+        .materi-card:hover .materi-symbol{
+            transform: rotate(-3deg) scale(1.04);
         }
 
         .materi-name {
@@ -484,44 +423,20 @@
             color: rgba(255, 255, 255, .74);
         }
 
-        /* warna beda tiap card */
-        .materi-card.blue .materi-symbol {
-            color: #0f4aa8;
-        }
-
-        .materi-card.green .materi-symbol {
-            color: #1b5e20;
-        }
-
-        .materi-card.purple .materi-symbol {
-            color: #6a1b9a;
-        }
-
-        .materi-card.orange .materi-symbol {
-            color: #e65100;
-        }
+        .materi-card.blue .materi-symbol { color: #0f4aa8; }
+        .materi-card.green .materi-symbol { color: #1b5e20; }
+        .materi-card.purple .materi-symbol { color: #6a1b9a; }
+        .materi-card.orange .materi-symbol { color: #e65100; }
 
         @media (max-width: 1100px) {
-            .materi-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+            .materi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
         @media (max-width: 768px) {
-            .materi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .materi-title {
-                font-size: 20px;
-            }
+            .materi-grid { grid-template-columns: 1fr; }
         }
 
-
-
-        .quiz-section {
-            padding-top: 18px;
-        }
+        .quiz-section { padding-top: 18px; }
 
         .hero {
             text-align: center;
@@ -581,13 +496,8 @@
         }
 
         @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .points-content {
@@ -612,15 +522,8 @@
         }
 
         @keyframes floatIcon {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .points-label {
@@ -654,15 +557,8 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1)
-            }
-
-            50% {
-                transform: scale(1.05)
-            }
+            0%, 100% { transform: scale(1) }
+            50% { transform: scale(1.05) }
         }
 
         /* Badge Section */
@@ -760,9 +656,7 @@
             transition: transform 0.4s ease;
         }
 
-        .topic-card:hover::before {
-            transform: scaleX(1);
-        }
+        .topic-card:hover::before { transform: scaleX(1); }
 
         .topic-card:hover {
             transform: translateY(-12px) scale(1.02);
@@ -778,9 +672,7 @@
             transition: transform .6s ease;
         }
 
-        .topic-card:hover::after {
-            transform: translateX(120%);
-        }
+        .topic-card:hover::after { transform: translateX(120%); }
 
         .topic-icon {
             width: 80px;
@@ -794,21 +686,10 @@
             transition: all 0.3s ease;
         }
 
-        .topic-card:hover .topic-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
+        .topic-card:hover .topic-icon { transform: scale(1.1) rotate(5deg); }
 
-        .topic-title {
-            font-size: 20px;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .topic-level {
-            font-size: 13px;
-            margin-bottom: 18px;
-            font-weight: 800;
-        }
+        .topic-title { font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+        .topic-level { font-size: 13px; margin-bottom: 18px; font-weight: 800; }
 
         .progress-bar {
             width: 100%;
@@ -835,20 +716,11 @@
         }
 
         @keyframes shimmer {
-            0% {
-                transform: translateX(-100%)
-            }
-
-            100% {
-                transform: translateX(100%)
-            }
+            0% { transform: translateX(-100%) }
+            100% { transform: translateX(100%) }
         }
 
-        .progress-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-        }
+        .progress-text { font-size: 12px; color: #666; margin-top: 8px; }
 
         .topic-footer {
             margin-top: 14px;
@@ -858,127 +730,38 @@
             font-weight: 800;
         }
 
-        /* WARNA UNTUK SETIAP TOPIK */
+        /* WARNA SETIAP TOPIK */
+        .topic-card.blue .topic-icon { background: linear-gradient(135deg, #e3f2fd, #bbdefb); color: #1565c0; }
+        .topic-card.blue:hover .topic-icon { background: linear-gradient(135deg, #42a5f5, #2196f3); color: #fff; }
+        .topic-card.blue::before { background: linear-gradient(90deg, #1565c0, #42a5f5, #64b5f6); }
+        .topic-card.blue .topic-title { color: #1565c0; }
+        .topic-card.blue .topic-level { color: #42a5f5; }
+        .topic-card.blue .topic-footer { color: #1976d2; }
+        .topic-card.blue .progress-fill { background: linear-gradient(90deg, #1565c0, #42a5f5); }
 
-        .topic-card.blue .topic-icon {
-            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-            color: #1565c0;
-        }
+        .topic-card.green .topic-icon { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); color: #2e7d32; }
+        .topic-card.green:hover .topic-icon { background: linear-gradient(135deg, #4caf50, #66bb6a); color: #fff; }
+        .topic-card.green::before { background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a); }
+        .topic-card.green .topic-title { color: #1b5e20; }
+        .topic-card.green .topic-level { color: #4caf50; }
+        .topic-card.green .topic-footer { color: #388e3c; }
+        .topic-card.green .progress-fill { background: linear-gradient(90deg, #2e7d32, #4caf50); }
 
-        .topic-card.blue:hover .topic-icon {
-            background: linear-gradient(135deg, #42a5f5, #2196f3);
-            color: #fff;
-        }
+        .topic-card.purple .topic-icon { background: linear-gradient(135deg, #f3e5f5, #e1bee7); color: #6a1b9a; }
+        .topic-card.purple:hover .topic-icon { background: linear-gradient(135deg, #ab47bc, #ba68c8); color: #fff; }
+        .topic-card.purple::before { background: linear-gradient(90deg, #6a1b9a, #ab47bc, #ba68c8); }
+        .topic-card.purple .topic-title { color: #6a1b9a; }
+        .topic-card.purple .topic-level { color: #ab47bc; }
+        .topic-card.purple .topic-footer { color: #8e24aa; }
+        .topic-card.purple .progress-fill { background: linear-gradient(90deg, #6a1b9a, #ab47bc); }
 
-        .topic-card.blue::before {
-            background: linear-gradient(90deg, #1565c0, #42a5f5, #64b5f6);
-        }
-
-        .topic-card.blue .topic-title {
-            color: #1565c0;
-        }
-
-        .topic-card.blue .topic-level {
-            color: #42a5f5;
-        }
-
-        .topic-card.blue .topic-footer {
-            color: #1976d2;
-        }
-
-        .topic-card.blue .progress-fill {
-            background: linear-gradient(90deg, #1565c0, #42a5f5);
-        }
-
-        .topic-card.green .topic-icon {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            color: #2e7d32;
-        }
-
-        .topic-card.green:hover .topic-icon {
-            background: linear-gradient(135deg, #4caf50, #66bb6a);
-            color: #fff;
-        }
-
-        .topic-card.green::before {
-            background: linear-gradient(90deg, #2e7d32, #4caf50, #66bb6a);
-        }
-
-        .topic-card.green .topic-title {
-            color: #1b5e20;
-        }
-
-        .topic-card.green .topic-level {
-            color: #4caf50;
-        }
-
-        .topic-card.green .topic-footer {
-            color: #388e3c;
-        }
-
-        .topic-card.green .progress-fill {
-            background: linear-gradient(90deg, #2e7d32, #4caf50);
-        }
-
-        .topic-card.purple .topic-icon {
-            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
-            color: #6a1b9a;
-        }
-
-        .topic-card.purple:hover .topic-icon {
-            background: linear-gradient(135deg, #ab47bc, #ba68c8);
-            color: #fff;
-        }
-
-        .topic-card.purple::before {
-            background: linear-gradient(90deg, #6a1b9a, #ab47bc, #ba68c8);
-        }
-
-        .topic-card.purple .topic-title {
-            color: #6a1b9a;
-        }
-
-        .topic-card.purple .topic-level {
-            color: #ab47bc;
-        }
-
-        .topic-card.purple .topic-footer {
-            color: #8e24aa;
-        }
-
-        .topic-card.purple .progress-fill {
-            background: linear-gradient(90deg, #6a1b9a, #ab47bc);
-        }
-
-        .topic-card.orange .topic-icon {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            color: #e65100;
-        }
-
-        .topic-card.orange:hover .topic-icon {
-            background: linear-gradient(135deg, #ff9800, #ffb74d);
-            color: #fff;
-        }
-
-        .topic-card.orange::before {
-            background: linear-gradient(90deg, #e65100, #ff9800, #ffb74d);
-        }
-
-        .topic-card.orange .topic-title {
-            color: #e65100;
-        }
-
-        .topic-card.orange .topic-level {
-            color: #ff9800;
-        }
-
-        .topic-card.orange .topic-footer {
-            color: #f57c00;
-        }
-
-        .topic-card.orange .progress-fill {
-            background: linear-gradient(90deg, #e65100, #ff9800);
-        }
+        .topic-card.orange .topic-icon { background: linear-gradient(135deg, #fff3e0, #ffe0b2); color: #e65100; }
+        .topic-card.orange:hover .topic-icon { background: linear-gradient(135deg, #ff9800, #ffb74d); color: #fff; }
+        .topic-card.orange::before { background: linear-gradient(90deg, #e65100, #ff9800, #ffb74d); }
+        .topic-card.orange .topic-title { color: #e65100; }
+        .topic-card.orange .topic-level { color: #ff9800; }
+        .topic-card.orange .topic-footer { color: #f57c00; }
+        .topic-card.orange .progress-fill { background: linear-gradient(90deg, #e65100, #ff9800); }
 
         .floating-quote {
             position: fixed;
@@ -997,257 +780,236 @@
             z-index: 100;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 1100px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+            .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
 
         @media (max-width: 980px) {
-            .hero-left {
-                text-align: center;
-            }
-
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-split {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-right {
-                justify-content: center;
-            }
+            .hero-left { text-align: center; }
+            .hero-subtitle { margin-left: auto; margin-right: auto; }
+            .hero-split { grid-template-columns: 1fr; text-align: center; }
+            .hero-right { justify-content: center; }
         }
 
         @media (max-width: 768px) {
-            .section-container {
-                padding: 46px 18px;
-            }
+            .section-container { padding: 46px 18px; }
+            .hero-title { font-size: 38px; letter-spacing: -1px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: 1fr; }
+            .floating-quote { display: none; }
+        }
 
-            .hero-title {
-                font-size: 38px;
-                letter-spacing: -1px;
-            }
+        /* ===== Big Footer ===== */
+        .big-footer{
+            position: relative;
+            z-index: 2;
+            margin-top: 70px;
+            padding: 44px 0 22px;
+        }
 
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .big-footer::before{
+            content:"";
+            position:absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
+            pointer-events:none;
+        }
 
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
+        .big-footer .footer-inner{
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
 
-            .floating-quote {
-                display: none;
+        .footer-surface{
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.14);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
+            padding: 28px 26px;
+            box-shadow: 0 18px 60px rgba(0,0,0,.22);
+        }
+
+        .footer-top{
+            display: grid;
+            grid-template-columns: 1.25fr 1fr 1fr 1fr;
+            gap: 22px;
+        }
+
+        .footer-brandrow{ display:flex; gap: 12px; align-items:flex-start; }
+
+        .footer-logo-badge{
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: rgba(255,255,255,.92);
+            color:#1b5e20;
+            font-weight: 900;
+            font-size: 22px;
+            box-shadow: 0 12px 36px rgba(0,0,0,.18);
+        }
+
+        .footer-brand{
+            margin:0;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -.2px;
+            color: rgba(255,255,255,.96);
+        }
+
+        .footer-tagline{
+            margin: 6px 0 0;
+            font-size: 13px;
+            line-height: 1.7;
+            color: rgba(255,255,255,.74);
+            max-width: 320px;
+        }
+
+        .footer-col-title{
+            margin: 4px 0 12px;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.9);
+        }
+
+        .footer-links{ display:flex; flex-direction: column; gap: 10px; }
+
+        .footer-links a{
+            color: rgba(255,255,255,.76);
+            text-decoration:none;
+            font-weight: 800;
+            font-size: 13px;
+            display:inline-flex;
+            align-items:center;
+            gap: 10px;
+            transition: .18s ease;
+        }
+
+        .footer-links a:hover{
+            color: rgba(255,255,255,.98);
+            transform: translateX(2px);
+        }
+
+        .footer-icon{
+            width: 34px;
+            height: 34px;
+            border-radius: 14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.14);
+            color: rgba(255,255,255,.92);
+            font-size: 14px;
+        }
+
+        .footer-contact-item{
+            display:flex;
+            gap: 10px;
+            align-items:flex-start;
+            color: rgba(255,255,255,.76);
+            font-size: 13px;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .footer-contact-item strong{
+            color: rgba(255,255,255,.92);
+            font-weight: 900;
+        }
+
+        .footer-divider{
+            height: 1px;
+            width: 100%;
+            margin: 22px 0 14px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+        }
+
+        .footer-bottom{
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .footer-copy{
+            margin:0;
+            color: rgba(255,255,255,.70);
+            font-size: 12.5px;
+            font-weight: 700;
+        }
+
+        .footer-mini{
+            display:flex;
+            align-items:center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-pill{
+            font-size: 12px;
+            font-weight: 900;
+            color: rgba(255,255,255,.78);
+            text-decoration:none;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.14);
+            transition: .18s ease;
+        }
+
+        .footer-pill:hover{
+            color: rgba(255,255,255,.96);
+            background: rgba(255,255,255,.12);
+        }
+
+        @media (max-width: 980px){
+            .footer-top{ grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px){
+            .footer-top{ grid-template-columns: 1fr; }
+            .footer-surface{ padding: 22px 18px; }
+        }
+
+        
+        .reveal{
+            opacity: 0;
+            transform: translateY(18px);
+            filter: blur(6px);
+            transition:
+                opacity .7s ease,
+                transform .7s ease,
+                filter .7s ease;
+            transition-delay: var(--d, 0ms);
+            will-change: opacity, transform, filter;
+        }
+        .reveal--left{ transform: translateX(-18px); }
+        .reveal--right{ transform: translateX(18px); }
+        .reveal--zoom{ transform: scale(.96); }
+
+        .reveal.is-visible{
+            opacity: 1;
+            transform: none;
+            filter: blur(0);
+        }
+
+        @media (prefers-reduced-motion: reduce){
+            .reveal{
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                transition: none !important;
             }
         }
-        /* ===== Big Footer ===== */
-.big-footer{
-    position: relative;
-    z-index: 2;
-    margin-top: 70px;
-    padding: 44px 0 22px;
-}
-
-.big-footer::before{
-    content:"";
-    position:absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
-    pointer-events:none;
-}
-
-.big-footer .footer-inner{
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 28px;
-}
-
-.footer-surface{
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,255,255,.14);
-    backdrop-filter: blur(18px);
-    border-radius: 28px;
-    padding: 28px 26px;
-    box-shadow: 0 18px 60px rgba(0,0,0,.22);
-}
-
-.footer-top{
-    display: grid;
-    grid-template-columns: 1.25fr 1fr 1fr 1fr;
-    gap: 22px;
-}
-
-.footer-brandrow{
-    display:flex;
-    gap: 12px;
-    align-items:flex-start;
-}
-
-.footer-logo-badge{
-    width: 54px;
-    height: 54px;
-    border-radius: 18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: rgba(255,255,255,.92);
-    color:#1b5e20;
-    font-weight: 900;
-    font-size: 22px;
-    box-shadow: 0 12px 36px rgba(0,0,0,.18);
-}
-
-.footer-brand{
-    margin:0;
-    font-weight: 900;
-    font-size: 18px;
-    letter-spacing: -.2px;
-    color: rgba(255,255,255,.96);
-}
-
-.footer-tagline{
-    margin: 6px 0 0;
-    font-size: 13px;
-    line-height: 1.7;
-    color: rgba(255,255,255,.74);
-    max-width: 320px;
-}
-
-.footer-col-title{
-    margin: 4px 0 12px;
-    font-weight: 900;
-    font-size: 13px;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.9);
-}
-
-.footer-links{
-    display:flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-links a{
-    color: rgba(255,255,255,.76);
-    text-decoration:none;
-    font-weight: 800;
-    font-size: 13px;
-    display:inline-flex;
-    align-items:center;
-    gap: 10px;
-    transition: .18s ease;
-}
-
-.footer-links a:hover{
-    color: rgba(255,255,255,.98);
-    transform: translateX(2px);
-}
-
-.footer-icon{
-    width: 34px;
-    height: 34px;
-    border-radius: 14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: rgba(255,255,255,.10);
-    border: 1px solid rgba(255,255,255,.14);
-    color: rgba(255,255,255,.92);
-    font-size: 14px;
-}
-
-.footer-contact-item{
-    display:flex;
-    gap: 10px;
-    align-items:flex-start;
-    color: rgba(255,255,255,.76);
-    font-size: 13px;
-    line-height: 1.6;
-    font-weight: 700;
-}
-
-.footer-contact-item strong{
-    color: rgba(255,255,255,.92);
-    font-weight: 900;
-}
-
-.footer-divider{
-    height: 1px;
-    width: 100%;
-    margin: 22px 0 14px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-}
-
-.footer-bottom{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.footer-copy{
-    margin:0;
-    color: rgba(255,255,255,.70);
-    font-size: 12.5px;
-    font-weight: 700;
-}
-
-.footer-mini{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.footer-pill{
-    font-size: 12px;
-    font-weight: 900;
-    color: rgba(255,255,255,.78);
-    text-decoration:none;
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,255,255,.14);
-    transition: .18s ease;
-}
-
-.footer-pill:hover{
-    color: rgba(255,255,255,.96);
-    background: rgba(255,255,255,.12);
-}
-
-@media (max-width: 980px){
-    .footer-top{
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media (max-width: 640px){
-    .footer-top{
-        grid-template-columns: 1fr;
-    }
-    .footer-surface{
-        padding: 22px 18px;
-    }
-}
-
     </style>
 
     <section id="welcome" class="section welcome-section">
@@ -1265,56 +1027,58 @@
                     <a href="#quiz" class="get-started-btn">Get Started</a>
                 </div>
                 <div class="hero-right">
-                    <img src="{{ asset('img/anu.png') }}" alt="Mathify" class="hero-logo">
+                    <img src="{{ asset('img/logo.png') }}" alt="Mathify" class="hero-logo">
                 </div>
             </div>
-            <div class="feature-head">
-                <h2 class="feature-heading">✨ Kenapa Mathify?</h2>
+
+            
+            <div class="feature-head reveal reveal--up">
+                <h2 class="feature-heading">Kenapa Mathify?</h2>
                 <p class="feature-subtitle">
                     Semua dibuat biar belajar matematika jadi lebih gampang, terarah, dan tetap seru tiap hari.
                 </p>
             </div>
 
             <div class="features-grid">
-                <div class="feature-item">
+                <div class="feature-item reveal reveal--up" style="--d: 80ms;">
                     <div class="feature-icon">📚</div>
                     <div class="feature-title">Materi Lengkap</div>
                     <div class="feature-desc">Topik dari dasar hingga lanjutan</div>
                 </div>
 
-                <div class="feature-item">
+                <div class="feature-item reveal reveal--up" style="--d: 160ms;">
                     <div class="feature-icon">⚡</div>
                     <div class="feature-title">Level Bertahap</div>
                     <div class="feature-desc">Belajar sistematis dengan 5 level</div>
                 </div>
 
-                <div class="feature-item">
+                <div class="feature-item reveal reveal--up" style="--d: 240ms;">
                     <div class="feature-icon">✨</div>
                     <div class="feature-title">Sistem Poin</div>
                     <div class="feature-desc">Kumpulkan poin setiap quiz</div>
                 </div>
 
-                <div class="feature-item">
+                <div class="feature-item reveal reveal--up" style="--d: 320ms;">
                     <div class="feature-icon">🏆</div>
                     <div class="feature-title">Pencapaian</div>
                     <div class="feature-desc">Raih badge dan milestone</div>
                 </div>
             </div>
 
+            <div class="features-divider reveal" style="--d: 120ms;"></div>
 
-            <div class="features-divider"></div>
+            <div class="materi-wrap"></div>
 
-            <div class="materi-wrap">
-            </div>
-            <div id="materi" class="materi-head2">
-                <h2 class="materi-heading2">📘 Pilih Materi</h2>
+          
+            <div id="materi" class="materi-head2 reveal reveal--up">
+                <h2 class="materi-heading2">Pilih Materi</h2>
                 <p class="materi-subtitle2">
                     Mulai dari materi dulu biar paham konsepnya. Setelah itu baru lanjut quiz biar makin lancar.
                 </p>
             </div>
-            <div class="materi-grid">
 
-                <a href="{{ route('materi.penambahan') }}" class="materi-card blue">
+            <div class="materi-grid">
+                <a href="{{ route('materi.penambahan') }}" class="materi-card blue reveal reveal--up" style="--d: 80ms;">
                     <div class="materi-top">
                         <div class="materi-pill">Materi</div>
                         <div class="materi-symbol">+</div>
@@ -1323,7 +1087,7 @@
                     <div class="materi-desc">Konsep, contoh soal, dan latihan singkat untuk pemanasan.</div>
                 </a>
 
-                <a href="{{ route('materi.pengurangan') }}" class="materi-card green">
+                <a href="{{ route('materi.pengurangan') }}" class="materi-card green reveal reveal--up" style="--d: 160ms;">
                     <div class="materi-top">
                         <div class="materi-pill">Materi</div>
                         <div class="materi-symbol">−</div>
@@ -1332,7 +1096,7 @@
                     <div class="materi-desc">Belajar langkah pengurangan dari mudah sampai paham.</div>
                 </a>
 
-                <a href="{{ route('materi.perkalian') }}" class="materi-card purple">
+                <a href="{{ route('materi.perkalian') }}" class="materi-card purple reveal reveal--up" style="--d: 240ms;">
                     <div class="materi-top">
                         <div class="materi-pill">Materi</div>
                         <div class="materi-symbol">×</div>
@@ -1341,7 +1105,7 @@
                     <div class="materi-desc">Pola, tabel, dan latihan supaya makin cepat menghitung.</div>
                 </a>
 
-                <a href="{{ route('materi.pembagian') }}" class="materi-card orange">
+                <a href="{{ route('materi.pembagian') }}" class="materi-card orange reveal reveal--up" style="--d: 320ms;">
                     <div class="materi-top">
                         <div class="materi-pill">Materi</div>
                         <div class="materi-symbol">÷</div>
@@ -1351,8 +1115,8 @@
                 </a>
             </div>
         </div>
-        </div>
     </section>
+
     <section id="quiz" class="section quiz-section">
         <div class="section-container">
             <div class="hero">
@@ -1361,7 +1125,7 @@
             </div>
 
             <div class="stats-container">
-                <div class="points-card">
+                <div class="points-card reveal reveal--zoom">
                     <div class="points-glow"></div>
                     <div class="points-content">
                         <div class="points-icon">⭐</div>
@@ -1378,13 +1142,12 @@
                 </div>
             </div>
 
-            <!-- Badge Section -->
             @if (count($badges) > 0)
-                <div class="badges-section">
+                <div class="badges-section reveal reveal--up">
                     <h2 class="badges-title">🏆 Badge yang Kamu Miliki</h2>
                     <div class="badges-grid">
                         @foreach ($badges as $badge)
-                            <div class="badge-card">
+                            <div class="badge-card reveal reveal--up" style="--d: 90ms;">
                                 <div class="badge-icon">{{ $badge['icon'] }}</div>
                                 <div class="badge-name">{{ $badge['name'] }}</div>
                                 <div class="badge-desc">{{ $badge['description'] }}</div>
@@ -1393,14 +1156,16 @@
                     </div>
                 </div>
             @endif
-            <div class="quiz-head">
-                <h2 class="quiz-heading">🧠 Pilih Quiz</h2>
+
+            <div class="quiz-head reveal reveal--up">
+                <h2 class="quiz-heading">Pilih Quiz</h2>
                 <p class="quiz-subtitle">
                     Tes pemahaman kamu lewat quiz. Naik level, kumpulin poin, dan selesaikan progres di setiap topik.
                 </p>
             </div>
+
             <div class="cards-grid">
-                @foreach ($topicsProgress as $topic)
+                @foreach ($topicsProgress as $i => $topic)
                     @php
                         $colors = [
                             'penambahan' => 'blue',
@@ -1416,9 +1181,10 @@
                         ];
                         $color = $colors[$topic['operation']];
                         $icon = $icons[$topic['operation']];
+                        $delay = ($i % 4) * 90 + 80; 
                     @endphp
 
-                    <a href="/quiz/{{ $topic['operation'] }}" class="topic-card {{ $color }}">
+                    <a href="/quiz/{{ $topic['operation'] }}" class="topic-card {{ $color }} reveal reveal--up" style="--d: {{ $delay }}ms;">
                         <div class="topic-icon">{{ $icon }}</div>
                         <div class="topic-title">{{ ucfirst($topic['operation']) }}</div>
                         <div class="topic-level">Level 1–5 | Poin: 100</div>
@@ -1442,106 +1208,126 @@
     </section>
 
     <div class="floating-quote">
-        💡 "Belajar matematika itu seperti petualangan! Tetap semangat!"
+        "Belajar matematika itu seperti petualangan! Tetap semangat!"
     </div>
-    <footer class="big-footer" id="footer">
-    <div class="footer-inner">
-        <div class="footer-surface">
 
-            <div class="footer-top">
-                <!-- Brand / About -->
-                <div>
-                    <div class="footer-brandrow">
-                        <div class="footer-logo-badge">∑</div>
-                        <div>
-                            <p class="footer-brand">Mathify</p>
-                            <p class="footer-tagline">
-                                Platform belajar matematika yang simpel, terarah, dan seru.
-                                Mulai dari materi, lanjut quiz, kumpulkan poin dan badge!
-                            </p>
+    <footer class="big-footer reveal reveal--up" id="footer">
+        <div class="footer-inner">
+            <div class="footer-surface">
+                <div class="footer-top">
+                    <div>
+                        <div class="footer-brandrow">
+                            <div class="footer-logo-badge">∑</div>
+                            <div>
+                                <p class="footer-brand">Mathify</p>
+                                <p class="footer-tagline">
+                                    Platform belajar matematika yang simpel, terarah, dan seru.
+                                    Mulai dari materi, lanjut quiz, kumpulkan poin dan badge!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-col-title">Quick Links</div>
+                        <div class="footer-links">
+                            <a href="#welcome"><span class="footer-icon">🏠</span> Home</a>
+                            <a href="#materi"><span class="footer-icon">📘</span> Materi</a>
+                            <a href="#quiz"><span class="footer-icon">🧠</span> Quiz</a>
+                            <a href="{{ route('quiz.result') }}"><span class="footer-icon">📊</span> Result</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-col-title">Social Media</div>
+                        <div class="footer-links">
+                            <a href="#" target="_blank" rel="noopener">
+                                <span class="footer-icon">📸</span> Instagram
+                            </a>
+                            <a href="#" target="_blank" rel="noopener">
+                                <span class="footer-icon">🎵</span> TikTok
+                            </a>
+                            <a href="#" target="_blank" rel="noopener">
+                                <span class="footer-icon">💬</span> WhatsApp
+                            </a>
+                            <a href="#" target="_blank" rel="noopener">
+                                <span class="footer-icon">▶️</span> YouTube
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="footer-col-title">Contact</div>
+
+                        <div class="footer-contact-item">
+                            <span class="footer-icon">✉️</span>
+                            <div>
+                                <strong>Email</strong><br>
+                                support@mathify.id
+                            </div>
+                        </div>
+
+                        <div style="height:10px"></div>
+
+                        <div class="footer-contact-item">
+                            <span class="footer-icon">📍</span>
+                            <div>
+                                <strong>Alamat</strong><br>
+                                Jagir, Surabaya
+                            </div>
+                        </div>
+
+                        <div style="height:10px"></div>
+
+                        <div class="footer-contact-item">
+                            <span class="footer-icon">📞</span>
+                            <div>
+                                <strong>Phone</strong><br>
+                                +62 812-1788-3105
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <div class="footer-col-title">Quick Links</div>
-                    <div class="footer-links">
-                        <a href="#welcome"><span class="footer-icon">🏠</span> Home</a>
-                        <a href="#materi"><span class="footer-icon">📘</span> Materi</a>
-                        <a href="#quiz"><span class="footer-icon">🧠</span> Quiz</a>
-                        <a href="{{ route('quiz.result') }}"><span class="footer-icon">📊</span> Result</a>
-                    </div>
-                </div>
+                <div class="footer-divider"></div>
 
-                <!-- Social Media -->
-                <div>
-                    <div class="footer-col-title">Social Media</div>
-                    <div class="footer-links">
-                        <a href="#" target="_blank" rel="noopener">
-                            <span class="footer-icon">📸</span> Instagram
-                        </a>
-                        <a href="#" target="_blank" rel="noopener">
-                            <span class="footer-icon">🎵</span> TikTok
-                        </a>
-                        <a href="#" target="_blank" rel="noopener">
-                            <span class="footer-icon">💬</span> WhatsApp
-                        </a>
-                        <a href="#" target="_blank" rel="noopener">
-                            <span class="footer-icon">▶️</span> YouTube
-                        </a>
-                    </div>
-                </div>
+                <div class="footer-bottom">
+                    <p class="footer-copy">
+                        © {{ date('Y') }} Mathify. All rights reserved.
+                    </p>
 
-                <!-- Contact -->
-                <div>
-                    <div class="footer-col-title">Contact</div>
-
-                    <div class="footer-contact-item">
-                        <span class="footer-icon">✉️</span>
-                        <div>
-                            <strong>Email</strong><br>
-                            support@mathify.id
-                        </div>
-                    </div>
-
-                    <div style="height:10px"></div>
-
-                    <div class="footer-contact-item">
-                        <span class="footer-icon">📍</span>
-                        <div>
-                            <strong>Alamat</strong><br>
-                            Jagir, Surabaya
-                        </div>
-                    </div>
-
-                    <div style="height:10px"></div>
-
-                    <div class="footer-contact-item">
-                        <span class="footer-icon">📞</span>
-                        <div>
-                            <strong>Phone</strong><br>
-                            +62 812-1788-3105
-                        </div>
+                    <div class="footer-mini">
+                        <a class="footer-pill" href="{{ route('profile.edit') }}">Profile</a>
+                        <a class="footer-pill" href="#welcome">Back to Top ↑</a>
                     </div>
                 </div>
             </div>
-
-            <div class="footer-divider"></div>
-
-            <div class="footer-bottom">
-                <p class="footer-copy">
-                    © {{ date('Y') }} Mathify. All rights reserved.
-                </p>
-
-                <div class="footer-mini">
-                    <a class="footer-pill" href="{{ route('profile.edit') }}">Profile</a>
-                    <a class="footer-pill" href="#welcome">Back to Top ↑</a>
-                </div>
-            </div>
-
         </div>
-    </div>
-</footer>
+    </footer>
+
+   
+    <script>
+        (function () {
+            const els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window) || !els.length) {
+                els.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('is-visible');
+                        io.unobserve(e.target); 
+                    }
+                });
+            }, {
+                threshold: 0.14,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            els.forEach(el => io.observe(el));
+        })();
+    </script>
 
 </x-app-layout>
