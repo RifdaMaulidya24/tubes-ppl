@@ -101,5 +101,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/quiz/{operation}/complete-level/{level}', [QuizController::class, 'completeLevel'])
         ->name('quiz.complete');
 });
-
+#materi
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/materi/penambahan', 'materi.penambahan')->name('materi.penambahan');
+    Route::view('/materi/pengurangan', 'materi.pengurangan')->name('materi.pengurangan');
+    Route::view('/materi/perkalian', 'materi.perkalian')->name('materi.perkalian');
+    Route::view('/materi/pembagian', 'materi.pembagian')->name('materi.pembagian');
+});
 require __DIR__.'/auth.php';

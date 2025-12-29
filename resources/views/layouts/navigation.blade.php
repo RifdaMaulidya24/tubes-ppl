@@ -1,6 +1,11 @@
 <style>
-  nav a { text-decoration: none !important; }
-  nav a:hover { text-decoration: none !important; }
+    nav a {
+        text-decoration: none !important;
+    }
+
+    nav a:hover {
+        text-decoration: none !important;
+    }
 </style>
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
@@ -21,10 +26,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('materi.index')" :active="request()->routeIs('materi.*')" class="!text-green-600 hover:!text-green-700">
+                    <x-nav-link :href="route('dashboard') . '#materi'" :active="false" class="!text-green-600 hover:!text-green-700">
                         {{ __('Materi') }}
                     </x-nav-link>
-
+                    <x-nav-link :href="route('dashboard') . '#quiz'" :active="false"
+    class="!text-green-600 hover:!text-green-700">
+    {{ __('Quiz') }}
+</x-nav-link>
                     {{-- Result --}}
                     <x-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
                         {{ __('Result') }}
@@ -105,7 +113,7 @@
             <x-responsive-nav-link :href="route('materi.index')" :active="request()->routeIs('materi.*')" class="!text-green-600 hover:!text-green-700">
                 {{ __('Materi') }}
             </x-responsive-nav-link>
-
+    
             <x-responsive-nav-link :href="route('quiz.result')" :active="request()->routeIs('quiz.result')" class="!text-green-600 hover:!text-green-700">
                 {{ __('Result') }}
             </x-responsive-nav-link>
