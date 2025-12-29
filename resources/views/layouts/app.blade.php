@@ -16,17 +16,15 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="font-sans antialiased !bg-transparent text-white">
-    <div class="min-h-screen !bg-transparent">
-
+<body class="font-sans antialiased bg-transparent text-gray-900 dark:text-gray-100">
+    <div class="min-h-screen bg-transparent">
         {{-- NAVBAR --}}
         @include('layouts.navigation')
 
         {{-- CONTENT --}}
-        <main class="pt-0 !bg-transparent">
+        <main class="pt-0 bg-transparent">
             {{ $slot }}
         </main>
-
     </div>
 </body>
 </html>
