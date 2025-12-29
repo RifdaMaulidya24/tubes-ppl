@@ -28,65 +28,51 @@
         <h1 class="text-4xl font-extrabold text-center text-white mb-6 tracking-tight drop-shadow-lg">Pilih Level Penambahan</h1>
 
         <div class="space-y-4">
-            <a id="btn-level1" 
-               href="{{ route('quiz.level', ['operation'=>'penambahan','level'=>1]) }}"
-               class="group block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                <div class="flex items-center justify-center space-x-3">
-                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold">1</span>
-                    </div>
-                    <span class="text-lg font-semibold">Level 1</span>
-                </div>
-            </a>
+            @for($i = 1; $i <= 5; $i++)
+                @php
+                    $isCompleted = isset($completedLevels[$i]) && $completedLevels[$i];
+                    $isUnlocked = $i == 1 || (isset($completedLevels[$i - 1]) && $completedLevels[$i - 1]);
+                @endphp
 
-            <a id="btn-level2" 
-               href="{{ route('quiz.level', ['operation'=>'penambahan','level'=>2]) }}"
-               class="group block bg-gray-300 text-gray-500 p-6 rounded-xl shadow-lg cursor-not-allowed opacity-50 pointer-events-none">
-                <div class="flex items-center justify-center space-x-3">
-                    <div class="w-10 h-10 bg-gray-400 bg-opacity-20 rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold">2</span>
+                @if($isUnlocked)
+                    <a href="{{ route('quiz.level', ['operation'=>'penambahan','level'=>$i]) }}"
+                       class="group block bg-gradient-to-r {{ $isCompleted ? 'from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700' : 'from-green-500 to-green-600 hover:from-green-600 hover:to-green-700' }} text-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <span class="text-xl font-bold">{{ $i }}</span>
+                                </div>
+                                <span class="text-lg font-semibold">Level {{ $i }}</span>
+                            </div>
+                            @if($isCompleted)
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm bg-white/20 px-3 py-1 rounded-full">✓ Selesai</span>
+                                    @if(isset($scores[$i]))
+                                        <span class="text-sm bg-yellow-400/90 text-gray-900 px-3 py-1 rounded-full font-bold">{{ $scores[$i] }}</span>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                    </a>
+                @else
+                    <div class="group block bg-gray-300 text-gray-500 p-6 rounded-xl shadow-lg cursor-not-allowed opacity-50">
+                        <div class="flex items-center justify-center space-x-3">
+                            <div class="w-10 h-10 bg-gray-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                                <span class="text-xl font-bold">{{ $i }}</span>
+                            </div>
+                            <span class="text-lg font-semibold">Level {{ $i }} (Terkunci)</span>
+                        </div>
                     </div>
-                    <span class="text-lg font-semibold">Level 2 (Terkunci)</span>
-                </div>
-            </a>
+                @endif
+            @endfor
 
-            <a id="btn-level3" 
-               href="{{ route('quiz.level', ['operation'=>'penambahan','level'=>3]) }}"
-               class="group block bg-gray-300 text-gray-500 p-6 rounded-xl shadow-lg cursor-not-allowed opacity-50 pointer-events-none">
-                <div class="flex items-center justify-center space-x-3">
-                    <div class="w-10 h-10 bg-gray-400 bg-opacity-20 rounded-full flex items-center justify-center">
-                        <span class="text-xl font-bold">3</span>
-                    </div>
-                    <span class="text-lg font-semibold">Level 3 (Terkunci)</span>
-                </div>
-            </a>
             <a href="{{ route('quiz.result') }}"
-   class="block bg-white/20 hover:bg-white/30 text-white p-4 rounded-xl font-bold text-center shadow-lg transition">
-   📊 Lihat Result / Statistik
-</a>
-
+               class="block bg-white/20 hover:bg-white/30 text-white p-4 rounded-xl font-bold text-center shadow-lg transition">
+               📊 Lihat Result / Statistik
+            </a>
         </div>
     </div>
 </div>
-
-<script>
-const completedLevels = @json(session('penambahan_completed_levels', []));
-completedLevels.forEach(level => {
-    let btn = document.getElementById(`btn-level${Number(level)+1}`);
-    if(btn){
-        btn.classList.remove("opacity-50","pointer-events-none","bg-gray-300","text-gray-500","cursor-not-allowed");
-        btn.classList.add("bg-gradient-to-r","from-blue-500","to-blue-600","hover:from-blue-600","hover:to-blue-700","text-white","cursor-pointer");
-        btn.innerHTML = `
-            <div class="flex items-center justify-center space-x-3">
-                <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                    <span class="text-xl font-bold">${Number(level)+1}</span>
-                </div>
-                <span class="text-lg font-semibold">Level ${Number(level)+1}</span>
-            </div>
-        `;
-    }
-});
-</script>
 
 <style>
 @keyframes float1 {0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
@@ -95,6 +81,10 @@ completedLevels.forEach(level => {
 @keyframes smoke1 {0%{opacity:.1}50%{opacity:.2}100%{opacity:0}}
 @keyframes smoke2 {0%{opacity:.15}50%{opacity:.25}100%{opacity:0}}
 @keyframes smoke3 {0%{opacity:.2}50%{opacity:.3}100%{opacity:0}}
+@keyframes symbol1 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } }
+@keyframes symbol2 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(-180deg) scale(1.1); } }
+@keyframes symbol3 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1); } }
+@keyframes symbol4 { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(-180deg) scale(1.1); } }
 
 .animate-float1{animation:float1 6s infinite}
 .animate-float2{animation:float2 8s infinite}
@@ -102,5 +92,9 @@ completedLevels.forEach(level => {
 .animate-smoke1{animation:smoke1 10s infinite}
 .animate-smoke2{animation:smoke2 12s infinite}
 .animate-smoke3{animation:smoke3 9s infinite}
+.animate-symbol1 { animation: symbol1 8s infinite; }
+.animate-symbol2 { animation: symbol2 10s infinite; }
+.animate-symbol3 { animation: symbol3 9s infinite; }
+.animate-symbol4 { animation: symbol4 11s infinite; }
 </style>
 </x-app-layout>

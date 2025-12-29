@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Quiz Level 3 - Pengurangan</title>
+    <title>Quiz Level 3 - Penambahan</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -36,14 +36,14 @@
 
         <!-- Tutor Section -->
         <div id="section-tutor" class="transition-all duration-500 ease-out">
-            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Level 3 - Pengurangan</h1>
+            <h1 class="text-3xl font-bold mb-3 drop-shadow-lg">Level 3 - Penambahan</h1>
             <p class="mb-4">Pelajari materi sebelum mulai mengerjakan soal.</p>
             <div class="mx-auto w-64 h-64 bg-white/20 rounded-2xl mb-4 flex items-center justify-center">
-                <span class="text-6xl">➖</span>
+                <span class="text-6xl">➕</span>
             </div>
             <div class="bg-white text-black p-4 rounded-2xl shadow-xl mb-6">
-                <p class="mb-2">Pengurangan adalah mengurangi suatu angka dengan angka lainnya.</p>
-                <p class="font-bold">Contoh: 5 - 2 = 3</p>
+                <p class="mb-2">Penambahan adalah menjumlahkan dua angka untuk mendapatkan totalnya.</p>
+                <p class="font-bold">Contoh: 2 + 3 = 5</p>
             </div>
             <button onclick="startQuiz()"
                     class="bg-red-700 hover:bg-red-800 w-full p-3 rounded-xl font-bold transition">
@@ -80,42 +80,48 @@
 
         <!-- Result Section -->
         <div id="section-result" class="hidden transition-all duration-500 ease-out text-black">
-            <div class="bg-white p-6 rounded-2xl shadow-xl">
-                <div class="text-6xl mb-4">🎉</div>
-                <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
-                <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-red-600"></span></p>
-                <h3 class="font-bold mb-2">Review:</h3>
-                <div id="review-list" class="max-h-96 overflow-y-auto"></div>
-
-                <button onclick="unlockAndGoToNextLevel()" id="btn-next-level"
-                   class="mt-4 block bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold w-full text-center">
-                    Lanjut ke Level 4
-                </button>
-
-                <button onclick="unlockAndGoBack()" id="btn-go-back"
-                   class="mt-2 block bg-gray-500 hover:bg-gray-600 text-white p-3 rounded-xl font-bold w-full text-center">
-                    Kembali ke Halaman Pengurangan
-                </button>
-            </div>
+    <div class="bg-white p-6 rounded-2xl shadow-xl">
+        <div class="text-6xl mb-4">🎉</div>
+        <h2 class="text-2xl font-bold mb-4">Selamat! Quiz Telah Selesai!</h2>
+        <p class="text-xl mb-4">Nilai Kamu: <span id="result-score" class="font-bold text-red-600"></span></p>
+        
+        <!-- Badge jika perfect score -->
+        <div id="perfect-badge" class="hidden bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 p-4 rounded-xl mb-4 font-bold text-center">
+            🏆 SEMPURNA! Kamu menguasai level ini!
         </div>
+        
+        <h3 class="font-bold mb-2">Review:</h3>
+        <div id="review-list" class="max-h-96 overflow-y-auto mb-4"></div>
+
+        <!-- Hanya tombol kembali, tanpa next level -->
+        <button onclick="saveAndGoBack()" id="btn-go-back"
+           class="block bg-red-600 hover:bg-red-700 text-white p-3 rounded-xl font-bold w-full text-center">
+            Kembali ke Halaman Penambahan
+        </button>
+        
+        <a href="{{ route('quiz.result') }}"
+           class="mt-2 block bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold w-full text-center">
+            📊 Lihat Result & Statistik
+        </a>
+    </div>
+</div>
 
     </div>
 </div>
 
 <script>
 const questions = [
-    { text: "5 - 2 = ?", answer: 3 }
-    
-//     ,
-//     { text: "7 - 3 = ?", answer: 4 },
-//     { text: "6 - 1 = ?", answer: 5 },
-//     { text: "8 - 4 = ?", answer: 4 },
-//     { text: "9 - 5 = ?", answer: 4 },
-//     { text: "10 - 6 = ?", answer: 4 },
-//     { text: "6 - 3 = ?", answer: 3 },
-//     { text: "9 - 1 = ?", answer: 8 },
-//     { text: "8 - 3 = ?", answer: 5 },
-//     { text: "10 - 8 = ?", answer: 2 }
+    { text: "17 + 4 = ?", answer: 21, image: "17+4" }
+    // ,
+    // { text: "19 + 5 = ?", answer: 24, image: "19+5" },
+    // { text: "15 + 8 = ?", answer: 23, image: "15+8" },
+    // { text: "18 + 6 = ?", answer: 24, image: "18+6" },
+    // { text: "16 + 7 = ?", answer: 23, image: "16+7" },
+    // { text: "20 + 3 = ?", answer: 23, image: "20+3" },
+    // { text: "14 + 9 = ?", answer: 23, image: "14+9" },
+    // { text: "21 + 2 = ?", answer: 23, image: "21+2" },
+    // { text: "13 + 10 = ?", answer: 23, image: "13+10" },
+    // { text: "22 + 1 = ?", answer: 23, image: "22+1" }
 ];
 
 let index = 0;
@@ -161,7 +167,7 @@ function startQuiz() {
 function generateChoices(correctAnswer) {
     const choices = [correctAnswer];
     while (choices.length < 4) {
-        const random = Math.floor(Math.random() * 15) + 1;
+        const random = Math.floor(Math.random() * 20) + 10;
         if (!choices.includes(random)) {
             choices.push(random);
         }
@@ -215,7 +221,7 @@ function selectAnswer(selectedAnswer, button) {
     });
     
     if (selectedAnswer === q.answer) {
-        button.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+        button.classList.add('bg-red-500', 'text-white', 'border-red-600', 'animate-correct');
         userAnswers[index] = selectedAnswer;
         
         if (!isRetryMode) {
@@ -243,7 +249,7 @@ function selectAnswer(selectedAnswer, button) {
         allButtons.forEach(btn => {
             if (parseInt(btn.innerText) === q.answer) {
                 setTimeout(() => {
-                    btn.classList.add('bg-green-500', 'text-white', 'border-green-600', 'animate-correct');
+                    btn.classList.add('bg-red-500', 'text-white', 'border-red-600', 'animate-correct');
                 }, 500);
             }
         });
@@ -323,7 +329,7 @@ function showResult() {
             
             let bgColor = 'bg-red-100';
             if (isCorrect && correctFirstAttempt) {
-                bgColor = 'bg-green-100';
+                bgColor = 'bg-red-100';
             } else if (isCorrect && !correctFirstAttempt) {
                 bgColor = 'bg-yellow-100';
             }
@@ -332,7 +338,7 @@ function showResult() {
                 <b>${q.text}</b><br>
                 Jawaban Kamu: ${finalAnswer}<br>
                 Kunci Jawaban: ${q.answer}<br>
-                ${correctFirstAttempt ? '<span class="text-green-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
+                ${correctFirstAttempt ? '<span class="text-red-600 font-bold">✓ Benar di percobaan pertama (+10 poin)</span>' : 
                   isCorrect ? '<span class="text-orange-600">✓ Benar setelah retry (+5 poin)</span>' : 
                   '<span class="text-red-600 font-bold">✗ Salah (+0 poin)</span>'}
             </p>`;
@@ -341,6 +347,11 @@ function showResult() {
         const finalScore = Math.round((totalPoints / originalQuestions.length) * 100);
         document.getElementById('result-score').innerText = finalScore;
         document.getElementById('review-list').innerHTML = reviewHTML;
+        
+        // Tampilkan badge jika perfect score
+        if (finalScore === 100) {
+            document.getElementById('perfect-badge').classList.remove('hidden');
+        }
         
         saveProgress(finalScore);
     }, 500);
@@ -428,45 +439,8 @@ function saveProgress(finalScore) {
     });
 }
 
-function unlockAndGoToNextLevel() {
-    const finalScore = Math.round((calculateTotalPoints() / originalQuestions.length) * 100);
-    const button = document.getElementById('btn-next-level');
-    
-    button.disabled = true;
-    button.innerHTML = '⏳ Membuka Level 4...';
-    
-    fetch('/quiz/pengurangan/complete-level/3', {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-            level: 3,
-            score: finalScore,
-            next_level: 4,
-            unlock_next: true
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'ok' || data.success) {
-            window.location.href = '/quiz/pengurangan/level4';
-        } else {
-            alert('Gagal membuka level berikutnya. Silakan coba lagi.');
-            button.disabled = false;
-            button.innerHTML = 'Lanjut ke Level 4';
-        }
-    })
-    .catch(err => {
-        console.error('Gagal unlock level:', err);
-        alert('Terjadi kesalahan. Silakan coba lagi.');
-        button.disabled = false;
-        button.innerHTML = 'Lanjut ke Level 4';
-    });
-}
 
-function unlockAndGoBack() {
+function saveAndGoBack() {
     const finalScore = Math.round((calculateTotalPoints() / originalQuestions.length) * 100);
     const button = document.getElementById('btn-go-back');
     
@@ -482,8 +456,7 @@ function unlockAndGoBack() {
         body: JSON.stringify({ 
             level: 3,
             score: finalScore,
-            next_level: 4,
-            unlock_next: true
+            unlock_next: false  // Tidak ada level berikutnya
         })
     })
     .then(response => response.json())
@@ -493,25 +466,16 @@ function unlockAndGoBack() {
         } else {
             alert('Gagal menyimpan progress. Silakan coba lagi.');
             button.disabled = false;
-            button.innerHTML = 'Kembali ke Halaman Pengurangan';
+            button.innerHTML = 'Kembali ke Halaman Penambahan';
         }
     })
     .catch(err => {
         console.error('Gagal menyimpan progress:', err);
         alert('Terjadi kesalahan. Silakan coba lagi.');
         button.disabled = false;
-        button.innerHTML = 'Kembali ke Halaman Pengurangan';
+        button.innerHTML = 'Kembali ke Halaman Penambahan';
     });
 }
-
-window.addEventListener('beforeunload', function (e) {
-    if (!quizStarted) return;
-    if (!document.getElementById('section-result').classList.contains('hidden')) return;
-    
-    e.preventDefault();
-    e.returnValue = '';
-    return '';
-});
 </script>
 
 <style>
