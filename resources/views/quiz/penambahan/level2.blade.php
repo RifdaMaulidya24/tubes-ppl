@@ -239,6 +239,7 @@ const questions = [
   { text: "13 + 2 = ?", answer: 15 },
   { text: "14 + 3 = ?", answer: 17 },
   { text: "15 + 4 = ?", answer: 19 }
+  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
 ];
 
 let index = 0;

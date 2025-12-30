@@ -75,6 +75,23 @@
 
         .bottom-actions{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;}
 
+
+        @keyframes fadeZoomIn{
+            0%{opacity:0;transform:translateY(14px) scale(.96);filter:blur(2px)}
+            100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+        }
+        .enter{opacity:0;animation:fadeZoomIn 700ms cubic-bezier(.2,.8,.2,1) both;}
+        .d1{animation-delay:.08s}
+        .d2{animation-delay:.16s}
+        .d3{animation-delay:.24s}
+        .d4{animation-delay:.32s}
+        .d5{animation-delay:.40s}
+        .d6{animation-delay:.48s}
+
+        @media (prefers-reduced-motion: reduce){
+            .enter{animation:none;opacity:1;transform:none;filter:none}
+        }
+
         @media (max-width: 900px){
             .hero{grid-template-columns:1fr;}
             .grid{grid-template-columns:1fr;}
@@ -94,17 +111,11 @@
         <div class="container-materi">
 
             <div class="hero">
-                <div class="hero-card">
-                    <div class="chip-row">
-                        <div class="chip">📘 Materi</div>
-                        <div class="chip">⭐ Level Dasar</div>
-                        <div class="chip">➖ Pengurangan</div>
-                    </div>
-
-                    <h1 class="hero-title">Materi Pengurangan ➖</h1>
+                <div class="hero-card enter d1">
+                    <h1 class="hero-title">Materi Pengurangan</h1>
                     <p class="hero-desc">
-                        Pengurangan adalah proses <b>mengambil</b> atau <b>mengurangi</b> jumlah dari sebuah angka.
-                        Bayangin kamu punya permen, lalu ada yang diambil — sisanya itu hasil pengurangan 😄
+                        Pengurangan itu artinya <b>mengurangi</b>.
+                        Misal 10 - 3 sisa berapa? 😄
                     </p>
 
                     <div class="hero-actions">
@@ -113,18 +124,19 @@
                     </div>
                 </div>
 
-                <div class="hero-mascot">
-                    <div class="big-emoji">🍬😄</div>
-                    <p class="mascot-title">Tips Cepat!</p>
-                    <p class="mascot-mini">
-                        Kalau bisa, <b>kurangi dari angka yang lebih besar</b>.
-                        Ingat: hasil pengurangan biasanya lebih kecil.
-                    </p>
+                <div class="hero-mascot enter d2">
+                    <img
+                        src="{{ asset('img/kr.png') }}"
+                        alt="Logo Pengurangan"
+                        style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
+                    >
+                    <p class="mascot-title">Pengurangan</p>
+                    <p class="mascot-mini">Kurangin angka jadi cepat ✨</p>
                 </div>
             </div>
 
             <div class="grid">
-                <div class="card">
+                <div class="card enter d3">
                     <div class="card-title">📌 Konsep Singkat</div>
                     <p class="card-sub">
                         Pengurangan itu artinya <b>mengurangi</b> suatu jumlah.
@@ -158,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="card soft" id="video">
+                <div class="card soft enter d4" id="video">
                     <div class="card-title light">🎥 Video Penjelasan</div>
                     <p class="card-sub light">Tonton dulu ya, habis itu mini quiz 😄</p>
 
@@ -189,7 +201,7 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-top:16px;">
+            <div class="card enter d5" style="margin-top:16px;">
                 <div class="card-title">⚡ Tips Cepat Anak Pintar</div>
                 <ul style="margin:0;padding-left:18px;color:rgba(15,23,42,.75);font-weight:800;line-height:1.9;font-size:13.5px;">
                     <li>Kalau bingung, pakai <b>gambar/titik</b> untuk mengurangi.</li>
@@ -198,7 +210,7 @@
                 </ul>
             </div>
 
-            <div class="bottom-actions">
+            <div class="bottom-actions enter d6">
                 <a href="{{ route('materi.index') }}" class="btn btn-ghost">⬅ Kembali</a>
                 <a href="{{ url('/quiz/pengurangan') }}" class="btn btn-light">🚀 Mulai Quiz Pengurangan</a>
             </div>
@@ -206,7 +218,7 @@
     </div>
 
     <script>
-        // Interaktif pengurangan (a - b)
+     
         const a = document.getElementById('a');
         const b = document.getElementById('b');
         const hasil = document.getElementById('hasil');

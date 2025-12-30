@@ -221,6 +221,7 @@ const questions = [
   { text: "144 ÷ 12 = ?", answer: 12 },
   { text: "150 ÷ 10 = ?", answer: 15 },
   { text: "160 ÷ 8 = ?", answer: 20 }
+  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
 ];
 
 let index = 0;

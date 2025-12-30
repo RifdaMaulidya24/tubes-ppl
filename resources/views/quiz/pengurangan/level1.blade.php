@@ -259,6 +259,7 @@
 <script>
 const questions = [
   { text: "5 - 2 = ?", answer: 3 }
+  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
 ];
 
 let index = 0;
