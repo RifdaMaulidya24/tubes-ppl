@@ -81,12 +81,12 @@
             .video-wrap iframe{height:240px;}
         }
 
-            .hero-title-row{
+        .hero-title-row{
             display:flex;
             align-items:center;
             gap:12px;
-            }
-            .hero-logo{
+        }
+        .hero-logo{
             width:54px;
             height:54px;
             border-radius:14px;
@@ -95,8 +95,27 @@
             box-shadow: 0 14px 40px rgba(0,0,0,.18);
             padding:10px;
             object-fit: contain;
-            }
+        }
 
+    
+        @keyframes fadeZoomIn {
+            0%   { opacity: 0; transform: translateY(14px) scale(.96); filter: blur(2px); }
+            100% { opacity: 1; transform: translateY(0)   scale(1);   filter: blur(0); }
+        }
+        .enter{
+            opacity:0;
+            animation: fadeZoomIn 700ms cubic-bezier(.2,.8,.2,1) both;
+        }
+        .d1{animation-delay:.08s}
+        .d2{animation-delay:.16s}
+        .d3{animation-delay:.24s}
+        .d4{animation-delay:.32s}
+        .d5{animation-delay:.40s}
+        .d6{animation-delay:.48s}
+
+        @media (prefers-reduced-motion: reduce){
+            .enter{animation:none;opacity:1;transform:none;filter:none}
+        }
     </style>
 
     <div class="materi-page">
@@ -111,32 +130,32 @@
         <div class="container-materi">
 
             <div class="hero">
-    <div class="hero-card">
-        <h1 class="hero-title">Materi Pembagian </h1>
-        <p class="hero-desc">
-            Pembagian itu artinya <b>membagi rata</b>.
-            Misal 12 permen dibagi 3 anak, tiap anak dapat berapa? 😄
-        </p>
+                <div class="hero-card enter d1">
+                    <h1 class="hero-title">Materi Pembagian </h1>
+                    <p class="hero-desc">
+                        Pembagian itu artinya <b>membagi rata</b>.
+                        Misal 12 permen dibagi 3 anak, tiap anak dapat berapa? 😄
+                    </p>
 
-        <div class="hero-actions">
-            <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
-            <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
-        </div>
-    </div>
+                    <div class="hero-actions">
+                        <a href="#video" class="btn btn-ghost">🎥 Lihat Video</a>
+                        <a href="#latihan" class="btn btn-light">🧩 Coba Latihan</a>
+                    </div>
+                </div>
 
-    <div class="hero-mascot">
-        <img
-            src="{{ asset('img/bg.png') }}"
-            alt="Logo Mathify"
-            style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
-        >
-            <p class="mascot-title">Mathify</p>
-            <p class="mascot-mini">Belajar pembagian jadi gampang ✨</p>
-        </div>
-    </div>
+                <div class="hero-mascot enter d2">
+                    <img
+                        src="{{ asset('img/bg.png') }}"
+                        alt="Logo Mathify"
+                        style="width:110px;height:110px;object-fit:contain;margin:0 auto 10px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18));"
+                    >
+                    <p class="mascot-title">Mathify</p>
+                    <p class="mascot-mini">Belajar pembagian jadi gampang ✨</p>
+                </div>
+            </div>
 
             <div class="grid">
-                <div class="card">
+                <div class="card enter d3">
                     <div class="card-title">📌 Konsep Singkat</div>
                     <p class="card-sub">
                         Pembagian itu membagi suatu jumlah jadi beberapa bagian yang sama.
@@ -173,7 +192,7 @@
                     </p>
                 </div>
 
-                <div class="card soft" id="video">
+                <div class="card soft enter d4" id="video">
                     <div class="card-title light">🎥 Video Penjelasan</div>
                     <p class="card-sub light">Tonton dulu ya, habis itu mini quiz 😄</p>
 
@@ -204,7 +223,7 @@
                 </div>
             </div>
 
-            <div class="card" style="margin-top:16px;">
+            <div class="card enter d5" style="margin-top:16px;">
                 <div class="card-title">⚡ Tips Cepat Anak Pintar</div>
                 <ul style="margin:0;padding-left:18px;color:rgba(15,23,42,.75);font-weight:800;line-height:1.9;font-size:13.5px;">
                     <li>Cek pakai perkalian: hasil × pembagi = angka awal.</li>
@@ -213,7 +232,7 @@
                 </ul>
             </div>
 
-            <div class="bottom-actions">
+            <div class="bottom-actions enter d6">
                 <a href="{{ route('materi.index') }}" class="btn btn-ghost">⬅ Kembali</a>
                 <a href="{{ url('/quiz/pembagian') }}" class="btn btn-light">🚀 Mulai Quiz Pembagian</a>
             </div>
@@ -221,7 +240,7 @@
     </div>
 
     <script>
-        // Interaktif pembagian (a / b)
+     
         const a = document.getElementById('a');
         const b = document.getElementById('b');
         const hasil = document.getElementById('hasil');
@@ -230,7 +249,7 @@
             const va = parseInt(a.value || 0, 10);
             const vb = Math.max(parseInt(b.value || 1, 10), 1);
 
-            // tampilkan integer kalau pas, kalau tidak pas tampilkan 2 desimal
+            
             const res = va / vb;
             hasil.textContent = Number.isInteger(res) ? res : res.toFixed(2);
         }
@@ -239,7 +258,6 @@
         b.addEventListener('input', updateDiv);
         updateDiv();
 
-        // Mini quiz
         const choices = document.querySelectorAll('.choice');
         const feedback = document.getElementById('feedback');
         const correct = "3";

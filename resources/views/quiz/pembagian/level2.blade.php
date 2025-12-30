@@ -194,6 +194,7 @@ const questions = [
   { text: "40 ÷ 8 = ?", answer: 5 },
   { text: "45 ÷ 5 = ?", answer: 9 },
   { text: "48 ÷ 6 = ?", answer: 8 }
+  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
 ];
 
 let index = 0;
