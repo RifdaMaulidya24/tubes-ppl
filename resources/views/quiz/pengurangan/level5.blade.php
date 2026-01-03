@@ -236,17 +236,21 @@
 
 <script>
 const questions = [
-  { text: "31 - 16 = ?", answer: 15 },
-  { text: "33 - 18 = ?", answer: 15 },
-  { text: "35 - 20 = ?", answer: 15 },
-  { text: "29 - 14 = ?", answer: 15 },
-  { text: "34 - 19 = ?", answer: 15 },
-  { text: "32 - 17 = ?", answer: 15 },
-  { text: "27 - 12 = ?", answer: 15 },
-  { text: "36 - 21 = ?", answer: 15 },
+  { text: "31 - 15 = ?", answer: 16 },
+  { text: "33 - 22 = ?", answer: 11 },
+  { text: "35 - 23 = ?", answer: 12 },
+  { text: "29 - 15 = ?", answer: 14 },
+  { text: "34 -  9 = ?", answer: 25 },
+  { text: "32 - 18 = ?", answer: 24 },
+  { text: "27 - 19 = ?", answer:  8 },
+  { text: "36 - 27 = ?", answer:  9 },
   { text: "28 - 13 = ?", answer: 15 },
-  { text: "30 - 15 = ?", answer: 15 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "30 -  7 = ?", answer: 23 },
+  { text: "Raihana memiliki 27 tusuk sate, kemudian satenya diberikan ke Jefry 3 tusuk, Rafka 5 tusuk, dan Lili 6 tusuk. Berapa tusuk sate Raihana sekarang?", answer: 13},
+  { text: "Nova membeli jambu 30 biji, terdapat 7 jambu yang dalamnya busuk, Nova ingin memberi Rara 3 buah jambu. Berapa sisa jambu Nova, jika Rara telah menerima pemberian jambu tersebut?", answer: 20},
+  { text: "Ruri melihat 27 gerombolan burung Nuri di pohon cemara, kemudian Rani datang dan mengagetkan burung-burung hingga tersisa 15 burung nuri di pohon. Berapa jumlah burung Nuri yang hilang?", answer: 12},
+  { text: "Dafa membeli bola pingpong sebanyak 35 buah, kemudian bola tersebut dipakai Andi sebanyak 4 buah, Aris sebanyak 7 buah, dan Akmal sebanyak 6 buah. Berapa sisa bola pingpong Dafa?", answer: 18},
+  { text: "Firman membeli batagor 32 bungkus, ternyata ada 15 bungkus batagor yang basi, dan 7 bungkus batagor untuk Tara. Berapa sisa batagor Firman sekarang?", answer: 10}
 ];
 
 let index = 0;
@@ -311,11 +315,47 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();
+
 
   const choices = generateChoices(q.answer);
   const choicesContainer = document.getElementById('choices-container');

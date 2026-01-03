@@ -258,8 +258,21 @@
 
 <script>
 const questions = [
-  { text: "5 - 2 = ?", answer: 3 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "5 - 2 = ?", answer: 3 },
+  { text: "3 - 1 = ?", answer: 2 },
+  { text: "5 - 3 = ?", answer: 2 },
+  { text: "6 - 2 = ?", answer: 4 },
+  { text: "3 - 2 = ?", answer: 1 },
+  { text: "6 - 5 = ?", answer: 1 },
+  { text: "5 - 4 = ?", answer: 1 },
+  { text: "4 - 2 = ?", answer: 2 },
+  { text: "7 - 2 = ?", answer: 5 },
+  { text: "5 - 1 = ?", answer: 4 },
+  { text: "Aisyah memiliki 3 buah pensil. Kemarin Aisyah kehilangan 2 pensilnya. Berapa jumlah pensil Aisyah sekarang?", answer: 1},
+  { text: "John memiliki 5 buah roti. Kemudian John memberikan 2 rotinya kepada Aldi. Berapa sisa roti Jhon sekarang?", answer: 3},
+  { text: "Stevi mempunyai 6 ikat sapu. Kemudian Bu Tejo membeli sapunya sebanyak 3 ikat. Berapa ikat sisa sapu Stevi?", answer: 3}, 
+  { text: "Sasa membeli snack 7 buah, kemudian dibagikan ke Ana sebanyak 3 buah. Berapa sisa snack Sasa?", answer: 4},
+  { text: "Alex membeli tiket konser 6 buah, kemudian diberikan ke temannya sebanyak 4 buah. Berapa sisa tiket konser Alex sekarang?", answer: 2}
 ];
 
 let index = 0;
@@ -324,11 +337,47 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();
+
 
   const choices = generateChoices(q.answer);
   const choicesContainer = document.getElementById('choices-container');
