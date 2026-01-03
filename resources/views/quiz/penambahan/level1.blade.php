@@ -238,8 +238,12 @@ const questions = [
   { text: "2 + 4 = ?", answer: 6 },
   { text: "3 + 3 = ?", answer: 6 },
   { text: "4 + 4 = ?", answer: 8 },
-  { text: "5 + 4 = ?", answer: 9 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "5 + 4 = ?", answer: 9 },
+  { text: "Ita mempunyai 3 ekor ayam, kemudian Ibunya membelikan lagi 2 ekor ayam. Berapa jumlah ayam Ita sekarang?", answer: 5},
+  { text: "Irfan memiliki 7 buah apel dan 3 buah jeruk. Berapa total seluruh buah Irfan sekarang?", answer: 10},
+  { text: "Vera membeli nasi 3 bungkus, kemudian Bu Surti menambahkan 3 bungkus nasi lagi ke Vera. Berapa bungkus total nasi Vera sekarang?", answer: 6},
+  { text: "Hasan memetik apel di kebun sebanyak 4 buah, dan di pekarangan sebanyak 2 buah. Berapa total buah apel Hasan?", answer: 6},
+  { text: "Zakiya mempunyai 2 motor baru, kemudian pamannya membelikannya lagi sebanyak 5 buah motor. Berapa total motor Zakiya sekarang?", answer: 7}
 ];
 
 let index = 0;
@@ -304,8 +308,43 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();

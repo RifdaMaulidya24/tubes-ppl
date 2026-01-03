@@ -238,8 +238,12 @@ const questions = [
   { text: "29 + 17 = ?", answer: 46 },
   { text: "31 + 13 = ?", answer: 44 },
   { text: "26 + 19 = ?", answer: 45 },
-  { text: "32 + 11 = ?", answer: 43 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "32 + 11 = ?", answer: 43 },
+  { text:"Budi membeli tomat 30 buah di tukang sayur, ternyata ibu Budi juga sudah membeli tomat sebanyak 7 buah. Berapa banyak tomat mereka sekarang?", answer: 37},
+  { text:"Rifa mendapat orderan 40 karangan bunga yang terdiri dari 7 bunga anggrek ungu, 3 karangan bunga lilac, 12 karangan bunga mawar putih, 7 karangan bunga lotus putih, 9 karangan bunga daisy kuning, dan 2 karangan bunga melati putih. Berapa karangan bunga yang berwarna putih ", answer: 21},
+  { text:"Pak Andi adalah pengusaha mobil, rincian penjualan mobil hari ini adalah 23 mobil Avanza, 5 mobil Xenia, dan 19 mobil Ayla. Berapa banyak penjualan mobil Pak Andi hari ini?", answer: 47},
+  { text:"Siti membeli 32 roti moka, dan Aisyah membeli 17 roti pandan. Berapa banyak roti yang mereka miliki?", answer: 49},
+  { text:"Barra telah menghafal 21 vocab, besok target hafalan Barra adalah 27 vocab. Berapa banyak vocab yang Barra hafal jika besok Barra menyelesaikan misi tersebut?", answer: 48}
 ];
 
 let index = 0;
@@ -303,8 +307,43 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();

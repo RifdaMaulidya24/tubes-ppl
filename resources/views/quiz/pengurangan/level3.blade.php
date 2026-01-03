@@ -251,8 +251,12 @@ const questions = [
   { text: "21 - 7 = ?",  answer: 14 },
   { text: "23 - 9 = ?",  answer: 14 },
   { text: "24 - 11 = ?", answer: 13 },
-  { text: "25 - 12 = ?", answer: 13 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "25 - 12 = ?", answer: 13 },
+  { text: "Daerah Ketintang terdapat 17 Rumah Makan Padang, Di pagi ini hanya 5 Rumah Makan Padang yang buka. Jadi, berapa total Rumah Makan Padang yang sedang tutup?", answer: 12},
+  { text: "Pak Jono membeli 18 buah jeruk di pasar, kemudian tas belanjaannya robek dan menyisakan 11 buah jaruk. Berapa buah jeruk Pak Jono yang hilang?", answer: 7},
+  { text: "Terdapat 23 kambing kurban di lapangan, tetapi terdapat 9 kambing yang telah disembelih. Berapa sisa kambing yang masih hidup?", answer: 14},
+  { text: "Tata mempunyai 25 bungkus mie, kemudian Bu Sri memborong mienya sebanyak 18 bungkus. Berapa bungkus sisa mie Tata sekarang?", answer: 7},
+  { text: "Sofi olahraga 23 menit sehari, tetapi selama 7 menit Sofi selalu beristirahat. Jadi, berapa menit olahraga yang Sofi lakukan selama sehari?", answer: 16}
 ];
 
 let index = 0;
@@ -317,8 +321,43 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();

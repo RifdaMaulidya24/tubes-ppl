@@ -232,8 +232,12 @@ const questions = [
   { text: "63 + 18 = ?", answer: 81 },
   { text: "41 + 39 = ?", answer: 80 },
   { text: "47 + 33 = ?", answer: 80 },
-  { text: "52 + 28 = ?", answer: 80 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "52 + 28 = ?", answer: 80 },
+  { text:"Kemarin Ami telah membaca 31 halaman, siang tadi Ami membaca 33, dan malam ini Ami membaca 19 halaman. Berapa halaman buku yang telah dibaca oleh Ami?", answer: 83},
+  { text:"Hafsah membeli 47 bungkus donat, 19 bungkus lumpia, 17 bungkus lemper, dan 9 bungkus bolu. Berapa bungkus kue yang telah dibeli Hafsah?", answer: 92},
+  { text:"Pak Mahmud membeli 77 tusuk sate ayam, setelah dicek ternyata tercampur 18 tusuk sate kambing. Di acara Pak Mahmud membutuhkan 95 tusuk sate ayam. Berapa tusuk sate yang akan dibeli lagi?", answer: 36},
+  { text:"Hari Senin Ratna telah menjahit 57 baju, hari Selasa Ratna telah menjahit 17 baju dan 22 rok, hari Rabu Ratna telah menjahit 18 rok, 3 kemeja, dan 20 baju. Berapa total baju yang telah dijahit Ratna?", answer: 94},
+  { text:"Rosi telah memenagkan 21 kejuaraan internasional, 19 kejuaraan nasional, dan 33 kejuaraan regional. Sedangkan Tomi telah memenagkan 19 juara internasional, 27 juara nasional, dan 29 juara regional. Berapa total kejuaraan yang tertinggi dari kedua anak tersebut?", answer: 75}
 ];
 
 let index = 0;
@@ -297,11 +301,47 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();
+
 
   const choices = generateChoices(q.answer);
   const choicesContainer = document.getElementById('choices-container');

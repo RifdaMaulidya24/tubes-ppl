@@ -242,17 +242,22 @@
 
 <script>
 const questions = [
+  { text: "Reika memiliki kebun yang luas yang ditanami pohon mangga. Kemarin Reika menghitung jumlah mangga yang berbuah sebanyak 17 buah, tetapi sekarang sisa 9 buah. Berapa banyak buah mangga yang hilang?", answer: 8},
   { text: "9 - 3 = ?",  answer: 6 },
   { text: "8 - 5 = ?",  answer: 3 },
   { text: "7 - 4 = ?",  answer: 3 },
+  { text: "9 - 7 = ?",  answer: 2 },
   { text: "10 - 6 = ?", answer: 4 },
   { text: "12 - 7 = ?", answer: 5 },
-  { text: "11 - 2 = ?", answer: 9 },
   { text: "14 - 8 = ?", answer: 6 },
   { text: "13 - 5 = ?", answer: 8 },
   { text: "15 - 9 = ?", answer: 6 },
-  { text: "16 - 7 = ?", answer: 9 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "16 - 7 = ?", answer: 9 },
+  { text: "Steven memiliki 5 buah apel, lalu diberikan ke Caca 2 buah. Berapa banyak apel yang dimiliki Steven sekarang?", answer: 3 },
+  { text: "Caca membeli 7 buah delima, kemudian di tengah perjalanan delimanya hilang sebanyak 3 buah. Berapa sisa buah delima yang di miliki Caca? ", answer: 4 },
+  { text: "Brian memberi Beril 8 bungkus nasi. Di perjalanan, Beril memberikan 5 bungkus nasinya ke pengemis. Berapa sisa nasi yang dimiliki Beril?", answer: 3 },
+  { text: "Pak Tani sedang membajak sawah dengan 16 kerbau, terdapat 8 kerbau yang kelelahan. Berapa jumlah kerbau yang dapat digunakan Pak Tani sekarang?", answer: 8},
+  { text: "Rania memasak 12 butir telur dan Nana memasak 7 butir telur. berapa telur yang telah dimasak?", answer: 19}
 ];
 
 let index = 0;
@@ -317,8 +322,43 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();

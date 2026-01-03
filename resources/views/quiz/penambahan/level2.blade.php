@@ -238,8 +238,12 @@ const questions = [
   { text: "12 + 5 = ?", answer: 17 },
   { text: "13 + 2 = ?", answer: 15 },
   { text: "14 + 3 = ?", answer: 17 },
-  { text: "15 + 4 = ?", answer: 19 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "15 + 4 = ?", answer: 19 },
+  { text:"Bima mempunyai 11 anak ayam, kemudian Bima membeli lagi 3 anak ayam. Berapa total anak ayam Bima sekarang?", answer: 14},
+  { text:"Johan membeli 7 paku di toko bangunan, dan Ani juga membeli 7 paku di pasar. Berapa banyak paku mereka sekarang?", answer: 14},
+  { text:"Bu Siti membuat kue 12 kotak, kemudian membuat lagi 3 kotak. Berapa banyak kue Bu Siti sekarang?", answer: 15},
+  { text:"Alex menemukan 8 butir kelapa di kebun A, dan Lefi menemukan 6 butir buah kelapa di kebun B. Berapa banyak kelapa mereka sekarang?", answer: 14},
+  { text:"Raden menghitung jumlah pemain sepak bola sebanyak 13 orang, beberapa menit kemudian muncul 6 pemain yang bergabung di lapangan. Berapa total pemain sekarang?", answer: 19}
 ];
 
 let index = 0;
@@ -303,8 +307,43 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();

@@ -238,7 +238,12 @@ const questions = [
   { text: "22 + 6 = ?", answer: 28 },
   { text: "23 + 9 = ?", answer: 32 },
   { text: "24 + 8 = ?", answer: 32 },
-  { text: "25 + 7 = ?", answer: 32 }
+  { text: "25 + 7 = ?", answer: 32 },
+  { text:"Rudi membeli kapur sebanyak 22 batang dan juga dibelikan Rama sebanyak 13 batang. Berapa banyak kapur mereka sekarang?", answer: 35},
+  { text:"Sinta memasak 12 butir telur dan Raisa memasak 13 butir telur. Berapa butir telur yang telah dimasak?", answer: 25},
+  { text:"Rizki memiliki 22 lembar uang, kemudian pamannya memberi Rizki 9 lembar uang. Berapa lembar uang Rizki sekarang?", answer: 31},
+  { text:"Bimo memancing ikan di sungai bersama teman-temannya. Bimo mendapatkan 19 ikan patin, Zafran 5 ikan bawal, dan Sobri 3 ikan bandeng. Berapa total ikan hasil memancing mereka?", answer: 27},
+  { text:"Pak Udin memelihara 20 ekor domba, 3 ekor sapi, dan 11 ekor kambing. Berapa total hewan terbak Pak Udin?", answer: 34}
   //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
 ];
 
@@ -303,11 +308,47 @@ function generateChoices(correctAnswer) {
 
 function loadQuestion() {
   const q = questions[index];
-  document.getElementById('quiz-title').innerText = `Soal ${index + 1} dari ${questions.length}`;
-  document.getElementById('quiz-question').innerText = q.text;
+
+  document.getElementById('quiz-title').innerText =
+    `Soal ${index + 1} dari ${questions.length}`;
+
+  const questionEl = document.getElementById('quiz-question');
+  questionEl.innerText = q.text;
+
+  // 🔥 RESET TOTAL (INI KUNCI)
+  questionEl.className =
+    'font-extrabold text-white drop-shadow-lg transition-all duration-300';
+
+  const isNumericQuestion =
+    q.text.includes('=') || q.text.length <= 15;
+
+  // 🔢 SOAL ANGKA → BESAR SEPERTI DESAIN AWAL
+  if (isNumericQuestion) {
+    questionEl.classList.add(
+      'text-6xl',        // BESAR
+      'sm:text-7xl',     // SANGAT BESAR di layar besar
+      'tracking-widest',
+      'leading-tight',
+      'text-center'
+    );
+  }
+  // 📖 SOAL CERITA
+  else {
+    questionEl.classList.add(
+      'text-lg',
+      'sm:text-xl',
+      'leading-snug',
+      'tracking-normal',
+      'max-w-4xl',
+      'mx-auto',
+      'text-center'
+    );
+  }
+
   document.getElementById('next-info').classList.add('hidden');
 
   updateProgress();
+
 
   const choices = generateChoices(q.answer);
   const choicesContainer = document.getElementById('choices-container');
