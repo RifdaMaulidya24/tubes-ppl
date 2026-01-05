@@ -104,8 +104,8 @@
               <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-purple-200 to-fuchsia-200 transition-all duration-300"></div>
             </div>
             <div class="soal-card mx-auto rounded-[22px] overflow-hidden shadow-2xl border border-white/10 bg-black/55 backdrop-blur-xl animate-fade-zoom delay-150">
-              <div class="p-10 sm:p-12">
-                <p id="quiz-question" class="text-6xl sm:text-7xl font-extrabold tracking-widest text-white drop-shadow-lg"></p>
+              <div class="p-6 sm:p-8">
+                <p id="quiz-question" class="text-2xl sm:text-3xl font-extrabold tracking-normal text-white drop-shadow-lg leading-relaxed"> </p>
               </div>
             </div>
             <div id="choices-container" class="grid grid-cols-2 gap-4 sm:gap-5 mt-8"></div>
@@ -157,11 +157,22 @@ const questions = [
   { text: "12 × 5 = ?", answer: 60 },
   { text: "12 × 6 = ?", answer: 72 },
   { text: "8 × 12 = ?", answer: 96 },
-  { text: "9 × 7 = ?", answer: 63 },
-  { text: "11 × 7 = ?", answer: 77 },
-  { text: "12 × 7 = ?", answer: 84 },
-  { text: "12 × 8 = ?", answer: 96 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  {
+    text: "Ani memiliki 3 kantong permen dan 1 cokelat. Setiap kantong berisi 2 permen. Berapa jumlah permen Ani?",
+    answer: 6
+  },
+  {
+    text: "Di kelas Budi ada 3 meja dan 1 papan tulis. Setiap meja memiliki 3 buku. Berapa jumlah buku di semua meja?",
+    answer: 9
+  },
+  {
+    text: "Guru membawa 4 kotak pensil dan 2 penghapus. Setiap kotak berisi 2 pensil. Berapa jumlah pensil seluruhnya?",
+    answer: 8
+  },
+  {
+    text: "Ibu membeli 4 kantong jeruk dan 1 semangka. Setiap kantong berisi 3 jeruk. Berapa jumlah jeruk ibu?",
+    answer: 12
+  }
 ];
 
 let index = 0;

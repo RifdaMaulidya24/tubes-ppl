@@ -188,10 +188,8 @@
 
             <div class="soal-card mx-auto rounded-[22px] overflow-hidden shadow-2xl border border-white/10
                         bg-black/55 backdrop-blur-xl animate-fade-zoom delay-150">
-              <div class="p-10 sm:p-12">
-                <p id="quiz-question"
-                   class="text-6xl sm:text-7xl font-extrabold tracking-widest text-white drop-shadow-lg">
-                </p>
+              <div class="p-6 sm:p-8">
+                <p id="quiz-question" class="text-2xl sm:text-3xl font-extrabold tracking-normal text-white drop-shadow-lg leading-relaxed"> </p>
               </div>
             </div>
 
@@ -253,11 +251,22 @@ const questions = [
   { text: "33 × 3 = ?", answer: 99 },
   { text: "21 × 4 = ?", answer: 84 },
   { text: "19 × 5 = ?", answer: 95 },
-  { text: "18 × 4 = ?", answer: 72 },
-  { text: "16 × 6 = ?", answer: 96 },
-  { text: "12 × 8 = ?", answer: 96 },
-  { text: "22 × 4 = ?", answer: 88 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  {
+    text: "Ani memiliki 5 kantong permen. Setiap kantong berisi 3 permen. Dua kantong akan disimpan. Berapa jumlah permen yang akan dibagikan Ani?",
+    answer: 9
+  },
+  {
+    text: "Budi menyiapkan 6 piring kue. Setiap piring berisi 2 kue. Satu piring tidak jadi digunakan. Berapa jumlah kue yang digunakan?",
+    answer: 10
+  },
+  {
+    text: "Di kelas terdapat 7 rak buku. Setiap rak berisi 2 buku. Satu rak sedang diperbaiki dan tidak digunakan. Berapa jumlah buku yang dapat dipakai?",
+    answer: 12
+  },
+  {
+    text: "Ibu membeli 6 kantong jeruk. Setiap kantong berisi 3 jeruk. Dua kantong diberikan ke tetangga. Berapa jumlah jeruk yang tersisa untuk ibu?",
+    answer: 12
+  }
 ];
 
 let index = 0;

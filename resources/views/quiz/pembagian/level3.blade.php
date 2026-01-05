@@ -149,8 +149,8 @@
             </div>
 
             <div class="soal-card mx-auto rounded-[22px] overflow-hidden shadow-2xl border border-white/10 bg-black/55 backdrop-blur-xl animate-fade-zoom delay-150">
-              <div class="p-10 sm:p-12">
-                <p id="quiz-question" class="text-6xl sm:text-7xl font-extrabold tracking-widest text-white drop-shadow-lg"></p>
+              <div class="p-6 sm:p-8">
+                <p id="quiz-question" class="text-2xl sm:text-3xl font-extrabold tracking-normal text-white drop-shadow-lg leading-relaxed"> </p>
               </div>
             </div>
 
@@ -218,11 +218,22 @@ const questions = [
   { text: "64 ÷ 8 = ?", answer: 8 },
   { text: "72 ÷ 9 = ?", answer: 8 },
   { text: "75 ÷ 5 = ?", answer: 15 },
-  { text: "81 ÷ 9 = ?", answer: 9 },
-  { text: "84 ÷ 7 = ?", answer: 12 },
-  { text: "88 ÷ 11 = ?", answer: 8 },
-  { text: "90 ÷ 10 = ?", answer: 9 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  {
+    text: "Ani memiliki 24 permen dan 2 cokelat. Permen tersebut akan dibagikan sama banyak kepada 6 temannya saat ulang tahun. Berapa permen yang diterima setiap teman?",
+    answer: 4
+  },
+  {
+    text: "Di kelas Budi terdapat 5 meja dan 1 papan tulis. Budi membawa 25 kue untuk dibagikan sama rata ke setiap meja. Berapa kue di setiap meja?",
+    answer: 5
+  },
+  {
+    text: "Guru membawa 27 pensil dan 3 penghapus ke kelas. Pensil tersebut akan dibagikan sama banyak kepada 9 siswa. Berapa pensil yang diterima setiap siswa?",
+    answer: 3
+  },
+  {
+    text: "Ibu membeli 30 jeruk dan 1 semangka di pasar. Jeruk tersebut dimasukkan ke dalam 6 kantong dengan jumlah yang sama. Berapa jeruk di setiap kantong?",
+    answer: 5
+  }
 ];
 
 let index = 0;

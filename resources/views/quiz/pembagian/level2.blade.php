@@ -130,8 +130,8 @@
             </div>
 
             <div class="soal-card mx-auto rounded-[22px] overflow-hidden shadow-2xl border border-white/10 bg-black/55 backdrop-blur-xl animate-fade-zoom delay-150">
-              <div class="p-10 sm:p-12">
-                <p id="quiz-question" class="text-6xl sm:text-7xl font-extrabold tracking-widest text-white drop-shadow-lg"></p>
+              <div class="p-6 sm:p-8">
+                <p id="quiz-question" class="text-2xl sm:text-3xl font-extrabold tracking-normal text-white drop-shadow-lg leading-relaxed"> </p>
               </div>
             </div>
 
@@ -190,11 +190,10 @@ const questions = [
   { text: "28 ÷ 4 = ?", answer: 7 },
   { text: "30 ÷ 5 = ?", answer: 6 },
   { text: "32 ÷ 8 = ?", answer: 4 },
-  { text: "36 ÷ 9 = ?", answer: 4 },
-  { text: "40 ÷ 8 = ?", answer: 5 },
-  { text: "45 ÷ 5 = ?", answer: 9 },
-  { text: "48 ÷ 6 = ?", answer: 8 }
-  //bila atau rifda bisa ngrubah soal di sini, intinya jadi 10 soal
+  { text: "Ani memiliki 24 permen. Permen tersebut akan dibagikan sama banyak kepada 6 teman saat acara ulang tahun. Berapa permen yang diterima setiap teman?", answer: 4},
+  { text: "Budi membeli 25 kue untuk dibagikan ke 5 meja belajar di kelas. Setiap meja mendapat jumlah kue yang sama. Berapa kue di setiap meja?", answer: 5},
+  { text: "Di ruang kelas terdapat 27 pensil. Guru ingin membagikan pensil tersebut secara merata kepada 9 siswa. Berapa pensil yang diterima setiap siswa?", answer: 3}, 
+  { text: "Ibu membawa 30 jeruk dari pasar. Jeruk tersebut dimasukkan ke dalam 6 kantong dengan jumlah yang sama. Berapa jeruk di setiap kantong?", answer: 5}
 ];
 
 let index = 0;
